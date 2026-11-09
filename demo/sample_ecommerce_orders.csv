@@ -1,0 +1,22 @@
+order_id,customer_id,product_category,amount_inr,order_status,payment_method,city
+SOCH-1001,C-8821,Electronics,44990,Delivered,UPI,Bengaluru
+SOCH-1002,C-4102,Apparel,2499,Delivered,Credit Card,Mumbai
+SOCH-1003,C-9201,Home Goods,7850,Delivered,Net Banking,Delhi
+SOCH-1004,C-1129,Electronics,129990,Shipped,Credit Card,Hyderabad
+SOCH-1005,C-7411,Accessories,1850,Delivered,UPI,Pune
+SOCH-1006,C-3382,Apparel,4200,Pending,UPI,Chennai
+SOCH-1007,C-5190,Electronics,34999,Delivered,Credit Card,Kolkata
+SOCH-1008,C-6022,Home Goods,15400,Delivered,UPI,Ahmedabad
+SOCH-1009,C-8472,Accessories,999,Delivered,Debit Card,Jaipur
+SOCH-1010,C-2933,Electronics,68990,Shipped,UPI,Surat
+SOCH-1011,C-7741,Apparel,5490,Delivered,Credit Card,Bengaluru
+SOCH-1012,C-1204,Home Goods,9200,Delivered,UPI,Mumbai
+SOCH-1013,C-6310,Electronics,19999,Pending,Net Banking,Delhi
+SOCH-1014,C-4428,Apparel,3100,Delivered,UPI,Hyderabad
+SOCH-1015,C-9018,Accessories,2750,Delivered,Credit Card,Pune
+SOCH-1016,C-8821,Electronics,8990,Delivered,UPI,Bengaluru
+SOCH-1017,C-5501,Home Goods,21500,Shipped,Credit Card,Kolkata
+SOCH-1018,C-3112,Apparel,1890,Delivered,UPI,Ahmedabad
+SOCH-1019,C-7629,Accessories,4500,Delivered,Debit Card,Chennai
+SOCH-1020,C-9914,Electronics,54990,Delivered,UPI,Mumbai
+

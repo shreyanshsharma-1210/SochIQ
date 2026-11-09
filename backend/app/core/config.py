@@ -35,7 +35,11 @@ class Settings(BaseSettings):
     ALLOWED_ORIGINS: str = "http://localhost:3000,http://127.0.0.1:3000"
 
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=(
+            os.path.join(os.path.dirname(__file__), "..", "..", ".env"),
+            ".env",
+            "backend/.env",
+        ),
         env_file_encoding="utf-8",
         extra="ignore"
     )

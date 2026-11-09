@@ -1,0 +1,14 @@
+customer_id,customer_name,tier,loyalty_score,churn_risk
+C-8821,Aarav Sharma,Platinum,94,Low
+C-4102,Diya Patel,Gold,82,Low
+C-9201,Rohan Mehta,Silver,68,Medium
+C-1129,Ananya Iyer,Platinum,98,Low
+C-7411,Vikram Verma,Bronze,45,High
+C-3382,Sneha Reddy,Silver,71,Medium
+C-5190,Kabir Nair,Gold,85,Low
+C-6022,Pooja Desai,Silver,64,Medium
+C-8472,Aditya Joshi,Bronze,38,High
+C-2933,Meera Kapoor,Gold,89,Low
+C-7741,Arjun Sen,Platinum,91,Low
+C-1204,Tanvi Bhat,Silver,70,Medium
+

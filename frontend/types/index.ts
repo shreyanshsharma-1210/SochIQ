@@ -97,7 +97,32 @@ export interface DatasetMetadata {
   file_format: string;
   row_count: number;
   column_count: number;
-  column_summary: any[];
+  column_summary: any;
+  created_at: string;
+  storage_path?: string;
+  file_size_bytes?: number;
+  status?: string;
+}
+
+export interface AnalysisRun {
+  id: string;
+  dataset_id: string;
+  analysis_type: string;
+  parameters: Record<string, any>;
+  result_summary: Record<string, any>;
   created_at: string;
 }
+
+export interface SessionStatus {
+  status: "active" | "expired" | "revoked";
+  session_id: string;
+  owner_id: string;
+  created_at: string;
+  last_activity_at: string;
+  expires_at: string;
+  remaining_seconds: number;
+  dataset_count: number;
+  analysis_count: number;
+}
+
 

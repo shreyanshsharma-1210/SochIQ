@@ -180,6 +180,46 @@ class DatasetMetadataResponse(BaseModel):
     file_format: str
     row_count: int
     column_count: int
-    column_summary: List[Dict[str, Any]]
+    column_summary: Any
     created_at: str
+    storage_path: Optional[str] = None
+    file_size_bytes: Optional[int] = None
+    status: Optional[str] = "ready"
+
+
+class AnalysisRunResponse(BaseModel):
+    id: str
+    dataset_id: str
+    analysis_type: str
+    parameters: Dict[str, Any] = {}
+    result_summary: Dict[str, Any] = {}
+    created_at: str
+
+
+class DatasetUploadResponse(BaseModel):
+    dataset_id: str
+    filename: str
+    file_format: str
+    file_size_bytes: int
+    row_count: int
+    column_count: int
+    storage_path: str
+    preview: DatasetPreviewResponse
+    analytics: AnalyticsSummaryResponse
+    charts: ChartDataResponse
+    insights: RuleInsightsResponse
+    created_at: str
+
+
+class SessionStatusResponse(BaseModel):
+    status: str = "active"
+    session_id: str
+    owner_id: str
+    created_at: str
+    last_activity_at: str
+    expires_at: str
+    remaining_seconds: int
+    dataset_count: int = 0
+    analysis_count: int = 0
+
 

@@ -14,6 +14,7 @@ export default function UploadDropzone({ onFileSelected, isLoading }: UploadDrop
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFile = (file: File) => {
+    console.log("UploadDropzone handleFile called with:", file.name);
     setError(null);
     const ext = file.name.split(".").pop()?.toLowerCase();
     if (!["csv", "xlsx", "xls", "json"].includes(ext || "")) {

@@ -1,15 +1,52 @@
+import asyncio
+import logging
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from app.core.config import settings
 from app.api.v1.router import api_router
+from app.core.credentials import cleanup_expired_workspaces
+
+logger = logging.getLogger(__name__)
+
+
+async def periodic_cleanup_worker():
+    """Background worker running every 60s to purge expired temporary workspaces from Supabase."""
+    while True:
+        try:
+            await asyncio.sleep(60)
+            cleanup_expired_workspaces()
+        except asyncio.CancelledError:
+            break
+        except Exception as e:
+            logger.warning(f"Error in background cleanup worker: {e}")
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Run initial cleanup on startup
+    try:
+        cleanup_expired_workspaces()
+    except Exception as e:
+        logger.warning(f"Initial cleanup error: {e}")
+
+    task = asyncio.create_task(periodic_cleanup_worker())
+    yield
+    task.cancel()
+    try:
+        await task
+    except asyncio.CancelledError:
+        pass
+
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
-    description="SochIQ: Cloud-hosted, memory-only data analytics and developer API.",
+    description="SochIQ: Intelligent workspace with temporary cloud persistence and automatic 30-minute inactivity cleanup.",
     docs_url="/docs",
-    redoc_url="/redoc"
+    redoc_url="/redoc",
+    lifespan=lifespan
 )
 
 # CORS Configuration for Vercel and Local Development
