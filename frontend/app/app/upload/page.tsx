@@ -49,11 +49,11 @@ export default function UploadWorkspacePage() {
   const handleProcessFile = async (file: File) => {
     console.log("UploadPage handleProcessFile starting for:", file.name);
     setIsLoading(true);
+    setActiveTab("overview");
     try {
       await uploadDatasetToCloud(file);
       console.log("UploadPage uploadDatasetToCloud succeeded!");
       setShowUploadModal(false);
-      setActiveTab("overview");
     } catch (err: any) {
       console.error("UploadPage upload error:", err);
       alert(err.message || "Failed to upload and analyze dataset.");
@@ -328,13 +328,15 @@ export default function UploadWorkspacePage() {
 
           {/* Tab 4: AI Insights */}
           {activeTab === "insights" && (
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-              <div className="lg:col-span-6 flex flex-col gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              {/* Left Column: Rule Heuristic Observations (4 cols on desktop) */}
+              <div className="order-2 lg:order-1 lg:col-span-4 flex flex-col gap-6">
                 {insightsData && (
                   <RuleInsightsDeck insights={insightsData.insights} />
                 )}
               </div>
-              <div className="lg:col-span-6">
+              {/* Right Column: Spacious SochIQ AI Assistant (8 cols on desktop) */}
+              <div className="order-1 lg:order-2 lg:col-span-8">
                 <GroqChatPanel
                   summaryContext={analyticsData}
                   qualityContext={previewData.quality}

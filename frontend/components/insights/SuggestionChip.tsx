@@ -15,10 +15,10 @@ export default function SuggestionChip({ text, onClick, disabled }: SuggestionCh
       type="button"
       onClick={() => onClick(text)}
       disabled={disabled}
-      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-white hover:bg-grey-subtle border border-grey-border hover:border-charcoal text-charcoal transition-all text-left shadow-2xs group disabled:opacity-50 disabled:pointer-events-none"
+      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium bg-white hover:bg-yellow/15 border border-grey-border hover:border-yellow text-charcoal transition-all text-left shadow-2xs group disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
     >
       <span>{text}</span>
-      <ArrowUpRight className="w-3 h-3 text-charcoal group-hover:text-charcoal group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+      <ArrowUpRight className="w-3 h-3 text-grey-muted group-hover:text-charcoal group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
     </button>
   );
 }
