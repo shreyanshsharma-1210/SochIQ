@@ -61,3 +61,4 @@ export interface ChatMessage {
   structured?: StructuredAIResponse | null;
   timestamp: string;
 }
+

@@ -11,7 +11,7 @@ def test_health_endpoint():
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "ok"
-    assert data["service"] == "DataLens"
+    assert data["service"] == "SochIQ"
     assert data["mode"] == "memory-only"
 
 

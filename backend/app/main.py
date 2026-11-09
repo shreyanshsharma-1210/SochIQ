@@ -7,7 +7,7 @@ from app.api.v1.router import api_router
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
-    description="DataLens: Cloud-hosted, memory-only data analytics and developer API.",
+    description="SochIQ: Cloud-hosted, memory-only data analytics and developer API.",
     docs_url="/docs",
     redoc_url="/redoc"
 )

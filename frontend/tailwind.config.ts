@@ -9,47 +9,63 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#FFFDF8",
+        // SochIQ Primary Palette
+        charcoal: {
+          DEFAULT: "#111111",
+          deep: "#1B1B1B",
+          light: "#222222",
+        },
         surface: "#FFFFFF",
-        primary: {
-          DEFAULT: "#9B681E",
-          hover: "#845617",
-          light: "#FDF8F0",
+        background: "#FAFAF8",
+        yellow: {
+          DEFAULT: "#FFDF00",
+          hover: "#E6C900",
+          light: "#FFF9D2",
         },
-        gold: {
-          DEFAULT: "#C99A3A",
-          light: "#FBF3E2",
-          dark: "#A37A25",
+        grey: {
+          light: "#EAEAEA",
+          border: "#EAEAEA",
+          muted: "#777777",
+          subtle: "#F5F5F3",
         },
-        saffron: {
-          DEFAULT: "#E9A23B",
-          light: "#FEF6EA",
-        },
-        maroon: {
-          DEFAULT: "#713B36",
-          light: "#FBF0EF",
-        },
+        // Backward-compatible semantic aliases
         text: {
-          DEFAULT: "#28251F",
-          muted: "#817B70",
-          light: "#A39E94",
+          DEFAULT: "#111111",
+          muted: "#777777",
+          light: "#999999",
         },
         border: {
-          DEFAULT: "#EEE7D9",
-          dark: "#DDD3C0",
+          DEFAULT: "#EAEAEA",
+          dark: "#D4D4D4",
+        },
+        primary: {
+          DEFAULT: "#111111",
+          hover: "#1B1B1B",
+          light: "#FAFAF8",
+        },
+        accent: {
+          DEFAULT: "#FFDF00",
+          hover: "#F0D000",
         },
       },
       fontFamily: {
-        serif: ["var(--font-playfair)", "serif"],
-        sans: ["var(--font-dm-sans)", "sans-serif"],
+        heading: ["var(--font-sora)", "Sora", "sans-serif"],
+        sans: ["var(--font-inter)", "Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        mono: ["var(--font-jetbrains-mono)", "JetBrains Mono", "monospace"],
       },
       boxShadow: {
-        diwali: "0 4px 20px -2px rgba(201, 154, 58, 0.08)",
-        "diwali-glow": "0 0 25px -5px rgba(233, 162, 59, 0.25)",
+        card: "0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03)",
+        "card-hover": "0 10px 25px -5px rgba(0,0,0,0.07), 0 8px 10px -6px rgba(0,0,0,0.04)",
+        pill: "0 2px 10px rgba(0,0,0,0.06)",
+        preview: "0 25px 60px -15px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06)",
+        accent: "0 4px 14px 0 rgba(255, 223, 0, 0.4)",
+      },
+      borderRadius: {
+        "2xl": "16px",
+        "3xl": "24px",
       },
     },
   },
   plugins: [],
 };
 export default config;
-

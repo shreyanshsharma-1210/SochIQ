@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { api } from "@/lib/apiClient";
-import { AlertCircle, CheckCircle2 } from "lucide-react";
+import { AlertCircle, Loader2 } from "lucide-react";
 
 export default function WarmupBanner() {
   const [isWarmingUp, setIsWarmingUp] = useState(false);
@@ -34,22 +34,21 @@ export default function WarmupBanner() {
 
   if (isOnline === false) {
     return (
-      <div className="bg-maroon-light border-b border-maroon text-maroon px-4 py-2 text-xs flex items-center justify-center gap-2">
-        <AlertCircle className="w-4 h-4" />
-        <span>Backend service is currently connecting or warming up. Please ensure FastAPI is running.</span>
+      <div className="bg-red-50 border-b border-red-200 text-red-900 px-4 py-2 text-xs flex items-center justify-center gap-2">
+        <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+        <span>Backend service is connecting or warming up. Please ensure FastAPI is running.</span>
       </div>
     );
   }
 
   if (isWarmingUp) {
     return (
-      <div className="bg-saffron-light border-b border-saffron text-amber-900 px-4 py-2 text-xs flex items-center justify-center gap-2 animate-pulse">
-        <div className="w-2 h-2 rounded-full bg-saffron animate-ping" />
-        <span>Render cloud container is spinning up from cold-start (~30-50s). Hang tight!</span>
+      <div className="bg-amber-50 border-b border-amber-200 text-amber-900 px-4 py-2 text-xs flex items-center justify-center gap-2 animate-pulse">
+        <Loader2 className="w-3.5 h-3.5 text-amber-600 animate-spin shrink-0" />
+        <span>Cloud container is initializing (~20-40s). Your workspace will be ready momentarily.</span>
       </div>
     );
   }
 
   return null;
 }
-

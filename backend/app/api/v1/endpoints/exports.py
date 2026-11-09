@@ -67,7 +67,7 @@ async def export_executive_pdf(
         insights=[i.model_dump() for i in insights.insights]
     )
 
-    pdf_filename = f"DataLens_Report_{filename.rsplit('.', 1)[0]}.pdf"
+    pdf_filename = f"SochIQ_Report_{filename.rsplit('.', 1)[0]}.pdf"
     return Response(
         content=pdf_bytes,
         media_type="application/pdf",

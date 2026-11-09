@@ -34,17 +34,17 @@ const TYPE_CONFIG: Record<
   greeting: {
     label: "Welcome",
     icon: Sparkles,
-    badgeClass: "bg-amber-100/70 text-primary border-amber-200",
+    badgeClass: "bg-yellow/20 text-charcoal border-yellow/50",
   },
   overview: {
     label: "Dataset Overview",
     icon: Compass,
-    badgeClass: "bg-amber-100/70 text-primary border-amber-200",
+    badgeClass: "bg-grey-subtle text-charcoal border-grey-border",
   },
   analysis: {
     label: "Analytical Insight",
     icon: BarChart2,
-    badgeClass: "bg-gold/15 text-primary border-gold/30",
+    badgeClass: "bg-charcoal text-white border-charcoal",
   },
   comparison: {
     label: "Comparison",
@@ -64,7 +64,7 @@ const TYPE_CONFIG: Record<
   explanation: {
     label: "Explanation",
     icon: Info,
-    badgeClass: "bg-stone-100 text-stone-800 border-stone-200",
+    badgeClass: "bg-grey-subtle text-charcoal border-grey-border",
   },
   error: {
     label: "Notice",
@@ -94,7 +94,7 @@ export default function StructuredAIResponseView({
   return (
     <div className="space-y-4">
       {/* Header bar */}
-      <div className="flex items-center justify-between pb-2 border-b border-border/60">
+      <div className="flex items-center justify-between pb-2 border-b border-grey-border">
         <div className="flex items-center gap-2">
           <span
             className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border ${config.badgeClass}`}
@@ -106,7 +106,7 @@ export default function StructuredAIResponseView({
         <button
           type="button"
           onClick={handleCopy}
-          className="inline-flex items-center gap-1 text-[11px] font-medium text-text-muted hover:text-primary transition-colors px-2 py-1 rounded-md hover:bg-surface border border-transparent hover:border-border"
+          className="inline-flex items-center gap-1 text-[11px] font-medium text-grey-muted hover:text-charcoal transition-colors px-2 py-1 rounded-md hover:bg-grey-subtle border border-transparent hover:border-grey-border"
           title="Copy markdown text"
         >
           {copied ? (
@@ -125,7 +125,7 @@ export default function StructuredAIResponseView({
 
       {/* Main message */}
       {data.message && (
-        <div className="text-sm leading-relaxed">
+        <div className="text-xs sm:text-sm leading-relaxed">
           <SafeMarkdown content={data.message} />
         </div>
       )}
@@ -133,7 +133,7 @@ export default function StructuredAIResponseView({
       {/* Structured metrics grid */}
       {data.metrics && data.metrics.length > 0 && (
         <div>
-          <h5 className="text-[11px] font-semibold text-text-muted uppercase tracking-wider mb-2">
+          <h5 className="text-[11px] font-semibold text-grey-muted uppercase tracking-wider mb-2">
             Key Metrics
           </h5>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
@@ -152,12 +152,12 @@ export default function StructuredAIResponseView({
               key={idx}
               className={`p-3.5 rounded-xl border ${
                 section.type === "callout"
-                  ? "bg-amber-50/50 border-amber-200/80"
-                  : "bg-surface/60 border-border"
+                  ? "bg-yellow/10 border-yellow/40"
+                  : "bg-grey-subtle/50 border-grey-border"
               }`}
             >
-              <h5 className="font-serif text-xs font-bold text-text mb-1.5 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+              <h5 className="font-heading text-xs font-bold text-charcoal mb-1.5 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-charcoal" />
                 {section.title}
               </h5>
               <SafeMarkdown content={section.content} />
@@ -170,17 +170,17 @@ export default function StructuredAIResponseView({
       {data.tables && data.tables.length > 0 && (
         <div className="space-y-3">
           {data.tables.map((tbl, idx) => (
-            <div key={idx} className="my-2 rounded-xl border border-border overflow-hidden bg-surface">
+            <div key={idx} className="my-2 rounded-xl border border-grey-border overflow-hidden bg-white">
               {tbl.title && (
-                <div className="px-3 py-2 bg-stone-50 border-b border-border text-xs font-semibold text-text flex items-center gap-1.5">
-                  <TableIcon className="w-3.5 h-3.5 text-gold" />
+                <div className="px-3 py-2 bg-grey-subtle border-b border-grey-border text-xs font-semibold text-charcoal flex items-center gap-1.5">
+                  <TableIcon className="w-3.5 h-3.5 text-charcoal" />
                   <span>{tbl.title}</span>
                 </div>
               )}
               <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs border-collapse">
+                <table className="w-full text-left text-xs border-collapse font-mono">
                   <thead>
-                    <tr className="bg-stone-50/50 border-b border-border text-text font-semibold">
+                    <tr className="bg-grey-subtle/70 border-b border-grey-border text-charcoal font-semibold">
                       {tbl.headers.map((h, hIdx) => (
                         <th key={hIdx} className="px-3 py-2 font-medium">
                           {h}
@@ -192,10 +192,10 @@ export default function StructuredAIResponseView({
                     {tbl.rows.map((row, rIdx) => (
                       <tr
                         key={rIdx}
-                        className="border-b last:border-0 border-border/40 hover:bg-stone-50/40 transition-colors"
+                        className="border-b last:border-0 border-grey-border/50 hover:bg-grey-subtle/40 transition-colors"
                       >
                         {row.map((cell, cIdx) => (
-                          <td key={cIdx} className="px-3 py-2 text-text/90">
+                          <td key={cIdx} className="px-3 py-2 text-charcoal">
                             {cell !== null && cell !== undefined ? String(cell) : "—"}
                           </td>
                         ))}
@@ -221,7 +221,7 @@ export default function StructuredAIResponseView({
       {/* Follow-up suggestions */}
       {data.suggestions && data.suggestions.length > 0 && onSelectSuggestion && (
         <div className="pt-2">
-          <p className="text-[11px] font-semibold text-text-muted uppercase tracking-wider mb-2">
+          <p className="text-[11px] font-semibold text-grey-muted uppercase tracking-wider mb-2">
             Suggested Next Inquiries
           </p>
           <div className="flex flex-wrap gap-2">

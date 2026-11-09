@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Sparkles, Send, Loader2, Bot, AlertCircle, RotateCcw, ShieldCheck, User } from "lucide-react";
+import { Send, Loader2, Bot, AlertCircle, RotateCcw, ShieldCheck, User } from "lucide-react";
+import { SochIQIcon } from "@/components/brand/SochIQLogo";
 import { api } from "@/lib/apiClient";
-import { StructuredAIResponse, ChatMessage } from "@/types/ai";
+import { ChatMessage } from "@/types/ai";
 import StructuredAIResponseView from "./StructuredAIResponseView";
 import SuggestionChip from "./SuggestionChip";
 
@@ -13,10 +14,10 @@ interface GroqChatPanelProps {
 }
 
 const STARTER_PROMPTS = [
+  "Which category generates the highest revenue?",
+  "What are the biggest data quality issues?",
   "Summarize key dataset dimensions and highlights",
-  "What data quality or missing value issues exist?",
-  "Which numeric variables show high variance?",
-  "What are the top 3 actionable business takeaways?",
+  "Which numeric variables show high variance or unusual values?",
 ];
 
 export default function GroqChatPanel({ summaryContext, qualityContext }: GroqChatPanelProps) {
@@ -63,7 +64,7 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
 
       setMessages((prev) => [...prev, assistantMsg]);
     } catch (err: any) {
-      setError(err.message || "Unable to reach Groq Cloud AI Assistant.");
+      setError(err.message || "Unable to reach SochIQ AI Assistant.");
     } finally {
       setIsLoading(false);
     }
@@ -82,21 +83,21 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
   };
 
   return (
-    <div className="diwali-card p-5 sm:p-6 border border-gold/30 bg-gradient-to-br from-surface via-primary-light/5 to-surface flex flex-col shadow-sm">
+    <div className="sochiq-card p-5 sm:p-6 bg-white border border-grey-border flex flex-col shadow-card">
       {/* Header */}
-      <div className="flex items-center justify-between pb-4 border-b border-border/70 mb-4">
+      <div className="flex items-center justify-between pb-4 border-b border-grey-border mb-4">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-xl bg-gold/15 flex items-center justify-center text-primary shadow-xs">
-            <Sparkles className="w-4 h-4 text-gold" />
-          </div>
+          <SochIQIcon size={32} />
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="font-serif text-base font-bold text-text">Groq Cloud AI Assistant</h3>
-              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full diwali-badge-saffron">
-                Structured Insights
+              <h3 className="font-heading text-sm sm:text-base font-bold text-charcoal">
+                SochIQ AI Assistant
+              </h3>
+              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-yellow/25 text-charcoal border border-yellow/50">
+                Optional AI
               </span>
             </div>
-            <p className="text-xs text-text-muted">
+            <p className="text-xs text-grey-muted">
               Interactive analytics queries grounded strictly on aggregate statistics
             </p>
           </div>
@@ -106,7 +107,7 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
           <button
             type="button"
             onClick={handleClear}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs text-text-muted hover:text-primary transition-colors rounded-lg hover:bg-stone-100"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs text-grey-muted hover:text-charcoal transition-colors rounded-lg hover:bg-grey-subtle"
             title="Reset conversation"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -118,18 +119,18 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
       {/* Messages area or Starter state */}
       {messages.length === 0 ? (
         <div className="py-4">
-          <div className="p-4 rounded-xl bg-surface/70 border border-border/80 mb-4">
-            <p className="text-xs font-semibold text-text uppercase tracking-wider mb-1 flex items-center gap-1.5">
-              <Bot className="w-4 h-4 text-gold" />
+          <div className="p-4 rounded-xl bg-grey-subtle/70 border border-grey-border mb-4">
+            <p className="text-xs font-semibold text-charcoal uppercase tracking-wider mb-1 flex items-center gap-1.5">
+              <Bot className="w-4 h-4 text-charcoal" />
               <span>Grounded Intelligence Ready</span>
             </p>
-            <p className="text-xs text-text-muted leading-relaxed">
+            <p className="text-xs text-grey-muted leading-relaxed">
               Ask questions about distributions, missing data, summary metrics, or trends. All answers are validated against your dataset’s statistical profile.
             </p>
           </div>
 
           <div>
-            <p className="text-[11px] font-semibold text-text-muted uppercase tracking-wider mb-2">
+            <p className="text-[11px] font-semibold text-grey-muted uppercase tracking-wider mb-2">
               Suggested Starter Queries
             </p>
             <div className="flex flex-wrap gap-2">
@@ -150,22 +151,22 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
             <div key={msg.id} className="space-y-1">
               {msg.role === "user" ? (
                 <div className="flex justify-end items-start gap-2">
-                  <div className="max-w-[85%] sm:max-w-[75%] rounded-2xl rounded-tr-sm bg-primary text-white px-4 py-2.5 text-sm shadow-xs">
+                  <div className="max-w-[85%] sm:max-w-[75%] rounded-2xl rounded-tr-sm bg-charcoal text-white px-4 py-2.5 text-xs sm:text-sm shadow-xs">
                     <p className="whitespace-pre-wrap leading-relaxed">{msg.content}</p>
-                    <span className="block text-[10px] text-white/70 text-right mt-1">
+                    <span className="block text-[10px] text-white/60 text-right mt-1">
                       {msg.timestamp}
                     </span>
                   </div>
-                  <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <User className="w-4 h-4 text-primary" />
+                  <div className="w-7 h-7 rounded-full bg-grey-subtle border border-grey-border flex items-center justify-center shrink-0 mt-0.5">
+                    <User className="w-3.5 h-3.5 text-charcoal" />
                   </div>
                 </div>
               ) : (
                 <div className="flex items-start gap-2.5">
-                  <div className="w-7 h-7 rounded-full bg-gold/20 flex items-center justify-center shrink-0 mt-1">
-                    <Bot className="w-4 h-4 text-gold" />
+                  <div className="w-7 h-7 rounded-full bg-yellow/20 flex items-center justify-center shrink-0 mt-1">
+                    <Bot className="w-3.5 h-3.5 text-charcoal" />
                   </div>
-                  <div className="flex-1 rounded-2xl rounded-tl-sm bg-surface border border-border p-4 shadow-xs">
+                  <div className="flex-1 rounded-2xl rounded-tl-sm bg-white border border-grey-border p-4 shadow-xs">
                     {msg.structured ? (
                       <StructuredAIResponseView
                         data={msg.structured}
@@ -175,13 +176,13 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
                       />
                     ) : (
                       <div>
-                        <div className="text-sm leading-relaxed whitespace-pre-line text-text">
+                        <div className="text-xs sm:text-sm leading-relaxed whitespace-pre-line text-charcoal">
                           {msg.content}
                         </div>
                       </div>
                     )}
-                    <span className="block text-[10px] text-text-muted mt-2 pt-2 border-t border-border/40">
-                      Grounded via Groq • {msg.timestamp}
+                    <span className="block text-[10px] text-grey-muted mt-2 pt-2 border-t border-grey-border">
+                      Grounded via SochIQ • {msg.timestamp}
                     </span>
                   </div>
                 </div>
@@ -191,9 +192,9 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
 
           {/* Loading indicator */}
           {isLoading && (
-            <div className="flex items-center gap-2.5 text-xs text-text-muted py-2 px-1">
-              <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center shrink-0 animate-pulse">
-                <Loader2 className="w-3.5 h-3.5 text-gold animate-spin" />
+            <div className="flex items-center gap-2.5 text-xs text-grey-muted py-2 px-1">
+              <div className="w-6 h-6 rounded-full bg-yellow/20 flex items-center justify-center shrink-0 animate-pulse">
+                <Loader2 className="w-3.5 h-3.5 text-charcoal animate-spin" />
               </div>
               <span className="italic">Synthesizing statistical context...</span>
             </div>
@@ -205,14 +206,14 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
 
       {/* Error Banner */}
       {error && (
-        <div className="mb-3 p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-center gap-2">
-          <AlertCircle className="w-4 h-4 shrink-0 text-amber-600" />
+        <div className="mb-3 p-3 rounded-xl bg-red-50 border border-red-200 text-red-900 text-xs flex items-center gap-2">
+          <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
           <span>{error}</span>
         </div>
       )}
 
       {/* Input Bar */}
-      <div className="pt-2 border-t border-border/70">
+      <div className="pt-2 border-t border-grey-border">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -226,20 +227,20 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Ask about columns, correlations, distributions, outliers... (Enter to send, Shift+Enter for newline)"
-            className="flex-1 resize-none px-4 py-2.5 rounded-xl border border-border bg-surface text-sm focus:outline-none focus:border-gold transition-colors placeholder:text-text-muted/70 leading-normal"
+            placeholder="Ask about revenue, missing values, trends, distributions... (Enter to send, Shift+Enter for newline)"
+            className="flex-1 resize-none px-4 py-2.5 rounded-xl border border-grey-border bg-white text-xs sm:text-sm focus:outline-none focus:border-charcoal transition-colors placeholder:text-grey-muted/60 leading-normal"
             disabled={isLoading}
           />
           <button
             type="submit"
             disabled={isLoading || !question.trim()}
-            className="diwali-button-primary px-4 py-2.5 rounded-xl font-medium text-sm flex items-center justify-center gap-1.5 disabled:opacity-50 h-[52px] shrink-0"
+            className="px-4 py-2.5 rounded-xl bg-charcoal text-white text-xs font-semibold hover:bg-charcoal-deep transition-all flex items-center justify-center gap-1.5 disabled:opacity-40 h-[52px] shrink-0"
           >
             {isLoading ? (
-              <Loader2 className="w-4 h-4 animate-spin" />
+              <Loader2 className="w-4 h-4 animate-spin text-yellow" />
             ) : (
               <>
-                <Send className="w-4 h-4" />
+                <Send className="w-4 h-4 text-yellow" />
                 <span className="hidden sm:inline">Inquire</span>
               </>
             )}
@@ -247,12 +248,12 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
         </form>
 
         {/* Privacy badge */}
-        <div className="mt-2.5 flex items-center justify-between text-[11px] text-text-muted">
-          <span className="flex items-center gap-1">
+        <div className="mt-2.5 flex items-center justify-between text-[11px] text-grey-muted">
+          <span className="flex items-center gap-1.5">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Zero raw rows transmitted • Only aggregate statistics analyzed</span>
+            <span>Only approved statistical summaries are sent for AI interpretation. Raw dataset records are not transmitted.</span>
           </span>
-          <span className="hidden sm:inline text-[10px] text-text-muted/80">
+          <span className="hidden sm:inline text-[10px] text-grey-muted">
             Powered by Groq Cloud
           </span>
         </div>

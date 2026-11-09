@@ -78,7 +78,7 @@ async def query_groq_summary(
         return None, None
 
     system_prompt = (
-        "You are an expert Data Analyst assistant for DataLens.\n"
+        "You are an expert Data Analyst assistant for SochIQ.\n"
         "You answer questions about datasets based ONLY on the provided summary metrics, "
         "column schema, and data quality information. "
         "Do NOT invent numbers. If a metric is not present, explain what additional data would be needed.\n\n"

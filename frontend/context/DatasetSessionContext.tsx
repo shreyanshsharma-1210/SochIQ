@@ -27,7 +27,7 @@ interface DatasetSessionContextType {
 
 const DatasetSessionContext = createContext<DatasetSessionContextType | undefined>(undefined);
 
-const STORAGE_KEY = "datalens_active_analysis_v2";
+const STORAGE_KEY = "sochiq_active_analysis_v2";
 
 export function DatasetSessionProvider({ children }: { children: React.ReactNode }) {
   const [activeFile, setActiveFile] = useState<File | null>(null);

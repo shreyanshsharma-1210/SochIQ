@@ -4,7 +4,7 @@ from pydantic import BaseModel, Field
 
 class HealthResponse(BaseModel):
     status: str = "ok"
-    service: str = "DataLens API"
+    service: str = "SochIQ API"
     version: str = "2.0.0"
     mode: str = "memory-only"
     groq_available: bool = False

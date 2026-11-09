@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Sidebar from "@/components/layout/Sidebar";
-import WarmupBanner from "@/components/layout/WarmupBanner";
 import { DatasetSessionProvider } from "@/context/DatasetSessionContext";
 
 export const metadata: Metadata = {
-  title: "DataLens | Cloud Data Analytics & Developer API",
-  description: "Upload your data. Understand it. Discover what matters with memory-only privacy and instant cloud intelligence.",
+  title: "SochIQ — Think smarter. See deeper.",
+  description:
+    "An intelligent workspace that turns raw data into meaningful insights and confident decisions. Upload CSV, Excel, or JSON datasets with instant in-memory privacy.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -21,18 +22,13 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Playfair+Display:ital,wght@0,600..800;1,600..800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@400;600;700;800&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="bg-background text-text min-h-screen flex flex-col font-sans">
+      <body className="bg-background text-text min-h-screen flex flex-col font-sans selection:bg-yellow selection:text-charcoal">
         <DatasetSessionProvider>
-          <WarmupBanner />
-          <Header />
-          <div className="flex-1 flex max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 gap-6">
-            <Sidebar />
-            <main className="flex-1 overflow-x-hidden">{children}</main>
-          </div>
+          {children}
         </DatasetSessionProvider>
       </body>
     </html>

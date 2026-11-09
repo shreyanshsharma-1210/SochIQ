@@ -3,58 +3,144 @@
 @tailwind utilities;
 
 :root {
-  --background: #FFFDF8;
+  --background: #FAFAF8;
   --surface: #FFFFFF;
+  --charcoal: #111111;
+  --yellow: #FFDF00;
+  --grey-border: #EAEAEA;
+  --grey-muted: #777777;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: #28251F;
-  background-color: #FFFDF8;
-  font-family: var(--font-dm-sans), sans-serif;
+  color: #111111;
+  background-color: #FAFAF8;
+  font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom festive glow & shimmer accents */
+/* Subtle dot grid for landing page hero */
+.bg-dot-grid {
+  background-image: radial-gradient(#E5E5E2 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* SochIQ Card Component */
+.sochiq-card {
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sochiq-card:hover {
+  border-color: #D4D4D4;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.06);
+}
+
+/* Primary Charcoal Button */
+.sochiq-btn-primary {
+  background-color: #111111;
+  color: #FFFFFF;
+  font-weight: 500;
+  border-radius: 12px;
+  transition: all 0.15s ease;
+}
+
+.sochiq-btn-primary:hover {
+  background-color: #1B1B1B;
+  box-shadow: 0 4px 12px rgba(17, 17, 17, 0.15);
+  transform: translateY(-0.5px);
+}
+
+/* Bright Yellow Accent Button */
+.sochiq-btn-accent {
+  background-color: #FFDF00;
+  color: #111111;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.15s ease;
+}
+
+.sochiq-btn-accent:hover {
+  background-color: #F0D000;
+  box-shadow: 0 4px 14px rgba(255, 223, 0, 0.4);
+  transform: translateY(-0.5px);
+}
+
+/* Secondary Ghost / Outline Button */
+.sochiq-btn-secondary {
+  background-color: #FFFFFF;
+  color: #111111;
+  border: 1px solid #EAEAEA;
+  border-radius: 12px;
+  transition: all 0.15s ease;
+}
+
+.sochiq-btn-secondary:hover {
+  background-color: #FAFAF8;
+  border-color: #D4D4D4;
+}
+
+/* Badges */
+.sochiq-badge-yellow {
+  background-color: #FFF9D2;
+  color: #111111;
+  border: 1px solid #FFE766;
+}
+
+.sochiq-badge-neutral {
+  background-color: #F5F5F3;
+  color: #555555;
+  border: 1px solid #EAEAEA;
+}
+
+.sochiq-badge-dark {
+  background-color: #111111;
+  color: #FFFFFF;
+}
+
+/* Backward compatibility aliases mapping old tokens to clean SochIQ styles */
 .diwali-card {
   background: #FFFFFF;
-  border: 1px solid #EEE7D9;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px -2px rgba(201, 154, 58, 0.05);
-  transition: all 0.2s ease-in-out;
+  border: 1px solid #EAEAEA;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
 }
 
 .diwali-card:hover {
-  border-color: #C99A3A;
-  box-shadow: 0 8px 30px -4px rgba(201, 154, 58, 0.12);
+  border-color: #D4D4D4;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.06);
 }
 
-.diwali-badge-gold {
-  background-color: #FBF3E2;
-  color: #9B681E;
-  border: 1px solid #EEE7D9;
-}
-
+.diwali-badge-gold,
 .diwali-badge-saffron {
-  background-color: #FEF6EA;
-  color: #B45309;
-  border: 1px solid #FDE68A;
+  background-color: #FFF9D2;
+  color: #111111;
+  border: 1px solid #FFE766;
 }
 
 .diwali-badge-maroon {
-  background-color: #FBF0EF;
-  color: #713B36;
+  background-color: #FEE2E2;
+  color: #991B1B;
   border: 1px solid #FECACA;
 }
 
 .diwali-button-primary {
-  background: linear-gradient(135deg, #9B681E 0%, #C99A3A 100%);
+  background-color: #111111;
   color: #FFFFFF;
-  transition: all 0.2s ease;
+  border-radius: 12px;
+  transition: all 0.15s ease;
 }
 
 .diwali-button-primary:hover {
-  opacity: 0.95;
-  box-shadow: 0 4px 15px rgba(201, 154, 58, 0.35);
-  transform: translateY(-1px);
+  background-color: #1B1B1B;
+  box-shadow: 0 4px 12px rgba(17, 17, 17, 0.15);
+  transform: translateY(-0.5px);
 }
-
