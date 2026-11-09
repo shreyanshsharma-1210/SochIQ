@@ -7,7 +7,12 @@ export const metadata: Metadata = {
   description:
     "An intelligent workspace that turns raw data into meaningful insights and confident decisions. Upload CSV, Excel, or JSON datasets with instant in-memory privacy.",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/icon.svg",
   },
 };
 
