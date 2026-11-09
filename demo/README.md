@@ -85,3 +85,4 @@ This executes the automated Chromium session, injects the high-definition mouse 
 python demo/render_final_walkthrough.py
 ```
 This script trims each chapter, applies the 9:16 vertical canvas (`1080 × 1920`), renders the SochIQ yellow branding badges, headlines, window mockup frame, and bottom explainer cards, loops the ambient instrumental audio with fade-in/fade-out, and exports the final file to `demo/output/SochIQ_Complete_Product_Walkthrough_Instagram.mp4`.
+
