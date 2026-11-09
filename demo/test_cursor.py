@@ -103,8 +103,8 @@ def run_test():
         page.evaluate(f"window.__setCursorPos({curr_x}, {curr_y})")
         time.sleep(0.5)
 
-        # Move to Launch Workspace button
-        curr_x, curr_y = smooth_click(page, curr_x, curr_y, "a:has-text('Launch Workspace')")
+        # Move to Start Analyzing button
+        curr_x, curr_y = smooth_click(page, curr_x, curr_y, "a:has-text('Start Analyzing')")
         page.screenshot(path=os.path.join(OUT_DIR, "cursor_ripple_test.png"))
         time.sleep(1.0)
 
