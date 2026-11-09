@@ -1,0 +1,137 @@
+{
+  "total_duration": 114.94215580000309,
+  "chapters": [
+    {
+      "chapter": 1,
+      "name": "opening",
+      "start_time": 0.030531099997460842,
+      "tag": "MEET SOCHIQ",
+      "title": "Meet SochIQ",
+      "subtitle": "Turn datasets into insights in seconds.",
+      "badge": "ZERO REGISTRATION REQUIRED",
+      "caption": "A temporary, privacy-first analytics cloud workspace.",
+      "end_time": 7.787314300017897,
+      "duration": 7.756783200020436
+    },
+    {
+      "chapter": 2,
+      "name": "workspace",
+      "start_time": 7.787314300017897,
+      "tag": "BROWSER WORKSPACE",
+      "title": "Your Analytics Workspace",
+      "subtitle": "Encrypted cloud workspace with automatic persistence.",
+      "badge": "CLOUD PERSISTED \u00b7 30M GRACE PERIOD",
+      "caption": "Upload multiple datasets and switch seamlessly.",
+      "end_time": 14.472784200013848,
+      "duration": 6.685469899995951
+    },
+    {
+      "chapter": 3,
+      "name": "upload_overview",
+      "start_time": 14.472784200013848,
+      "tag": "INSTANT INGESTION",
+      "title": "Upload. Explore. Understand.",
+      "subtitle": "Instant in-memory profiling for CSV, Excel & JSON.",
+      "badge": "AUTOMATED SCHEMA INFERENCE",
+      "caption": "Inspect schema, column types, and live data preview.",
+      "end_time": 28.522371900005965,
+      "duration": 14.049587699992117
+    },
+    {
+      "chapter": 4,
+      "name": "data_quality",
+      "start_time": 28.522371900005965,
+      "tag": "DATA INTEGRITY",
+      "title": "Understand Your Data Quality",
+      "subtitle": "Automated health score, null checks & duplicate audits.",
+      "badge": "100% HEALTH SCORE CONFIRMED",
+      "caption": "Instant detection of null values, anomalies, and type mismatches.",
+      "end_time": 39.908020300004864,
+      "duration": 11.3856483999989
+    },
+    {
+      "chapter": 5,
+      "name": "analytics",
+      "start_time": 39.908020300004864,
+      "tag": "DEEP ANALYTICS",
+      "title": "Discover Patterns in Your Data",
+      "subtitle": "Descriptive stats, distributions & correlation insights.",
+      "badge": "INTERACTIVE VISUALIZATIONS",
+      "caption": "Explore statistical spreads and dynamic breakdown charts.",
+      "end_time": 52.23100739999791,
+      "duration": 12.322987099993043
+    },
+    {
+      "chapter": 6,
+      "name": "ai_insights",
+      "start_time": 52.23100739999791,
+      "tag": "RULE-BASED INTELLIGENCE",
+      "title": "Find Meaningful Insights",
+      "subtitle": "Deterministic analytical observations & trend detection.",
+      "badge": "HEURISTIC PATTERN ENGINE",
+      "caption": "Automated findings grounded directly on mathematical metrics.",
+      "end_time": 62.30886859999737,
+      "duration": 10.077861199999461
+    },
+    {
+      "chapter": 7,
+      "name": "ai_assistant",
+      "start_time": 62.30886859999737,
+      "tag": "AI COPILOT",
+      "title": "Ask Questions. Explore Insights.",
+      "subtitle": "Natural language inquiries with tables, charts & takeaways.",
+      "badge": "PRIVACY-PRESERVING AI",
+      "caption": "Sends only computed metrics. Zero raw data transmitted.",
+      "end_time": 74.45789040002273,
+      "duration": 12.149021800025366
+    },
+    {
+      "chapter": 8,
+      "name": "my_analyses",
+      "start_time": 74.45789040002273,
+      "tag": "ANALYSIS HISTORY",
+      "title": "Your Work, Ready to Revisit",
+      "subtitle": "Historical analysis runs stored securely in your workspace.",
+      "badge": "PERSISTENT RUN HISTORY",
+      "caption": "Revisit previous analytical queries and profile runs anytime.",
+      "end_time": 82.11704730000929,
+      "duration": 7.659156899986556
+    },
+    {
+      "chapter": 9,
+      "name": "reports",
+      "start_time": 82.11704730000929,
+      "tag": "EXECUTIVE REPORTING",
+      "title": "From Analysis to Report",
+      "subtitle": "Full executive PDF reports generated directly in-memory.",
+      "badge": "PUBLICATION-READY PDF",
+      "caption": "Complete with KPI scorecard, schema audit, and statistical tables.",
+      "end_time": 97.9753752000106,
+      "duration": 15.858327900001314
+    },
+    {
+      "chapter": 10,
+      "name": "developer_api",
+      "start_time": 97.9753752000106,
+      "tag": "DEVELOPER PLATFORM",
+      "title": "Analytics for Developers",
+      "subtitle": "Programmatic dataset ingestion, analysis & report export.",
+      "badge": "INSTANT TEMPORARY API KEYS",
+      "caption": "Integrate SochIQ directly into pipelines via REST endpoints.",
+      "end_time": 109.5342401000089,
+      "duration": 11.558864899998298
+    },
+    {
+      "chapter": 11,
+      "name": "closing",
+      "start_time": 109.5342401000089,
+      "tag": "SOCHIQ",
+      "title": "SOCHIQ",
+      "subtitle": "Your data. Better decisions.",
+      "badge": "TRY SOCHIQ TODAY",
+      "caption": "Zero registration required \u2022 Open your workspace now.",
+      "end_time": 114.94215580000309,
+      "duration": 5.4079156999941915
+    }
+  ]
+}

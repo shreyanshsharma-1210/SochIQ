@@ -55,4 +55,12 @@ datalens-data/
 Thumbs.db
 
 
+# Demo video binaries & temp recordings
+demo/output/*.mp4
+demo/output/*.png
+demo/output/chapters/
+demo/raw_recordings/*.webm
+demo/raw_recordings/chapters/
+demo/raw_recordings/temp_master/
+demo/report_pages/*.png
 demo/raw_recordings/test/
