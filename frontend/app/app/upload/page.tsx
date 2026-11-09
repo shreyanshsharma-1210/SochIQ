@@ -8,6 +8,10 @@ import {
   BookmarkPlus,
   RefreshCw,
   Check,
+  Table,
+  CheckCircle2,
+  BarChart3,
+  Sparkles,
 } from "lucide-react";
 import UploadDropzone from "@/components/datasets/UploadDropzone";
 import PreviewGrid from "@/components/datasets/PreviewGrid";
@@ -29,7 +33,7 @@ export default function UploadWorkspacePage() {
     clearAnalysisSession,
   } = useDatasetSession();
 
-  const [activeTab, setActiveTab] = useState<"preview" | "quality" | "analytics" | "insights">("preview");
+  const [activeTab, setActiveTab] = useState<"overview" | "quality" | "analytics" | "insights">("overview");
   const [isLoading, setIsLoading] = useState(false);
   const [isExportingPDF, setIsExportingPDF] = useState(false);
   const [isExportingCSV, setIsExportingCSV] = useState(false);
@@ -51,7 +55,7 @@ export default function UploadWorkspacePage() {
 
       // Save into persistent tab session context
       setAnalysisSession(file, prev, analytics, charts, insights);
-      setActiveTab("preview");
+      setActiveTab("overview");
     } catch (err: any) {
       alert(err.message || "Failed to process dataset in memory.");
     } finally {
@@ -127,15 +131,20 @@ export default function UploadWorkspacePage() {
   };
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 max-w-6xl mx-auto pb-8">
       {/* Workspace Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
+          <span className="text-[11px] font-bold uppercase tracking-wider text-grey-muted">
+            Analysis Workspace
+          </span>
           <h1 className="font-heading text-2xl sm:text-3xl font-extrabold text-charcoal tracking-tight">
-            Dataset Ingestion & Workspace
+            {previewData ? previewData.filename : "New Analysis"}
           </h1>
           <p className="text-xs sm:text-sm text-grey-muted mt-1">
-            In-memory evaluation of CSV, Excel, or JSON datasets with zero retention.
+            {previewData
+              ? "In-memory evaluation complete • Ready for inspection and intelligence discovery"
+              : "Upload a CSV, Excel or JSON table to begin an in-memory session."}
           </p>
         </div>
 
@@ -182,7 +191,9 @@ export default function UploadWorkspacePage() {
 
       {/* Main Dropzone when no file analyzed */}
       {!previewData ? (
-        <UploadDropzone onFileSelected={handleProcessFile} isLoading={isLoading} />
+        <div className="sochiq-card p-6 sm:p-10 bg-white border border-grey-border shadow-card">
+          <UploadDropzone onFileSelected={handleProcessFile} isLoading={isLoading} />
+        </div>
       ) : (
         <div className="flex flex-col gap-6">
           {/* Dataset Info Strip */}
@@ -216,42 +227,88 @@ export default function UploadWorkspacePage() {
             </button>
           </div>
 
-          {/* Navigation Tabs */}
-          <div className="flex border-b border-grey-border gap-2">
+          {/* 4 Clearly Named Navigation Tabs */}
+          <div className="flex border-b border-grey-border gap-2 overflow-x-auto">
             {[
-              { id: "preview", label: "Data Preview" },
-              { id: "quality", label: "Quality Audit" },
-              { id: "analytics", label: "Visual Analytics" },
-              { id: "insights", label: "Insights & AI" },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
-                className={`px-4 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition-all ${
-                  activeTab === tab.id
-                    ? "border-charcoal text-charcoal font-bold"
-                    : "border-transparent text-grey-muted hover:text-charcoal"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
+              { id: "overview", label: "Overview", icon: Table },
+              { id: "quality", label: "Data Quality", icon: CheckCircle2 },
+              { id: "analytics", label: "Analytics", icon: BarChart3 },
+              { id: "insights", label: "AI Insights", icon: Sparkles },
+            ].map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id as any)}
+                  className={`flex items-center gap-2 px-4 py-3 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap ${
+                    isActive
+                      ? "border-charcoal text-charcoal font-bold"
+                      : "border-transparent text-grey-muted hover:text-charcoal"
+                  }`}
+                >
+                  <Icon className={`w-4 h-4 ${isActive ? "text-charcoal" : "text-grey-muted"}`} />
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
           </div>
 
-          {/* Tab Panes */}
-          {activeTab === "preview" && (
-            <PreviewGrid
-              columns={previewData.columns}
-              inferredTypes={previewData.inferred_types}
-              rows={previewData.preview_rows}
-              totalRows={previewData.row_count}
-            />
+          {/* Tab 1: Overview — Dataset preview, schema and summary */}
+          {activeTab === "overview" && (
+            <div className="flex flex-col gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div className="sochiq-card p-4">
+                  <span className="text-[11px] font-semibold text-grey-muted uppercase tracking-wider">
+                    Total Rows
+                  </span>
+                  <div className="font-heading text-2xl font-bold text-charcoal mt-1">
+                    {previewData.row_count.toLocaleString()}
+                  </div>
+                </div>
+                <div className="sochiq-card p-4">
+                  <span className="text-[11px] font-semibold text-grey-muted uppercase tracking-wider">
+                    Total Columns
+                  </span>
+                  <div className="font-heading text-2xl font-bold text-charcoal mt-1">
+                    {previewData.column_count}
+                  </div>
+                </div>
+                <div className="sochiq-card p-4">
+                  <span className="text-[11px] font-semibold text-grey-muted uppercase tracking-wider">
+                    Data Cleanliness
+                  </span>
+                  <div className="font-heading text-2xl font-bold text-emerald-700 mt-1">
+                    {previewData.quality?.cleanliness_score ?? 100}%
+                  </div>
+                </div>
+                <div className="sochiq-card p-4">
+                  <span className="text-[11px] font-semibold text-grey-muted uppercase tracking-wider">
+                    Memory Retention
+                  </span>
+                  <div className="font-heading text-xl font-bold text-charcoal mt-1 flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                    <span>Volatile</span>
+                  </div>
+                </div>
+              </div>
+
+              <PreviewGrid
+                columns={previewData.columns}
+                inferredTypes={previewData.inferred_types}
+                rows={previewData.preview_rows}
+                totalRows={previewData.row_count}
+              />
+            </div>
           )}
 
+          {/* Tab 2: Data Quality — Cleanliness score, missing values, duplicates, column-level audit */}
           {activeTab === "quality" && <QualitySummary quality={previewData.quality} />}
 
+          {/* Tab 3: Analytics — Descriptive statistics, aggregations, Recharts */}
           {activeTab === "analytics" && chartsData && <ChartViewer charts={chartsData.charts} />}
 
+          {/* Tab 4: AI Insights — Deterministic observations + Groq-powered natural-language analysis */}
           {activeTab === "insights" && (
             <div className="flex flex-col gap-6">
               {insightsData && <RuleInsightsDeck insights={insightsData.insights} />}

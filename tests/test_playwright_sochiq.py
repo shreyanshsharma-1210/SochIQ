@@ -49,29 +49,53 @@ def run_sochiq_comprehensive_test():
         print(f"  ✓ Landing page screenshot saved: {landing_shot}")
 
         # ==========================================
-        # 2. TEST DASHBOARD (/app)
+        # 2. TEST OVERVIEW DASHBOARD (/app)
         # ==========================================
-        print("\n--- 2. Testing Internal Dashboard (/app) ---")
+        print("\n--- 2. Testing Overview Dashboard (/app) ---")
         page.locator("text=Launch App").first.click()
         page.wait_for_url("**/app", timeout=10000)
         time.sleep(1)
 
-        welcome_heading = page.locator("text=Welcome to SochIQ.")
-        assert welcome_heading.is_visible(), "Dashboard welcome heading not visible"
-        assert page.locator("text=Saved Metadata Profiles").is_visible(), "Saved Profiles KPI not visible"
-        assert page.locator("text=Total Records Profiled").is_visible(), "Total Records KPI not visible"
-        assert page.locator("text=Memory Only").is_visible(), "Privacy Safeguard not visible"
-        print("  ✓ App Dashboard & KPIs validated successfully")
+        workspace_heading = page.locator("text=Your workspace")
+        assert workspace_heading.is_visible(), "Workspace sub-heading not visible"
+        headline = page.locator("text=Make sense of your data.")
+        assert headline.is_visible(), "Make sense of your data headline not visible"
+        
+        # Verify prominent upload area on dashboard
+        dropzone = page.locator("text=Drag & drop your dataset here").first
+        assert dropzone.is_visible(), "Prominent upload area not visible on dashboard"
+
+        # Verify 3 metric cards
+        assert page.locator("text=Datasets Profiled").is_visible(), "Datasets Profiled KPI not visible"
+        assert page.locator("text=Records Analyzed").is_visible(), "Records Analyzed KPI not visible"
+        assert page.locator("text=Memory Only").is_visible(), "Privacy Status KPI not visible"
+        print("  ✓ Overview Dashboard (Upload focus, KPIs, headlines) validated successfully")
 
         dashboard_shot = os.path.join(artifacts_dir, "sochiq_app_dashboard.png")
         page.screenshot(path=dashboard_shot, full_page=True)
         print(f"  ✓ App dashboard screenshot saved: {dashboard_shot}")
 
         # ==========================================
-        # 3. TEST UPLOAD & WORKSPACE (/app/upload)
+        # 3. TEST MY ANALYSES PAGE (/app/analyses)
         # ==========================================
-        print("\n--- 3. Testing Upload & Workspace (/app/upload) ---")
-        page.locator("text=Upload Dataset").first.click()
+        print("\n--- 3. Testing My Analyses (/app/analyses) ---")
+        page.locator("text=My Analyses").first.click()
+        page.wait_for_url("**/app/analyses", timeout=10000)
+        time.sleep(1)
+
+        assert page.locator("h1:has-text('My Analyses')").is_visible(), "My Analyses heading not visible"
+        assert page.locator("text=Memory-Only Privacy Notice").is_visible(), "Privacy notice not visible"
+        print("  ✓ My Analyses page & privacy notice validated successfully")
+
+        analyses_shot = os.path.join(artifacts_dir, "sochiq_my_analyses.png")
+        page.screenshot(path=analyses_shot, full_page=True)
+        print(f"  ✓ My Analyses screenshot saved: {analyses_shot}")
+
+        # ==========================================
+        # 4. TEST NEW ANALYSIS & WORKSPACE (/app/upload)
+        # ==========================================
+        print("\n--- 4. Testing New Analysis & Workspace (/app/upload) ---")
+        page.locator("text=New Analysis").first.click()
         page.wait_for_url("**/app/upload", timeout=10000)
         time.sleep(1)
 
@@ -87,25 +111,25 @@ def run_sochiq_comprehensive_test():
         assert page.locator("text=Dataset In-Memory Preview").is_visible(), "Preview grid not visible"
         assert page.locator("text=Export PDF Report").is_visible(), "PDF report export button not visible"
         assert page.locator("text=Cleaned CSV").is_visible(), "Cleaned CSV export button not visible"
-        print("  ✓ Data Preview tab & Export actions validated")
+        print("  ✓ Tab 1: Overview validated")
 
-        # Test Quality Audit tab
-        page.locator("button:has-text('Quality Audit')").click()
+        # Test Tab 2: Data Quality
+        page.locator("button:has-text('Data Quality')").click()
         time.sleep(1)
         assert page.locator("text=Cleanliness Score").is_visible(), "Cleanliness score not visible"
-        print("  ✓ Quality Audit tab validated")
+        print("  ✓ Tab 2: Data Quality validated")
 
-        # Test Visual Analytics tab
-        page.locator("button:has-text('Visual Analytics')").click()
+        # Test Tab 3: Analytics
+        page.locator("button:has-text('Analytics')").click()
         time.sleep(1)
         assert page.locator("text=vs").first.is_visible(), "Chart series not visible"
-        print("  ✓ Visual Analytics Recharts validated")
+        print("  ✓ Tab 3: Analytics Recharts validated")
 
-        # Test Insights & AI tab
-        page.locator("button:has-text('Insights & AI')").click()
+        # Test Tab 4: AI Insights
+        page.locator("button:has-text('AI Insights')").click()
         time.sleep(1)
         assert page.locator("text=SochIQ AI Assistant").is_visible(), "SochIQ AI Assistant not visible"
-        print("  ✓ Insights & AI tab loaded")
+        print("  ✓ Tab 4: AI Insights loaded")
 
         # Ask a query via starter chip or input
         starter_chip = page.locator("button:has-text('Which category generates the highest revenue?')")
@@ -125,10 +149,11 @@ def run_sochiq_comprehensive_test():
         print(f"  ✓ Workspace screenshot saved: {workspace_shot}")
 
         # ==========================================
-        # 4. TEST DEVELOPER PORTAL (/app/developer)
+        # 5. TEST DEVELOPER PORTAL (/app/developer)
         # ==========================================
-        print("\n--- 4. Testing Developer Portal (/app/developer) ---")
-        page.goto("http://localhost:3000/app/developer", wait_until="networkidle")
+        print("\n--- 5. Testing Developer Portal (/app/developer) ---")
+        page.locator("text=Developer API").first.click()
+        page.wait_for_url("**/app/developer", timeout=10000)
         time.sleep(1)
 
         dev_heading = page.locator("text=Developer REST API & Temporary Keys")

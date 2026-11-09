@@ -2,23 +2,35 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, UploadCloud, Terminal, ShieldCheck, Sparkles } from "lucide-react";
+import {
+  LayoutDashboard,
+  PlusCircle,
+  FolderArchive,
+  Terminal,
+  ShieldCheck,
+} from "lucide-react";
 
 export default function AppSidebar() {
   const pathname = usePathname();
 
   const navItems = [
     {
-      name: "Dashboard",
+      name: "Overview",
       href: "/app",
       icon: LayoutDashboard,
       active: pathname === "/app",
     },
     {
-      name: "Upload & Ingest",
+      name: "New Analysis",
       href: "/app/upload",
-      icon: UploadCloud,
+      icon: PlusCircle,
       active: pathname.startsWith("/app/upload") || pathname.startsWith("/datasets/upload"),
+    },
+    {
+      name: "My Analyses",
+      href: "/app/analyses",
+      icon: FolderArchive,
+      active: pathname.startsWith("/app/analyses"),
     },
     {
       name: "Developer API",
@@ -29,7 +41,7 @@ export default function AppSidebar() {
   ];
 
   return (
-    <aside className="w-60 flex-shrink-0 hidden md:flex flex-col gap-6">
+    <aside className="w-60 flex-shrink-0 hidden md:flex flex-col gap-4">
       <nav className="flex flex-col gap-1.5 p-2 bg-white rounded-2xl border border-grey-border shadow-xs">
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -54,26 +66,13 @@ export default function AppSidebar() {
         })}
       </nav>
 
-      {/* Cloud Privacy Card */}
-      <div className="p-4 rounded-2xl bg-white border border-grey-border shadow-xs flex flex-col gap-2.5">
+      {/* Compact Privacy Status Indicator */}
+      <div className="mt-auto px-3.5 py-2.5 rounded-xl bg-white border border-grey-border shadow-2xs flex items-center justify-between text-xs">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-yellow/20 flex items-center justify-center text-charcoal">
-            <ShieldCheck className="w-4 h-4" />
-          </div>
-          <div>
-            <h4 className="font-heading font-bold text-xs text-charcoal">Cloud Privacy</h4>
-            <span className="text-[10px] text-emerald-700 font-semibold">Active Session</span>
-          </div>
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="font-medium text-charcoal text-[11px]">Memory-Only Mode</span>
         </div>
-        <p className="text-[11px] text-grey-muted leading-relaxed">
-          Raw dataset rows are processed strictly in volatile memory. No permanent cloud storage.
-        </p>
-      </div>
-
-      {/* Quick Tips */}
-      <div className="p-3.5 rounded-2xl bg-grey-subtle/70 border border-grey-border text-[11px] text-grey-muted flex items-start gap-2">
-        <Sparkles className="w-3.5 h-3.5 text-yellow shrink-0 mt-0.5" />
-        <span>Tip: Save metadata profiles to compare datasets without uploading files again.</span>
+        <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
       </div>
     </aside>
   );
