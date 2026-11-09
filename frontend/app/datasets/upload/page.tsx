@@ -19,19 +19,18 @@ import ChartViewer from "@/components/analytics/ChartViewer";
 import RuleInsightsDeck from "@/components/insights/RuleInsightsDeck";
 import GroqChatPanel from "@/components/insights/GroqChatPanel";
 import { api } from "@/lib/apiClient";
-import {
-  DatasetPreviewResponse,
-  AnalyticsSummaryResponse,
-  ChartDataResponse,
-  RuleInsightsResponse,
-} from "@/types";
+import { useDatasetSession } from "@/context/DatasetSessionContext";
 
 export default function UploadPage() {
-  const [activeFile, setActiveFile] = useState<File | null>(null);
-  const [previewData, setPreviewData] = useState<DatasetPreviewResponse | null>(null);
-  const [analyticsData, setAnalyticsData] = useState<AnalyticsSummaryResponse | null>(null);
-  const [chartsData, setChartsData] = useState<ChartDataResponse | null>(null);
-  const [insightsData, setInsightsData] = useState<RuleInsightsResponse | null>(null);
+  const {
+    activeFile,
+    previewData,
+    analyticsData,
+    chartsData,
+    insightsData,
+    setAnalysisSession,
+    clearAnalysisSession,
+  } = useDatasetSession();
 
   const [activeTab, setActiveTab] = useState<"preview" | "quality" | "analytics" | "insights">("preview");
   const [isLoading, setIsLoading] = useState(false);
@@ -41,7 +40,6 @@ export default function UploadPage() {
   const [savedSuccess, setSavedSuccess] = useState(false);
 
   const handleProcessFile = async (file: File) => {
-    setActiveFile(file);
     setIsLoading(true);
     setSavedSuccess(false);
 
@@ -54,10 +52,8 @@ export default function UploadPage() {
         api.getRuleInsights(file),
       ]);
 
-      setPreviewData(prev);
-      setAnalyticsData(analytics);
-      setChartsData(charts);
-      setInsightsData(insights);
+      // Save into persistent tab session context
+      setAnalysisSession(file, prev, analytics, charts, insights);
     } catch (err: any) {
       alert(err.message || "Failed to process dataset in memory.");
     } finally {
@@ -66,17 +62,21 @@ export default function UploadPage() {
   };
 
   const handleExportPDF = async () => {
-    if (!activeFile) return;
+    if (!activeFile && !previewData) return;
     setIsExportingPDF(true);
     try {
-      const blob = await api.downloadPDF(activeFile);
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `DataLens_Report_${activeFile.name.split(".")[0]}.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
+      if (activeFile) {
+        const blob = await api.downloadPDF(activeFile);
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `DataLens_Report_${activeFile.name.split(".")[0]}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      } else {
+        alert("Please re-select original file to generate fresh PDF stream.");
+      }
     } catch (err: any) {
       alert(err.message || "Failed to generate PDF");
     } finally {
@@ -85,17 +85,21 @@ export default function UploadPage() {
   };
 
   const handleExportCSV = async () => {
-    if (!activeFile) return;
+    if (!activeFile && !previewData) return;
     setIsExportingCSV(true);
     try {
-      const blob = await api.downloadCleanedCSV(activeFile);
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `cleaned_${activeFile.name.split(".")[0]}.csv`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
+      if (activeFile) {
+        const blob = await api.downloadCleanedCSV(activeFile);
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `cleaned_${activeFile.name.split(".")[0]}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      } else {
+        alert("Please re-select original file to generate fresh CSV stream.");
+      }
     } catch (err: any) {
       alert(err.message || "Failed to export CSV");
     } finally {
@@ -104,12 +108,12 @@ export default function UploadPage() {
   };
 
   const handleSaveMetadata = async () => {
-    if (!previewData || !activeFile) return;
+    if (!previewData) return;
     setIsSaving(true);
     try {
       await api.saveMetadata({
-        name: activeFile.name.split(".")[0],
-        original_filename: activeFile.name,
+        name: previewData.filename.split(".")[0],
+        original_filename: previewData.filename,
         file_format: previewData.file_format,
         row_count: previewData.row_count,
         column_count: previewData.column_count,
@@ -199,8 +203,9 @@ export default function UploadPage() {
 
             <button
               onClick={() => {
-                setActiveFile(null);
-                setPreviewData(null);
+                if (confirm("Reset current dataset session and analyze another file?")) {
+                  clearAnalysisSession();
+                }
               }}
               className="px-3 py-1.5 rounded-lg border border-border bg-surface text-xs font-medium text-text-muted hover:text-text flex items-center gap-1"
             >
@@ -259,4 +264,3 @@ export default function UploadPage() {
     </div>
   );
 }
-

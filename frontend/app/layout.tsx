@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
 import WarmupBanner from "@/components/layout/WarmupBanner";
+import { DatasetSessionProvider } from "@/context/DatasetSessionContext";
 
 export const metadata: Metadata = {
   title: "DataLens | Cloud Data Analytics & Developer API",
@@ -25,12 +26,14 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-background text-text min-h-screen flex flex-col font-sans">
-        <WarmupBanner />
-        <Header />
-        <div className="flex-1 flex max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 gap-6">
-          <Sidebar />
-          <main className="flex-1 overflow-x-hidden">{children}</main>
-        </div>
+        <DatasetSessionProvider>
+          <WarmupBanner />
+          <Header />
+          <div className="flex-1 flex max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 gap-6">
+            <Sidebar />
+            <main className="flex-1 overflow-x-hidden">{children}</main>
+          </div>
+        </DatasetSessionProvider>
       </body>
     </html>
   );
