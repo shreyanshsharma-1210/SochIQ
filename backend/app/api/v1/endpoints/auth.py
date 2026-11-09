@@ -120,3 +120,4 @@ async def revoke_api_key(
         status="revoked",
         message=f"API Key {key_id} has been revoked and can no longer authorize requests."
     )
+

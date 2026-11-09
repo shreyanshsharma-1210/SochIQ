@@ -69,3 +69,4 @@ def test_developer_api_key_lifecycle_and_scopes():
         headers={"Authorization": f"Bearer {raw_key}"}
     )
     assert res_rejected.status_code == 401
+

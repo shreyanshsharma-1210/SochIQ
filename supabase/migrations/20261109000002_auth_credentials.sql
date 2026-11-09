@@ -66,3 +66,4 @@ CREATE POLICY "Users view own api keys"
 CREATE POLICY "Users modify own api keys"
     ON public.developer_api_keys FOR ALL
     USING (auth.uid() = owner_id);
+

@@ -38,3 +38,4 @@ class APIKeyInfo(BaseModel):
 class APIKeyRevokeResponse(BaseModel):
     status: str = "revoked"
     message: str
+
