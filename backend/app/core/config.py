@@ -16,6 +16,11 @@ class Settings(BaseSettings):
     MAX_UPLOAD_SIZE_MB: int = 25
     PREVIEW_MAX_ROWS: int = 50
 
+    # Inactivity Expiration (30 minutes)
+    SESSION_INACTIVITY_MINUTES: int = 30
+    API_KEY_INACTIVITY_MINUTES: int = 30
+    SESSION_COOKIE_NAME: str = "datalens_session"
+
     # Supabase Configuration
     SUPABASE_URL: Optional[str] = None
     SUPABASE_SERVICE_ROLE_KEY: Optional[str] = None
@@ -47,4 +52,3 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
-
