@@ -18,6 +18,7 @@ interface DatasetSessionContextType {
   remainingSeconds: number;
   isExpiringSoon: boolean;
   isExpired: boolean;
+  isWorkspaceActive: boolean;
   refreshSession: () => Promise<void>;
 
   // Cloud datasets & Workspace
@@ -55,9 +56,14 @@ const STORAGE_KEY = "sochiq_active_analysis_v2";
 const ACTIVE_DS_KEY = "sochiq_active_dataset_id";
 
 export function DatasetSessionProvider({ children }: { children: React.ReactNode }) {
+  // Generate stable tab ID for this browser tab instance
+  const tabIdRef = useRef<string>("");
+  if (!tabIdRef.current && typeof window !== "undefined") {
+    tabIdRef.current = "tab_" + Math.random().toString(36).slice(2, 10) + "_" + Date.now();
+  }
+
   // Session status state
   const [sessionStatus, setSessionStatus] = useState<SessionStatus | null>(null);
-  const [remainingSeconds, setRemainingSeconds] = useState<number>(1800);
   const [isExpired, setIsExpired] = useState(false);
 
   // Workspace datasets
@@ -73,14 +79,11 @@ export function DatasetSessionProvider({ children }: { children: React.ReactNode
   const [chartsData, setChartsData] = useState<ChartDataResponse | null>(null);
   const [insightsData, setInsightsData] = useState<RuleInsightsResponse | null>(null);
 
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
-
   // 1. Refresh session info and datasets from backend
   const refreshSession = useCallback(async () => {
     try {
-      const sess = await api.initWorkspaceSession();
+      const sess = await api.initWorkspaceSession(tabIdRef.current);
       setSessionStatus(sess);
-      setRemainingSeconds(sess.remaining_seconds || 1800);
       setIsExpired(false);
     } catch (e) {
       console.warn("Could not refresh workspace session:", e);
@@ -114,9 +117,6 @@ export function DatasetSessionProvider({ children }: { children: React.ReactNode
       if (data.analytics) setAnalyticsData(data.analytics);
       if (data.charts) setChartsData(data.charts);
       if (data.insights) setInsightsData(data.insights);
-
-      // Extend session on activity
-      setRemainingSeconds(1800);
     } catch (e: any) {
       console.error("Failed to load dataset details:", e);
     } finally {
@@ -139,9 +139,6 @@ export function DatasetSessionProvider({ children }: { children: React.ReactNode
       setAnalyticsData(result.analytics);
       setChartsData(result.charts);
       setInsightsData(result.insights);
-
-      // Extend session
-      setRemainingSeconds(1800);
 
       // Refresh datasets list
       await refreshDatasets();
@@ -191,11 +188,11 @@ export function DatasetSessionProvider({ children }: { children: React.ReactNode
     async function init() {
       setIsLoadingWorkspace(true);
       try {
-        // Establish or restore session
-        const sess = await api.initWorkspaceSession();
+        // Establish or restore session (passing tabId to establish immediate presence)
+        const sess = await api.initWorkspaceSession(tabIdRef.current);
         if (!isMounted) return;
         setSessionStatus(sess);
-        setRemainingSeconds(sess.remaining_seconds || 1800);
+        setIsExpired(false);
 
         // Fetch user's datasets & analysis history
         const [dsList, histList] = await Promise.all([
@@ -241,27 +238,78 @@ export function DatasetSessionProvider({ children }: { children: React.ReactNode
     };
   }, [selectDataset]);
 
-  // 6. Inactivity countdown ticker
+  // 6. Active Tab Presence Heartbeat
+  // Keeps workspace active as long as this browser tab is open (hours, days, months)
   useEffect(() => {
-    if (timerRef.current) clearInterval(timerRef.current);
+    if (!tabIdRef.current) return;
 
-    timerRef.current = setInterval(() => {
-      setRemainingSeconds((prev) => {
-        if (prev <= 1) {
+    const sendHb = async () => {
+      try {
+        await api.sendHeartbeat(tabIdRef.current);
+        setIsExpired(false);
+      } catch (e: any) {
+        if (e?.message?.includes("401") || e?.status === 401) {
           setIsExpired(true);
-          return 0;
         }
-        return prev - 1;
-      });
-    }, 1000);
+      }
+    };
+
+    // Periodic heartbeat every 20 seconds
+    const hbInterval = setInterval(sendHb, 20000);
+
+    // Re-assert presence when tab regains focus or becomes visible
+    const onFocusOrVisible = () => {
+      if (document.visibilityState === "visible") {
+        sendHb();
+      }
+    };
+
+    window.addEventListener("focus", onFocusOrVisible);
+    document.addEventListener("visibilitychange", onFocusOrVisible);
 
     return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
+      clearInterval(hbInterval);
+      window.removeEventListener("focus", onFocusOrVisible);
+      document.removeEventListener("visibilitychange", onFocusOrVisible);
     };
   }, []);
 
+  // 7. Tab Unload & Grace Period Handling
+  // When closing tab, notify server (which starts 30m grace period if this was the last tab).
+  // Non-blocking prompt informs user that data will be saved for 30 minutes.
+  useEffect(() => {
+    const onBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (tabIdRef.current) {
+        api.sendLeave(tabIdRef.current);
+      }
+      if (datasets.length > 0) {
+        const msg = "Your workspace and uploaded datasets are temporarily saved in the cloud. If you leave SochIQ and do not return within 30 minutes, your uploaded data will be permanently deleted.";
+        e.preventDefault();
+        e.returnValue = msg;
+        return msg;
+      }
+    };
+
+    const onPageHide = () => {
+      if (tabIdRef.current) {
+        api.sendLeave(tabIdRef.current);
+      }
+    };
+
+    window.addEventListener("beforeunload", onBeforeUnload);
+    window.addEventListener("pagehide", onPageHide);
+
+    return () => {
+      window.removeEventListener("beforeunload", onBeforeUnload);
+      window.removeEventListener("pagehide", onPageHide);
+    };
+  }, [datasets.length]);
+
   const activeDataset = datasets.find(d => d.id === activeDatasetId) || null;
-  const isExpiringSoon = remainingSeconds > 0 && remainingSeconds <= 300; // <= 5 minutes
+  const isWorkspaceActive = !isExpired;
+  // Kept for backward compatibility
+  const remainingSeconds = isExpired ? 0 : 1800;
+  const isExpiringSoon = false;
 
   // Backward-compatible methods
   const setAnalysisSession = (
@@ -310,6 +358,7 @@ export function DatasetSessionProvider({ children }: { children: React.ReactNode
         remainingSeconds,
         isExpiringSoon,
         isExpired,
+        isWorkspaceActive,
         refreshSession,
 
         datasets,

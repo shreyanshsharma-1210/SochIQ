@@ -7,7 +7,6 @@ import {
   PlusCircle,
   FolderArchive,
   Terminal,
-  ShieldCheck,
 } from "lucide-react";
 
 export default function AppSidebar() {
@@ -65,15 +64,6 @@ export default function AppSidebar() {
           );
         })}
       </nav>
-
-      {/* Compact Privacy Status Indicator */}
-      <div className="mt-auto px-3.5 py-2.5 rounded-xl bg-white border border-grey-border shadow-2xs flex items-center justify-between text-xs" title="Datasets stored temporarily in encrypted cloud storage; purged after 30 minutes of inactivity.">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="font-medium text-charcoal text-[11px]">30m Auto-Cleanup</span>
-        </div>
-        <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-      </div>
     </aside>
   );
 }

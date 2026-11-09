@@ -211,6 +211,10 @@ class DatasetUploadResponse(BaseModel):
     created_at: str
 
 
+class TabPresenceRequest(BaseModel):
+    tab_id: str
+
+
 class SessionStatusResponse(BaseModel):
     status: str = "active"
     session_id: str
@@ -218,8 +222,13 @@ class SessionStatusResponse(BaseModel):
     created_at: str
     last_activity_at: str
     expires_at: str
-    remaining_seconds: int
+    is_active: bool = True
+    active_tab_count: int = 1
+    disconnected_at: Optional[str] = None
+    grace_period_remaining_seconds: Optional[int] = None
+    remaining_seconds: Optional[int] = None
     dataset_count: int = 0
     analysis_count: int = 0
+
 
 

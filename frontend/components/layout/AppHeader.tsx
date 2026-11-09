@@ -14,15 +14,13 @@ import {
   LayoutDashboard,
   PlusCircle,
   FolderArchive,
-  Clock,
-  AlertTriangle,
   RotateCcw
 } from "lucide-react";
 
 export default function AppHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { remainingSeconds, isExpiringSoon, isExpired, refreshSession } = useDatasetSession();
+  const { isExpired, refreshSession } = useDatasetSession();
 
   const navItems = [
     { name: "Overview", href: "/app", icon: LayoutDashboard },
@@ -30,10 +28,6 @@ export default function AppHeader() {
     { name: "My Analyses", href: "/app/analyses", icon: FolderArchive },
     { name: "Developer API", href: "/app/developer", icon: Terminal },
   ];
-
-  const minutes = Math.floor(remainingSeconds / 60);
-  const seconds = remainingSeconds % 60;
-  const formattedCountdown = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 
   return (
     <header className="w-full bg-white border-b border-grey-border sticky top-0 z-40 transition-all">
@@ -48,39 +42,25 @@ export default function AppHeader() {
 
         {/* Header Right Actions */}
         <div className="flex items-center gap-2.5 sm:gap-3">
-          {/* Session Countdown Timer */}
+          {/* Workspace Status Indicator (The only status indicator required during normal usage) */}
           {isExpired ? (
             <button
               onClick={refreshSession}
               className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-semibold text-red-700 hover:bg-red-100 transition-colors"
-              title="Session expired after 30 minutes of inactivity. Click to start a new workspace."
+              title="Workspace expired after inactivity. Click to establish a new workspace."
             >
               <RotateCcw className="w-3.5 h-3.5" />
-              <span>Session Expired · Reset</span>
+              <span>Workspace Expired · Reset</span>
             </button>
-          ) : isExpiringSoon ? (
-            <div
-              className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-300 text-xs font-semibold text-amber-800 animate-pulse"
-              title="Less than 5 minutes of inactivity remaining before this workspace is purged."
-            >
-              <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
-              <span>{formattedCountdown} remaining</span>
-            </div>
           ) : (
             <div
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-grey-subtle border border-grey-border text-xs font-medium text-charcoal"
-              title="Workspace automatically cleans up after 30 minutes of inactivity."
+              className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-grey-subtle border border-grey-border text-xs font-medium text-charcoal"
+              title="Your workspace is active and securely saved in cloud storage."
             >
-              <Clock className="w-3.5 h-3.5 text-grey-muted" />
-              <span>Session: <strong className="font-mono text-charcoal">{formattedCountdown}</strong></span>
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Workspace Active · Cloud Persisted</span>
             </div>
           )}
-
-          {/* Privacy & Cloud Storage Notice */}
-          <div className="hidden lg:flex items-center gap-1.5 px-3 py-1 rounded-full bg-grey-subtle border border-grey-border text-xs font-medium text-charcoal">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Temporary Cloud · 30m Auto-Cleanup</span>
-          </div>
 
           <Link
             href="/app/developer"
@@ -135,12 +115,8 @@ export default function AppHeader() {
           })}
           <div className="mt-2 pt-2 border-t border-grey-border flex flex-col gap-1.5 text-[11px] text-grey-muted px-2">
             <div className="flex items-center gap-2">
-              <Clock className="w-3.5 h-3.5 text-grey-muted" />
-              <span>Session: <strong className="font-mono text-charcoal">{formattedCountdown} remaining</strong></span>
-            </div>
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Temporary Cloud Storage · 30m Auto-Cleanup</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Workspace Active · Cloud Persisted</span>
             </div>
           </div>
         </div>

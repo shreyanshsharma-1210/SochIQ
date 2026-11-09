@@ -120,7 +120,11 @@ export interface SessionStatus {
   created_at: string;
   last_activity_at: string;
   expires_at: string;
-  remaining_seconds: number;
+  is_active?: boolean;
+  active_tab_count?: number;
+  disconnected_at?: string | null;
+  grace_period_remaining_seconds?: number | null;
+  remaining_seconds?: number | null;
   dataset_count: number;
   analysis_count: number;
 }

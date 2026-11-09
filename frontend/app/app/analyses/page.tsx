@@ -92,7 +92,7 @@ export default function MyAnalysesPage() {
       <div className="p-4 rounded-2xl bg-grey-subtle border border-grey-border flex items-start gap-3">
         <Info className="w-4 h-4 text-charcoal shrink-0 mt-0.5" />
         <div className="text-xs text-grey-muted leading-relaxed">
-          <span className="font-bold text-charcoal">Temporary Cloud Persistence:</span> Original files and computed analyses are stored in private encrypted cloud storage and automatically deleted after 30 minutes of workspace inactivity.
+          <span className="font-bold text-charcoal">Temporary Cloud Persistence:</span> Original files and computed analyses are preserved in private encrypted cloud storage and remain available throughout your active browser session.
         </div>
       </div>
 
@@ -140,7 +140,7 @@ export default function MyAnalysesPage() {
                   No datasets in workspace yet
                 </h3>
                 <p className="text-xs text-grey-muted mt-1 max-w-sm">
-                  Upload datasets to start profiling. All workbooks uploaded during your session stay available here until 30 minutes of inactivity.
+                  Upload datasets to start profiling. All workbooks uploaded during your session stay available here.
                 </p>
               </div>
               <Link

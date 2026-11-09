@@ -154,7 +154,7 @@ export default function AppDeveloperPage() {
                 Temporary Developer API Key
               </h3>
               <p className="text-xs text-grey-muted">
-                Expires after 30 minutes of inactivity • Displayed only once
+                Scoped to workspace lifecycle • Displayed only once
               </p>
             </div>
           </div>
@@ -249,7 +249,7 @@ export default function AppDeveloperPage() {
           <span className="font-bold text-charcoal">Two-Tier Credential Architecture:</span> Browser requests automatically use an HttpOnly session cookie scoped to your browser profile. External tools use the separate Developer API Key via{" "}
           <code className="bg-grey-subtle px-1.5 py-0.5 rounded border border-grey-border text-charcoal font-mono text-[11px]">
             Authorization: Bearer dl_live_...
-          </code>. Both credentials expire after 30 minutes of inactivity and are stored strictly as SHA-256 hashes in Supabase PostgreSQL.
+          </code>. Both credentials remain active while your workspace is open, and are stored strictly as SHA-256 hashes in Supabase PostgreSQL.
         </div>
       </div>
 

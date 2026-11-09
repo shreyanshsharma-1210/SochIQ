@@ -18,7 +18,7 @@ export default function PrivacySection() {
     {
       icon: Lock,
       title: "Secure Temporary Cloud Sessions",
-      desc: "Browser profiles operate within an anonymous session with 30-minute inactivity expiration.",
+      desc: "Browser workspaces remain active while your tab is open, with automated temporary session cleanup.",
     },
   ];
 

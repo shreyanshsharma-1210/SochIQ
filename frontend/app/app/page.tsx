@@ -23,7 +23,7 @@ export default function OverviewDashboardPage() {
   const {
     datasets,
     analysisHistory,
-    remainingSeconds,
+    isWorkspaceActive,
     uploadDatasetToCloud,
     selectDataset,
     deleteDatasetFromCloud,
@@ -56,9 +56,6 @@ export default function OverviewDashboardPage() {
   };
 
   const totalRecords = datasets.reduce((acc, curr) => acc + (curr.row_count || 0), 0);
-  const minutes = Math.floor(remainingSeconds / 60);
-  const seconds = remainingSeconds % 60;
-  const formattedCountdown = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 
   return (
     <div className="flex flex-col gap-8 max-w-5xl mx-auto pb-8">
@@ -71,7 +68,7 @@ export default function OverviewDashboardPage() {
           Make sense of your data.
         </h1>
         <p className="text-xs sm:text-sm text-grey-muted max-w-xl leading-relaxed">
-          Upload any CSV, Excel or JSON table. Datasets are stored in temporary encrypted cloud storage and automatically purged after 30 minutes of workspace inactivity.
+          Upload any CSV, Excel or JSON table. Datasets are processed in memory with secure temporary cloud persistence.
         </p>
       </div>
 
@@ -85,7 +82,7 @@ export default function OverviewDashboardPage() {
             </h2>
           </div>
           <span className="text-[11px] font-mono text-grey-muted">
-            Max 25 MB • 30m Temporary Cloud Persistence
+            Max 25 MB • Active in Memory &amp; Cloud
           </span>
         </div>
 
@@ -120,15 +117,15 @@ export default function OverviewDashboardPage() {
 
         <div className="sochiq-card p-5 flex flex-col justify-between">
           <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-grey-muted">
-            <span>Session Inactivity</span>
-            <Clock className="w-4 h-4 text-charcoal" />
+            <span>Privacy &amp; Retention</span>
+            <ShieldCheck className="w-4 h-4 text-emerald-600" />
           </div>
-          <div className="font-heading text-3xl font-bold font-mono text-charcoal mt-2">
-            {formattedCountdown}
+          <div className="font-heading text-2xl font-bold text-charcoal mt-2 flex items-center gap-2">
+            <span className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse inline-block" />
+            <span>Active</span>
           </div>
-          <div className="flex items-center gap-1.5 mt-1 text-[11px] text-emerald-600 font-medium">
-            <ShieldCheck className="w-3.5 h-3.5" />
-            <span>Auto-purges after 30m idle</span>
+          <div className="flex items-center gap-1.5 mt-1 text-[11px] text-grey-muted">
+            <span>Temporary Cloud · Encrypted</span>
           </div>
         </div>
       </div>
@@ -285,7 +282,7 @@ export default function OverviewDashboardPage() {
           <div>
             <h4 className="font-heading font-bold text-xs text-charcoal">Continuous Cloud Workspace</h4>
             <p className="text-[11px] text-grey-muted mt-1 leading-relaxed">
-              Upload multiple workbooks, reload the browser, or switch tabs freely. Your workspace and files stay available until 30 minutes of inactivity.
+              Upload multiple workbooks, reload the browser, or switch tabs freely. Your workspace and files stay available throughout your active browser session.
             </p>
           </div>
         </div>

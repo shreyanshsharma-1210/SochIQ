@@ -76,7 +76,7 @@ async def upload_and_process_dataset(
         response.set_cookie(
             key=settings.SESSION_COOKIE_NAME,
             value=created["raw_token"],
-            max_age=settings.SESSION_INACTIVITY_MINUTES * 60,
+            max_age=365 * 24 * 3600,
             httponly=True,
             samesite="lax",
             secure=False

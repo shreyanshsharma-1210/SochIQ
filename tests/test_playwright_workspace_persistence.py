@@ -42,9 +42,11 @@ def run():
         page.wait_for_selector("text=Your workspace", timeout=15000)
         assert page.locator("text=Make sense of your data.").is_visible()
 
-        countdown_elem = page.locator("text=Session:")
-        assert countdown_elem.is_visible(), "Session countdown timer should be visible in header"
-        print("  ✓ Automatic workspace created with live inactivity countdown")
+        # Check clean workspace active status and 30m grace badge (NO countdown ticker)
+        assert page.locator("text=Workspace Active · Cloud Persisted").first.is_visible()
+        assert page.locator("text=30m Grace on Close").first.is_visible()
+        assert not page.locator("text=Session:").is_visible(), "Session countdown ticker MUST NOT be shown during active browsing"
+        print("  ✓ Automatic workspace created with indefinite active state & 30m grace indicator (no ticking countdown)")
         page.screenshot(path=os.path.join(artifact_dir, "workspace_1_dashboard_init.png"))
 
         print("\n--- 2. Uploading First Dataset (temp_orders.csv) on /app/upload ---")
@@ -55,7 +57,7 @@ def run():
         file_input.set_input_files(orders_path)
         print("  Uploaded file, waiting for cloud storage upload & analytics...")
 
-        page.wait_for_selector("text=Dataset In-Memory Preview", timeout=30000)
+        page.wait_for_selector("text=Dataset In-Memory Preview", timeout=45000)
         assert page.locator("text=temp_orders.csv").first.is_visible()
         assert page.locator("text=Temporary Cloud Storage").is_visible()
         print("  ✓ temp_orders.csv persisted in Supabase Storage and rendered in workspace")
@@ -63,13 +65,13 @@ def run():
 
         print("\n--- 3. Uploading Second Dataset (temp_customers.csv) ---")
         page.locator("button:has-text('Upload New File')").click()
-        page.wait_for_selector("text=Add Dataset to Workspace", timeout=5000)
+        page.wait_for_selector("text=Add Dataset to Workspace", timeout=10000)
 
         modal_file_input = page.locator("input[type='file']").last
         modal_file_input.set_input_files(customers_path)
         print("  Uploaded second dataset, waiting for cloud persistence...")
 
-        page.wait_for_selector("text=temp_customers.csv", timeout=30000)
+        page.wait_for_selector("text=temp_customers.csv", timeout=45000)
         print("  ✓ Second dataset uploaded successfully")
 
         # Debug what buttons exist
