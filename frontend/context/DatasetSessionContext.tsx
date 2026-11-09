@@ -140,8 +140,8 @@ export function DatasetSessionProvider({ children }: { children: React.ReactNode
       setChartsData(result.charts);
       setInsightsData(result.insights);
 
-      // Refresh datasets list
-      await refreshDatasets();
+      // Refresh datasets list in background
+      refreshDatasets();
       return result;
     } finally {
       setIsLoadingWorkspace(false);
@@ -186,6 +186,20 @@ export function DatasetSessionProvider({ children }: { children: React.ReactNode
     let isMounted = true;
 
     async function init() {
+      // 0. Instant hydration from sessionStorage if available (zero-delay perceived startup)
+      try {
+        const stored = sessionStorage.getItem(STORAGE_KEY);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (parsed.previewData) {
+            setPreviewData(parsed.previewData);
+            setAnalyticsData(parsed.analyticsData);
+            setChartsData(parsed.chartsData);
+            setInsightsData(parsed.insightsData);
+          }
+        }
+      } catch {}
+
       setIsLoadingWorkspace(true);
       try {
         // Establish or restore session (passing tabId to establish immediate presence)
@@ -194,7 +208,7 @@ export function DatasetSessionProvider({ children }: { children: React.ReactNode
         setSessionStatus(sess);
         setIsExpired(false);
 
-        // Fetch user's datasets & analysis history
+        // Fetch user's datasets & analysis history concurrently
         const [dsList, histList] = await Promise.all([
           api.listDatasets(),
           api.listAnalyses()
@@ -202,27 +216,16 @@ export function DatasetSessionProvider({ children }: { children: React.ReactNode
         if (!isMounted) return;
         setDatasets(dsList);
         setAnalysisHistory(histList);
+        setIsLoadingWorkspace(false); // Make workspace table interactive immediately!
 
-        // Check if there was an active dataset previously selected
+        // Check if there was an active dataset previously selected, hydrate asynchronously
         const savedActiveId = sessionStorage.getItem(ACTIVE_DS_KEY);
         const targetId = (savedActiveId && dsList.some(d => d.id === savedActiveId))
           ? savedActiveId
           : (dsList.length > 0 ? dsList[0].id : null);
 
         if (targetId) {
-          await selectDataset(targetId);
-        } else {
-          // Check local fallback
-          const stored = sessionStorage.getItem(STORAGE_KEY);
-          if (stored) {
-            const parsed = JSON.parse(stored);
-            if (parsed.previewData) {
-              setPreviewData(parsed.previewData);
-              setAnalyticsData(parsed.analyticsData);
-              setChartsData(parsed.chartsData);
-              setInsightsData(parsed.insightsData);
-            }
-          }
+          selectDataset(targetId);
         }
       } catch (err) {
         console.warn("Workspace init warning:", err);

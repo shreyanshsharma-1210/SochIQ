@@ -5,7 +5,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Dict, Any, List, Optional
 import uuid
 from app.core.config import settings
-from app.services.supabase.db import get_supabase_client
+from app.services.supabase.db import get_supabase_client, invalidate_owner_cache
 from app.services.supabase.storage import delete_session_storage_folder
 
 logger = logging.getLogger(__name__)
@@ -19,6 +19,10 @@ _MEMORY_API_KEYS: Dict[str, Dict[str, Any]] = {}
 _ACTIVE_TABS: Dict[str, Dict[str, datetime]] = {}
 # _DISCONNECTED_AT: session_hash -> datetime when all tabs closed / disappeared
 _DISCONNECTED_AT: Dict[str, datetime] = {}
+# _LAST_DB_HEARTBEAT: session_hash -> last datetime Supabase DB was updated for presence
+_LAST_DB_HEARTBEAT: Dict[str, datetime] = {}
+# _VALID_OWNER_IDS: in-memory cache of verified Supabase auth.users UUIDs
+_VALID_OWNER_IDS: set = set()
 
 TAB_HEARTBEAT_TIMEOUT_SECONDS = 45
 GRACE_PERIOD_MINUTES = settings.SESSION_INACTIVITY_MINUTES  # default: 30 minutes
@@ -78,17 +82,20 @@ def record_tab_heartbeat(token_or_hash: str, tab_id: str) -> Dict[str, Any]:
         session["last_activity_at"] = now.isoformat()
         session["expires_at"] = indefinite_exp
 
-    # 4. Update Supabase
-    client = get_supabase_client()
-    if client:
-        try:
-            client.table("browser_sessions").update({
-                "status": "active",
-                "last_activity_at": now.isoformat(),
-                "expires_at": indefinite_exp
-            }).eq("session_hash", session_hash).execute()
-        except Exception as e:
-            logger.warning(f"Error extending session presence in Supabase: {e}")
+    # 4. Update Supabase (throttled to at most once per 60 seconds to avoid unnecessary DB load)
+    last_db = _LAST_DB_HEARTBEAT.get(session_hash)
+    if not last_db or (now - last_db).total_seconds() >= 60:
+        _LAST_DB_HEARTBEAT[session_hash] = now
+        client = get_supabase_client()
+        if client:
+            try:
+                client.table("browser_sessions").update({
+                    "status": "active",
+                    "last_activity_at": now.isoformat(),
+                    "expires_at": indefinite_exp
+                }).eq("session_hash", session_hash).execute()
+            except Exception as e:
+                logger.warning(f"Error extending session presence in Supabase: {e}")
 
     return {
         "status": "active",
@@ -199,7 +206,11 @@ def ensure_supabase_owner_id(owner_id: Optional[str]) -> str:
     """
     Ensures owner_id is an authentic Supabase auth.users UUID.
     If owner_id is empty or mock, creates a lightweight anonymous user via Supabase auth admin.
+    Cached in memory to eliminate repeated HTTP round-trips.
     """
+    if owner_id and owner_id in _VALID_OWNER_IDS:
+        return owner_id
+
     client = get_supabase_client()
     if not client:
         return owner_id or str(uuid.uuid4())
@@ -208,6 +219,7 @@ def ensure_supabase_owner_id(owner_id: Optional[str]) -> str:
         try:
             user = client.auth.admin.get_user_by_id(owner_id)
             if user and user.user:
+                _VALID_OWNER_IDS.add(owner_id)
                 return owner_id
         except Exception:
             pass
@@ -218,7 +230,9 @@ def ensure_supabase_owner_id(owner_id: Optional[str]) -> str:
             "email_confirm": True,
             "user_metadata": {"is_anonymous": True}
         })
-        return anon_user.user.id
+        new_id = anon_user.user.id
+        _VALID_OWNER_IDS.add(new_id)
+        return new_id
     except Exception as e:
         logger.warning(f"Could not provision Supabase anonymous user: {e}")
         return owner_id or str(uuid.uuid4())
@@ -235,6 +249,8 @@ def delete_workspace_data(owner_id: str, session_id: Optional[str] = None):
     6. Removes temporary anonymous user from auth.users
     7. Cleans presence stores
     """
+    invalidate_owner_cache(owner_id)
+    _VALID_OWNER_IDS.discard(owner_id)
     client = get_supabase_client()
     logger.info(f"Purging expired workspace data for owner_id={owner_id}, session_id={session_id}")
 
@@ -342,8 +358,7 @@ def create_browser_session(owner_id: Optional[str] = None, tab_id: Optional[str]
 
     _MEMORY_SESSIONS[session_hash] = session_record
 
-    if tab_id:
-        record_tab_heartbeat(session_hash, tab_id)
+    record_tab_heartbeat(session_hash, tab_id or "default")
 
     client = get_supabase_client()
     if client:

@@ -28,7 +28,9 @@ from app.services.supabase.db import (
     get_dataset_by_id,
     delete_saved_dataset,
     save_analysis_history,
-    get_analyses_for_user
+    get_analyses_for_user,
+    get_cached_dataset_analysis,
+    cache_dataset_analysis
 )
 from app.services.supabase.storage import (
     upload_dataset_file,
@@ -132,48 +134,57 @@ async def upload_and_process_dataset(
         quality=quality_metrics
     )
 
-    # 3. Persist Dataset Metadata to Supabase PostgreSQL
+    # 3 & 4. Persist Dataset Metadata & Analysis History in parallel
+    import asyncio
+    meta_future = save_dataset_metadata(
+        owner_id=owner_id,
+        name=filename.rsplit(".", 1)[0],
+        original_filename=filename,
+        file_format=file_format,
+        row_count=len(df),
+        column_count=len(df.columns),
+        column_summary=[c.model_dump() for c in quality_metrics.column_audits],
+        storage_path=storage_path,
+        file_size_bytes=file_size,
+        browser_session_id=session_id,
+        dataset_id=dataset_id,
+        status="ready"
+    )
+
+    history_future = save_analysis_history(
+        owner_id=owner_id,
+        dataset_id=dataset_id,
+        analysis_type="initial_profile",
+        parameters={"filename": filename, "file_format": file_format},
+        result_summary={
+            "preview": preview_resp.model_dump(),
+            "analytics": analytics_summary.model_dump(),
+            "charts": charts_data.model_dump(),
+            "insights": rule_insights.model_dump()
+        },
+        browser_session_id=session_id
+    )
+
     try:
-        await save_dataset_metadata(
-            owner_id=owner_id,
-            name=filename.rsplit(".", 1)[0],
-            original_filename=filename,
-            file_format=file_format,
-            row_count=len(df),
-            column_count=len(df.columns),
-            column_summary=[c.model_dump() for c in quality_metrics.column_audits],
-            storage_path=storage_path,
-            file_size_bytes=file_size,
-            browser_session_id=session_id,
-            dataset_id=dataset_id,
-            status="ready"
-        )
+        saved_meta, _ = await asyncio.gather(meta_future, history_future)
     except Exception as e:
-        # Compensating rollback: remove storage file if metadata write fails
-        logger.error(f"Failed to persist dataset metadata, rolling back storage: {e}")
+        logger.error(f"Failed to persist dataset metadata/history: {e}")
         delete_dataset_file(storage_path)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Failed to persist dataset metadata to database."
         )
 
-    # 4. Persist Initial Analysis Run to Supabase PostgreSQL
-    try:
-        await save_analysis_history(
-            owner_id=owner_id,
-            dataset_id=dataset_id,
-            analysis_type="initial_profile",
-            parameters={"filename": filename, "file_format": file_format},
-            result_summary={
-                "preview": preview_resp.model_dump(),
-                "analytics": analytics_summary.model_dump(),
-                "charts": charts_data.model_dump(),
-                "insights": rule_insights.model_dump()
-            },
-            browser_session_id=session_id
-        )
-    except Exception as e:
-        logger.warning(f"Could not save initial analysis history run: {e}")
+    # Fast in-memory cache population for sub-millisecond tab switching
+    cache_dataset_analysis(
+        dataset_id=dataset_id,
+        owner_id=owner_id,
+        preview=preview_resp.model_dump(),
+        analytics=analytics_summary.model_dump(),
+        charts=charts_data.model_dump(),
+        insights=rule_insights.model_dump(),
+        metadata=saved_meta if isinstance(saved_meta, dict) else None
+    )
 
     now_iso = datetime.now(timezone.utc).isoformat()
     return DatasetUploadResponse(
@@ -222,23 +233,48 @@ async def get_dataset_details(
     auth: AuthContext = Depends(get_auth_context)
 ):
     """
-    Retrieves dataset metadata and its latest analysis run from Supabase.
+    Retrieves dataset metadata and its latest analysis run from Supabase or fast memory cache.
     Allows instant workspace restoration without re-uploading the file.
     """
-    ds = await get_dataset_by_id(auth.user_id, dataset_id)
+    # 1. Fast in-memory cache check (sub-millisecond reopen)
+    cached = get_cached_dataset_analysis(dataset_id, auth.user_id)
+    if cached:
+        return {
+            "dataset": cached.get("metadata") or await get_dataset_by_id(auth.user_id, dataset_id),
+            "preview": cached.get("preview"),
+            "analytics": cached.get("analytics"),
+            "charts": cached.get("charts"),
+            "insights": cached.get("insights"),
+            "analyses": []
+        }
+
+    # 2. Parallel Supabase retrieval
+    import asyncio
+    ds, analyses = await asyncio.gather(
+        get_dataset_by_id(auth.user_id, dataset_id),
+        get_analyses_for_user(auth.user_id, dataset_id=dataset_id, include_summary=True)
+    )
+
     if not ds:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Dataset not found or does not belong to active workspace."
         )
 
-    # Fetch recent analyses for this dataset
-    analyses = await get_analyses_for_user(auth.user_id, dataset_id=dataset_id)
     latest_analysis = analyses[0] if analyses else None
 
-    # If analysis history exists, return it directly
+    # If analysis history exists, cache and return it directly
     if latest_analysis and latest_analysis.get("result_summary"):
         res_sum = latest_analysis["result_summary"]
+        cache_dataset_analysis(
+            dataset_id=dataset_id,
+            owner_id=auth.user_id,
+            preview=res_sum.get("preview"),
+            analytics=res_sum.get("analytics"),
+            charts=res_sum.get("charts"),
+            insights=res_sum.get("insights"),
+            metadata=ds
+        )
         return {
             "dataset": ds,
             "preview": res_sum.get("preview"),

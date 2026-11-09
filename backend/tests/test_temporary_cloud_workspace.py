@@ -14,7 +14,7 @@ def test_session_lifecycle_and_reload():
     assert data["status"] == "active"
     assert "session_id" in data
     assert "owner_id" in data
-    assert data["remaining_seconds"] > 0
+    assert data["is_active"] is True
     assert "datalens_session" in client.cookies
 
     # 2. Simulate page reload (GET /api/v1/session using existing cookie)

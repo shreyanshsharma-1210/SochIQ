@@ -25,11 +25,15 @@ async def periodic_cleanup_worker():
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Run initial cleanup on startup
+    # Warm up Supabase client singleton asynchronously
     try:
-        cleanup_expired_workspaces()
+        from app.services.supabase.db import get_supabase_client
+        get_supabase_client()
     except Exception as e:
-        logger.warning(f"Initial cleanup error: {e}")
+        logger.warning(f"Initial client warmup: {e}")
+
+    # Run initial cleanup asynchronously so port binds instantly without blocking health check
+    asyncio.create_task(asyncio.to_thread(cleanup_expired_workspaces))
 
     task = asyncio.create_task(periodic_cleanup_worker())
     yield

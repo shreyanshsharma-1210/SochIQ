@@ -25,7 +25,7 @@ async def list_all_analyses(
     auth: AuthContext = Depends(get_auth_context)
 ):
     """Lists all saved analysis runs for the active browser workspace."""
-    runs = await get_analyses_for_user(auth.user_id, dataset_id=dataset_id)
+    runs = await get_analyses_for_user(auth.user_id, dataset_id=dataset_id, include_summary=False)
     return [
         AnalysisRunResponse(
             id=str(r.get("id")),

@@ -127,8 +127,17 @@ export default function MyAnalysesPage() {
       {activeTab === "datasets" && (
         <>
           {isLoadingWorkspace ? (
-            <div className="sochiq-card p-12 text-center text-xs text-grey-muted">
-              Loading workspace datasets...
+            <div className="flex flex-col gap-3">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="sochiq-card p-5 animate-pulse flex items-center justify-between">
+                  <div className="flex items-center gap-3 w-1/3">
+                    <div className="w-8 h-8 rounded-xl bg-grey-subtle" />
+                    <div className="h-4 bg-grey-subtle rounded w-3/4" />
+                  </div>
+                  <div className="h-4 bg-grey-subtle rounded w-20" />
+                  <div className="h-7 bg-grey-subtle rounded w-24" />
+                </div>
+              ))}
             </div>
           ) : datasets.length === 0 ? (
             <div className="sochiq-card p-14 text-center flex flex-col items-center gap-3">

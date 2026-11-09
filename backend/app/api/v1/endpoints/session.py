@@ -40,7 +40,7 @@ async def initialize_workspace_session(
 
     if not session_data:
         # Create fresh anonymous browser session
-        created = create_browser_session(owner_id=auth.user_id, tab_id=tab_id)
+        created = create_browser_session(owner_id=auth.user_id, tab_id=tab_id or "default")
         raw_token = created["raw_token"]
         session_data = {
             "id": created["session_id"],
@@ -59,12 +59,15 @@ async def initialize_workspace_session(
             samesite="lax",
             secure=False
         )
-    elif tab_id:
-        record_tab_heartbeat(session_cookie, tab_id)
+    else:
+        record_tab_heartbeat(session_cookie, tab_id or "default")
 
     presence = get_session_presence_state(raw_token) if raw_token else {"is_active": True, "active_tab_count": 1}
-    datasets = await get_saved_datasets_for_user(session_data["owner_id"])
-    analyses = await get_analyses_for_user(session_data["owner_id"])
+    import asyncio
+    datasets, analyses = await asyncio.gather(
+        get_saved_datasets_for_user(session_data["owner_id"]),
+        get_analyses_for_user(session_data["owner_id"], include_summary=False)
+    )
 
     return SessionStatusResponse(
         status="active",

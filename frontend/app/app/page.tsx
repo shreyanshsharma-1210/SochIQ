@@ -154,7 +154,20 @@ export default function OverviewDashboardPage() {
         </div>
 
         {isLoadingWorkspace ? (
-          <div className="p-8 text-center text-xs text-grey-muted">Loading workspace datasets...</div>
+          <div className="p-6 space-y-3">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="animate-pulse flex items-center justify-between py-2.5 border-b border-grey-border/40 last:border-0">
+                <div className="flex items-center gap-3 w-1/3">
+                  <div className="w-5 h-5 rounded bg-grey-subtle" />
+                  <div className="h-3.5 bg-grey-subtle rounded w-3/4" />
+                </div>
+                <div className="h-3.5 bg-grey-subtle rounded w-14" />
+                <div className="h-3.5 bg-grey-subtle rounded w-14" />
+                <div className="h-3.5 bg-grey-subtle rounded w-20" />
+                <div className="h-7 bg-grey-subtle rounded w-16" />
+              </div>
+            ))}
+          </div>
         ) : datasets.length === 0 ? (
           <div className="p-10 text-center flex flex-col items-center justify-center gap-2">
             <div className="w-10 h-10 rounded-full bg-yellow/20 flex items-center justify-center text-charcoal">

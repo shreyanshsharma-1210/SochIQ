@@ -7,13 +7,72 @@ from app.core.config import settings
 
 logger = logging.getLogger(__name__)
 
+# Singleton Supabase Client with persistent connection pooling
+_SUPABASE_CLIENT: Optional[Client] = None
+
+# Ephemeral in-memory dataset cache for active workspaces:
+# dataset_id -> { "owner_id": str, "preview": dict, "analytics": dict, "charts": dict, "insights": dict, "metadata": dict, "cached_at": float }
+_DATASET_CACHE: Dict[str, Dict[str, Any]] = {}
+
 
 def get_supabase_client() -> Optional[Client]:
-    """Creates a Supabase client if configured."""
+    """Returns singleton Supabase client with persistent connection pooling."""
+    global _SUPABASE_CLIENT
+    if _SUPABASE_CLIENT is not None:
+        return _SUPABASE_CLIENT
+
     if settings.SUPABASE_URL and (settings.SUPABASE_SERVICE_ROLE_KEY or settings.SUPABASE_PUBLISHABLE_KEY):
         key = settings.SUPABASE_SERVICE_ROLE_KEY or settings.SUPABASE_PUBLISHABLE_KEY
-        return create_client(settings.SUPABASE_URL, key)
+        try:
+            _SUPABASE_CLIENT = create_client(settings.SUPABASE_URL, key)
+            logger.info("Initialized pooled Supabase singleton client.")
+            return _SUPABASE_CLIENT
+        except Exception as e:
+            logger.error(f"Failed to initialize Supabase client: {e}")
+            return None
     return None
+
+
+def cache_dataset_analysis(
+    dataset_id: str,
+    owner_id: str,
+    preview: Optional[Dict[str, Any]] = None,
+    analytics: Optional[Dict[str, Any]] = None,
+    charts: Optional[Dict[str, Any]] = None,
+    insights: Optional[Dict[str, Any]] = None,
+    metadata: Optional[Dict[str, Any]] = None
+) -> None:
+    """Stores parsed analysis results in memory for sub-millisecond reopening."""
+    import time
+    _DATASET_CACHE[dataset_id] = {
+        "owner_id": owner_id,
+        "preview": preview,
+        "analytics": analytics,
+        "charts": charts,
+        "insights": insights,
+        "metadata": metadata,
+        "cached_at": time.time()
+    }
+
+
+def get_cached_dataset_analysis(dataset_id: str, owner_id: str) -> Optional[Dict[str, Any]]:
+    """Retrieves cached dataset analysis ensuring strict workspace owner isolation."""
+    cached = _DATASET_CACHE.get(dataset_id)
+    if cached and cached.get("owner_id") == owner_id:
+        return cached
+    return None
+
+
+def invalidate_dataset_cache(dataset_id: str) -> None:
+    """Invalidates cache for a specific dataset."""
+    _DATASET_CACHE.pop(dataset_id, None)
+
+
+def invalidate_owner_cache(owner_id: str) -> None:
+    """Invalidates all cached datasets belonging to an expired workspace owner."""
+    for ds_id in list(_DATASET_CACHE.keys()):
+        if _DATASET_CACHE[ds_id].get("owner_id") == owner_id:
+            _DATASET_CACHE.pop(ds_id, None)
 
 
 async def save_dataset_metadata(
@@ -76,7 +135,6 @@ async def save_dataset_metadata(
             res = client.table("dataset_metadata").insert(record).execute()
             if res.data:
                 ret = res.data[0]
-                # Attach flattened helpers
                 ret["storage_path"] = storage_path
                 ret["file_size_bytes"] = file_size_bytes
                 ret["browser_session_id"] = browser_session_id
@@ -117,6 +175,11 @@ async def get_saved_datasets_for_user(owner_id: str) -> List[Dict[str, Any]]:
 
 async def get_dataset_by_id(owner_id: str, dataset_id: str) -> Optional[Dict[str, Any]]:
     """Retrieves a single dataset metadata record by id."""
+    # Check memory cache first
+    cached = get_cached_dataset_analysis(dataset_id, owner_id)
+    if cached and cached.get("metadata"):
+        return cached["metadata"]
+
     client = get_supabase_client()
     if client:
         try:
@@ -137,6 +200,7 @@ async def get_dataset_by_id(owner_id: str, dataset_id: str) -> Optional[Dict[str
 
 async def delete_saved_dataset(owner_id: str, dataset_id: str) -> bool:
     """Deletes a metadata record, its storage file, and analysis history."""
+    invalidate_dataset_cache(dataset_id)
     client = get_supabase_client()
     if client:
         try:
@@ -170,6 +234,16 @@ async def save_analysis_history(
     Saves an analytical execution run into analysis_history.
     Includes parameters, quality audit, charts, and insights in result_summary JSONB.
     """
+    # Also update in-memory cache for instant reopening
+    cache_dataset_analysis(
+        dataset_id=dataset_id,
+        owner_id=owner_id,
+        preview=result_summary.get("preview"),
+        analytics=result_summary.get("analytics"),
+        charts=result_summary.get("charts"),
+        insights=result_summary.get("insights")
+    )
+
     client = get_supabase_client()
     analysis_id = str(uuid.uuid4())
     now = datetime.datetime.now(datetime.timezone.utc).isoformat()
@@ -195,12 +269,20 @@ async def save_analysis_history(
     return record
 
 
-async def get_analyses_for_user(owner_id: str, dataset_id: Optional[str] = None) -> List[Dict[str, Any]]:
-    """Retrieves all analysis history runs for a user, optionally filtered by dataset."""
+async def get_analyses_for_user(
+    owner_id: str,
+    dataset_id: Optional[str] = None,
+    include_summary: bool = True
+) -> List[Dict[str, Any]]:
+    """
+    Retrieves analysis history runs for a user.
+    When include_summary=False, avoids downloading massive JSONB result_summary payloads.
+    """
     client = get_supabase_client()
     if client:
         try:
-            query = client.table("analysis_history").select("*").eq("owner_id", owner_id)
+            cols = "*" if include_summary else "id, owner_id, dataset_id, analysis_type, parameters, created_at"
+            query = client.table("analysis_history").select(cols).eq("owner_id", owner_id)
             if dataset_id:
                 query = query.eq("dataset_id", dataset_id)
             res = query.order("created_at", desc=True).execute()

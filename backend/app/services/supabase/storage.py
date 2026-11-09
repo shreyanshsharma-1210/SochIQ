@@ -7,8 +7,15 @@ logger = logging.getLogger(__name__)
 BUCKET_NAME = "sochiq-temporary-datasets"
 
 
+_BUCKET_VERIFIED: bool = False
+
+
 def ensure_storage_bucket() -> bool:
-    """Ensures the private storage bucket exists in Supabase."""
+    """Ensures the private storage bucket exists in Supabase (cached after first verification)."""
+    global _BUCKET_VERIFIED
+    if _BUCKET_VERIFIED:
+        return True
+
     client = get_supabase_client()
     if not client:
         return False
@@ -18,6 +25,7 @@ def ensure_storage_bucket() -> bool:
         if BUCKET_NAME not in existing:
             client.storage.create_bucket(BUCKET_NAME, options={"public": False})
             logger.info(f"Created private storage bucket: {BUCKET_NAME}")
+        _BUCKET_VERIFIED = True
         return True
     except Exception as e:
         logger.warning(f"Could not verify/create storage bucket {BUCKET_NAME}: {e}")
