@@ -77,3 +77,27 @@ def test_export_csv():
     assert response.headers["content-type"] == "text/csv; charset=utf-8"
     assert b"1,10\n2,20" in response.content or b"1,10\r\n2,20" in response.content
 
+
+def test_ai_query_structured():
+    payload = {
+        "question": "What is the summary?",
+        "summary_context": {
+            "row_count": 100,
+            "column_count": 3
+        },
+        "quality_context": {
+            "cleanliness_score": 95
+        }
+    }
+    response = client.post("/api/v1/ai/query", json=payload)
+    assert response.status_code == 200
+    data = response.json()
+    assert "answer" in data
+    assert "model" in data
+    assert data["source"] == "groq"
+    assert "structured" in data
+    if data["structured"]:
+        assert "response_type" in data["structured"]
+        assert "message" in data["structured"]
+
+

@@ -112,6 +112,44 @@ class RuleInsightsResponse(BaseModel):
     insights: List[RuleInsight]
 
 
+class AIMetric(BaseModel):
+    label: str
+    value: Any
+    unit: Optional[str] = None
+    description: Optional[str] = None
+
+
+class AISection(BaseModel):
+    title: str
+    content: str
+    type: Optional[str] = "text"  # text, list, callout
+
+
+class AITable(BaseModel):
+    title: Optional[str] = None
+    headers: List[str]
+    rows: List[List[Any]]
+
+
+class AIChart(BaseModel):
+    chart_type: str  # bar, line, pie
+    title: str
+    data: List[Dict[str, Any]]
+    x_key: Optional[str] = "name"
+    y_key: Optional[str] = "value"
+
+
+class StructuredAIResponse(BaseModel):
+    response_type: str = "explanation"  # greeting, overview, analysis, comparison, data_quality, trend, explanation, error
+    message: str
+    sections: Optional[List[AISection]] = None
+    metrics: Optional[List[AIMetric]] = None
+    tables: Optional[List[AITable]] = None
+    charts: Optional[List[AIChart]] = None
+    suggestions: Optional[List[str]] = None
+    raw_markdown: Optional[str] = None
+
+
 class AIQueryRequest(BaseModel):
     question: str
     summary_context: Dict[str, Any]
@@ -120,6 +158,7 @@ class AIQueryRequest(BaseModel):
 
 class AIQueryResponse(BaseModel):
     answer: str
+    structured: Optional[StructuredAIResponse] = None
     model: str
     source: str = "groq"
     disclaimer: str = "Grounded on computed summary statistics. No raw data was transmitted to external servers."
