@@ -1,0 +1,1016 @@
+transaction_id,date,category,product,units_sold,unit_price,revenue,customer_rating,returned
+TXN-10000,2025-01-01,Home & Kitchen,Air Fryer,4,159.96,639.84,5.0,True
+TXN-10001,2025-01-01,Beauty,Lip Balm,5,76.51,382.55,3.0,False
+TXN-10002,2025-01-01,Apparel,Denim Jeans,4,73.49,293.96,5.0,False
+TXN-10003,2025-01-02,Apparel,Running Shoes,14,41.97,587.58,5.0,False
+TXN-10004,2025-01-02,Electronics,Bluetooth Speaker,11,131.27,1443.97,5.0,False
+TXN-10005,2025-01-02,Electronics,USB-C Cable,13,267.54,3478.02,3.0,False
+TXN-10006,2025-01-03,Electronics,Bluetooth Speaker,12,103.99,1247.88,5.0,False
+TXN-10007,2025-01-03,Books,Python Cookbook,3,116.2,348.6,4.0,False
+TXN-10008,2025-01-03,Apparel,Cotton T-Shirt,8,228.51,1828.08,5.0,False
+TXN-10009,2025-01-04,Apparel,Cotton T-Shirt,10,76.59,765.9,4.0,False
+TXN-10010,2025-01-04,Electronics,USB-C Cable,4,314.97,1259.88,5.0,False
+TXN-10011,2025-01-05,Beauty,Moisturizer,14,186.86,2616.04,2.0,False
+TXN-10012,2025-01-05,Books,AI Engineering Guide,2,162.18,324.36,5.0,False
+TXN-10013,2025-01-05,Electronics,Bluetooth Speaker,2,199.66,399.32,5.0,False
+TXN-10014,2025-01-06,Electronics,Smart Watch,1,66.45,66.45,5.0,False
+TXN-10015,2025-01-06,Electronics,Bluetooth Speaker,13,218.58,2841.54,4.0,False
+TXN-10016,2025-01-06,Electronics,Wireless Earbuds,4,133.45,533.8,4.0,False
+TXN-10017,2025-01-07,Home & Kitchen,Coffee Maker,10,315.04,3150.4,,False
+TXN-10018,2025-01-07,Home & Kitchen,Blender,9,67.41,606.69,3.0,False
+TXN-10019,2025-01-07,Electronics,Bluetooth Speaker,14,182.4,2553.6,4.0,False
+TXN-10020,2025-01-08,Apparel,Hoodie,11,213.36,2346.96,5.0,False
+TXN-10021,2025-01-08,Electronics,USB-C Cable,7,21.35,149.45,5.0,False
+TXN-10022,2025-01-09,Electronics,Smart Watch,12,133.66,1603.92,3.0,False
+TXN-10023,2025-01-09,Home & Kitchen,Blender,10,259.1,2591.0,5.0,False
+TXN-10024,2025-01-09,Home & Kitchen,Blender,7,288.93,2022.51,5.0,False
+TXN-10025,2025-01-10,Books,AI Engineering Guide,13,116.48,1514.24,2.0,False
+TXN-10026,2025-01-10,Electronics,USB-C Cable,7,281.52,1970.64,5.0,False
+TXN-10027,2025-01-10,Home & Kitchen,Toaster,8,339.04,2712.32,1.0,False
+TXN-10028,2025-01-11,Apparel,Denim Jeans,1,301.34,301.34,4.0,False
+TXN-10029,2025-01-11,Electronics,Bluetooth Speaker,10,50.0,500.0,1.0,True
+TXN-10030,2025-01-11,Apparel,Hoodie,13,261.51,3399.63,2.0,False
+TXN-10031,2025-01-12,Electronics,Wireless Earbuds,10,118.69,1186.9,5.0,False
+TXN-10032,2025-01-12,Electronics,USB-C Cable,8,346.06,2768.48,4.0,True
+TXN-10033,2025-01-13,Beauty,Sunscreen,4,175.02,700.08,4.0,False
+TXN-10034,2025-01-13,Beauty,Moisturizer,4,51.63,206.52,3.0,False
+TXN-10035,2025-01-13,Books,AI Engineering Guide,4,256.56,1026.24,4.0,False
+TXN-10036,2025-01-14,Electronics,Smart Watch,6,119.82,718.92,4.0,False
+TXN-10037,2025-01-14,Electronics,USB-C Cable,7,349.01,2443.07,4.0,False
+TXN-10038,2025-01-14,Apparel,Denim Jeans,6,343.13,2058.78,4.0,False
+TXN-10039,2025-01-15,Home & Kitchen,Air Fryer,1,233.09,233.09,5.0,False
+TXN-10040,2025-01-15,Electronics,Wireless Earbuds,12,54.14,649.68,4.0,False
+TXN-10041,2025-01-15,Home & Kitchen,Air Fryer,8,243.53,1948.24,4.0,True
+TXN-10042,2025-01-16,Electronics,Wireless Earbuds,13,41.63,541.19,4.0,False
+TXN-10043,2025-01-16,Beauty,Face Wash,10,19.98,199.8,5.0,False
+TXN-10044,2025-01-17,Electronics,Bluetooth Speaker,11,289.81,3187.91,4.0,False
+TXN-10045,2025-01-17,Apparel,Running Shoes,13,81.32,1057.16,4.0,False
+TXN-10046,2025-01-17,Electronics,Smart Watch,7,138.87,972.09,4.0,False
+TXN-10047,2025-01-18,Home & Kitchen,Air Fryer,6,340.98,2045.88,,False
+TXN-10048,2025-01-18,Home & Kitchen,Air Fryer,6,124.53,747.18,4.0,False
+TXN-10049,2025-01-18,Electronics,Wireless Earbuds,5,110.81,554.05,5.0,False
+TXN-10050,2025-01-19,Beauty,Sunscreen,6,322.19,1933.14,4.0,False
+TXN-10051,2025-01-19,Books,Python Cookbook,12,47.65,571.8,3.0,False
+TXN-10052,2025-01-19,Beauty,Sunscreen,9,268.26,2414.34,5.0,True
+TXN-10053,2025-01-20,Books,Python Cookbook,10,345.94,3459.4,4.0,False
+TXN-10054,2025-01-20,Apparel,Hoodie,9,316.44,2847.96,5.0,False
+TXN-10055,2025-01-21,Beauty,Sunscreen,10,231.57,2315.7,5.0,False
+TXN-10056,2025-01-21,Electronics,USB-C Cable,8,116.78,934.24,5.0,False
+TXN-10057,2025-01-21,Electronics,Smart Watch,10,96.47,964.7,1.0,False
+TXN-10058,2025-01-22,Electronics,USB-C Cable,9,288.55,2596.95,5.0,False
+TXN-10059,2025-01-22,Electronics,Wireless Earbuds,13,309.14,4018.82,4.0,False
+TXN-10060,2025-01-22,Home & Kitchen,Coffee Maker,10,188.65,1886.5,5.0,False
+TXN-10061,2025-01-23,Electronics,USB-C Cable,8,93.08,744.64,5.0,False
+TXN-10062,2025-01-23,Books,Python Cookbook,8,48.4,387.2,5.0,False
+TXN-10063,2025-01-23,Home & Kitchen,Toaster,1,39.64,39.64,4.0,False
+TXN-10064,2025-01-24,Electronics,Bluetooth Speaker,10,254.49,2544.9,4.0,False
+TXN-10065,2025-01-24,Home & Kitchen,Blender,11,152.84,1681.24,3.0,False
+TXN-10066,2025-01-25,Electronics,Smart Watch,5,317.82,1589.1,5.0,False
+TXN-10067,2025-01-25,Books,Python Cookbook,4,261.49,1045.96,4.0,False
+TXN-10068,2025-01-25,Electronics,Wireless Earbuds,2,75.03,150.06,4.0,False
+TXN-10069,2025-01-26,Beauty,Face Wash,8,218.68,1749.44,5.0,False
+TXN-10070,2025-01-26,Books,AI Engineering Guide,3,158.07,474.21,4.0,False
+TXN-10071,2025-01-26,Electronics,USB-C Cable,4,206.26,825.04,3.0,False
+TXN-10072,2025-01-27,Electronics,USB-C Cable,12,260.94,3131.28,4.0,False
+TXN-10073,2025-01-27,Books,Python Cookbook,7,284.11,1988.77,4.0,False
+TXN-10074,2025-01-27,Apparel,Hoodie,10,296.87,2968.7,4.0,True
+TXN-10075,2025-01-28,Apparel,Running Shoes,9,96.35,867.15,1.0,False
+TXN-10076,2025-01-28,Books,Data Science Handbook,2,20.58,41.16,3.0,False
+TXN-10077,2025-01-29,Electronics,Bluetooth Speaker,3,261.36,784.08,4.0,False
+TXN-10078,2025-01-29,Home & Kitchen,Blender,4,46.16,184.64,5.0,False
+TXN-10079,2025-01-29,Electronics,Smart Watch,10,117.07,1170.7,1.0,False
+TXN-10080,2025-01-30,Books,Data Science Handbook,1,11.3,11.3,4.0,False
+TXN-10081,2025-01-30,Apparel,Cotton T-Shirt,7,241.77,1692.39,5.0,True
+TXN-10082,2025-01-30,Electronics,Smart Watch,2,66.82,133.64,3.0,False
+TXN-10083,2025-01-31,Electronics,Wireless Earbuds,5,232.8,1164.0,4.0,False
+TXN-10084,2025-01-31,Electronics,Bluetooth Speaker,1,347.19,347.19,5.0,False
+TXN-10085,2025-01-31,Electronics,Wireless Earbuds,3,34.71,104.13,5.0,False
+TXN-10086,2025-02-01,Apparel,Denim Jeans,12,36.21,434.52,5.0,False
+TXN-10087,2025-02-01,Apparel,Running Shoes,2,125.73,251.46,5.0,False
+TXN-10088,2025-02-02,Books,AI Engineering Guide,1,304.57,304.57,5.0,False
+TXN-10089,2025-02-02,Home & Kitchen,Coffee Maker,7,83.28,582.96,4.0,False
+TXN-10090,2025-02-02,Electronics,USB-C Cable,5,132.53,662.65,5.0,False
+TXN-10091,2025-02-03,Apparel,Hoodie,1,33.29,33.29,1.0,False
+TXN-10092,2025-02-03,Books,AI Engineering Guide,6,269.47,1616.82,5.0,False
+TXN-10093,2025-02-03,Apparel,Denim Jeans,5,148.82,744.1,4.0,False
+TXN-10094,2025-02-04,Books,AI Engineering Guide,3,268.14,804.42,4.0,False
+TXN-10095,2025-02-04,Home & Kitchen,Air Fryer,12,317.23,3806.76,4.0,False
+TXN-10096,2025-02-04,Home & Kitchen,Air Fryer,7,89.14,623.98,5.0,False
+TXN-10097,2025-02-05,Home & Kitchen,Blender,11,284.51,3129.61,2.0,False
+TXN-10098,2025-02-05,Electronics,Wireless Earbuds,10,30.09,300.9,5.0,False
+TXN-10099,2025-02-06,Electronics,Smart Watch,9,315.61,2840.49,5.0,False
+TXN-10100,2025-02-06,Electronics,Bluetooth Speaker,14,231.26,3237.64,3.0,False
+TXN-10101,2025-02-06,Apparel,Running Shoes,13,307.24,3994.12,5.0,False
+TXN-10102,2025-02-07,Electronics,USB-C Cable,13,10.06,130.78,5.0,True
+TXN-10103,2025-02-07,Home & Kitchen,Air Fryer,9,67.49,607.41,5.0,False
+TXN-10104,2025-02-07,Beauty,Face Wash,14,142.52,1995.28,4.0,False
+TXN-10105,2025-02-08,Electronics,Smart Watch,9,139.03,1251.27,4.0,False
+TXN-10106,2025-02-08,Home & Kitchen,Toaster,2,87.09,174.18,3.0,False
+TXN-10107,2025-02-08,Books,Data Science Handbook,3,139.75,419.25,4.0,False
+TXN-10108,2025-02-09,Electronics,Smart Watch,7,53.81,376.67,5.0,False
+TXN-10109,2025-02-09,Electronics,Wireless Earbuds,5,150.34,751.7,2.0,False
+TXN-10110,2025-02-10,Electronics,Wireless Earbuds,2,282.8,565.6,5.0,False
+TXN-10111,2025-02-10,Electronics,Smart Watch,3,172.88,518.64,4.0,False
+TXN-10112,2025-02-10,Beauty,Moisturizer,10,16.12,161.2,4.0,False
+TXN-10113,2025-02-11,Books,Data Science Handbook,6,153.29,919.74,5.0,False
+TXN-10114,2025-02-11,Apparel,Running Shoes,13,19.24,250.12,5.0,False
+TXN-10115,2025-02-11,Books,Python Cookbook,7,338.52,2369.64,4.0,False
+TXN-10116,2025-02-12,Books,Data Science Handbook,9,53.33,479.97,4.0,False
+TXN-10117,2025-02-12,Electronics,Smart Watch,1,250.61,250.61,4.0,False
+TXN-10118,2025-02-12,Books,AI Engineering Guide,11,340.74,3748.14,1.0,False
+TXN-10119,2025-02-13,Home & Kitchen,Blender,7,290.85,2035.95,4.0,False
+TXN-10120,2025-02-13,Books,Python Cookbook,8,247.77,1982.16,4.0,True
+TXN-10121,2025-02-14,Books,Python Cookbook,12,295.42,3545.04,4.0,False
+TXN-10122,2025-02-14,Electronics,Bluetooth Speaker,14,343.81,4813.34,5.0,False
+TXN-10123,2025-02-14,Electronics,Wireless Earbuds,3,221.26,663.78,4.0,False
+TXN-10124,2025-02-15,Electronics,Wireless Earbuds,4,200.12,800.48,4.0,False
+TXN-10125,2025-02-15,Home & Kitchen,Coffee Maker,10,223.6,2236.0,4.0,True
+TXN-10126,2025-02-15,Books,Data Science Handbook,6,191.11,1146.66,5.0,False
+TXN-10127,2025-02-16,Books,Python Cookbook,10,225.93,2259.3,5.0,False
+TXN-10128,2025-02-16,Electronics,Wireless Earbuds,7,162.95,1140.65,4.0,False
+TXN-10129,2025-02-17,Home & Kitchen,Coffee Maker,13,84.27,1095.51,5.0,False
+TXN-10130,2025-02-17,Home & Kitchen,Toaster,14,50.88,712.32,4.0,False
+TXN-10131,2025-02-17,Electronics,Smart Watch,4,33.24,132.96,4.0,False
+TXN-10132,2025-02-18,Electronics,Smart Watch,8,99.53,796.24,4.0,True
+TXN-10133,2025-02-18,Electronics,Bluetooth Speaker,5,25.68,128.4,4.0,False
+TXN-10134,2025-02-18,Beauty,Sunscreen,1,202.84,202.84,5.0,False
+TXN-10135,2025-02-19,Electronics,Smart Watch,4,106.5,426.0,5.0,False
+TXN-10136,2025-02-19,Home & Kitchen,Blender,3,290.34,871.02,3.0,False
+TXN-10137,2025-02-19,Apparel,Cotton T-Shirt,9,35.24,317.16,5.0,False
+TXN-10138,2025-02-20,Home & Kitchen,Toaster,8,86.96,695.68,4.0,True
+TXN-10139,2025-02-20,Beauty,Moisturizer,1,258.28,258.28,3.0,False
+TXN-10140,2025-02-21,Beauty,Moisturizer,11,213.59,2349.49,3.0,False
+TXN-10141,2025-02-21,Electronics,Smart Watch,6,31.93,191.58,4.0,False
+TXN-10142,2025-02-21,Home & Kitchen,Air Fryer,9,308.26,2774.34,3.0,True
+TXN-10143,2025-02-22,Electronics,Wireless Earbuds,7,308.27,2157.89,3.0,False
+TXN-10144,2025-02-22,Electronics,USB-C Cable,4,122.34,489.36,4.0,False
+TXN-10145,2025-02-22,Electronics,Wireless Earbuds,13,125.74,1634.62,4.0,True
+TXN-10146,2025-02-23,Apparel,Cotton T-Shirt,1,346.27,346.27,5.0,True
+TXN-10147,2025-02-23,Home & Kitchen,Toaster,12,222.9,2674.8,4.0,False
+TXN-10148,2025-02-23,Electronics,Bluetooth Speaker,2,190.65,381.3,,False
+TXN-10149,2025-02-24,Electronics,Bluetooth Speaker,12,294.97,3539.64,4.0,True
+TXN-10150,2025-02-24,Beauty,Face Wash,5,107.0,535.0,5.0,False
+TXN-10151,2025-02-25,Electronics,Smart Watch,12,155.92,1871.04,5.0,True
+TXN-10152,2025-02-25,Electronics,Wireless Earbuds,11,101.04,1111.44,5.0,False
+TXN-10153,2025-02-25,Home & Kitchen,Blender,5,278.31,1391.55,4.0,False
+TXN-10154,2025-02-26,Beauty,Moisturizer,8,204.94,1639.52,5.0,False
+TXN-10155,2025-02-26,Electronics,USB-C Cable,6,234.0,1404.0,3.0,False
+TXN-10156,2025-02-26,Apparel,Running Shoes,8,95.78,766.24,4.0,False
+TXN-10157,2025-02-27,Books,AI Engineering Guide,2,84.88,169.76,4.0,False
+TXN-10158,2025-02-27,Electronics,USB-C Cable,3,176.05,528.15,4.0,False
+TXN-10159,2025-02-27,Apparel,Running Shoes,6,260.77,1564.62,1.0,False
+TXN-10160,2025-02-28,Home & Kitchen,Air Fryer,12,188.58,2262.96,5.0,False
+TXN-10161,2025-02-28,Apparel,Denim Jeans,13,21.1,274.3,5.0,False
+TXN-10162,2025-03-01,Apparel,Running Shoes,10,305.31,3053.1,4.0,False
+TXN-10163,2025-03-01,Home & Kitchen,Air Fryer,3,31.99,95.97,5.0,False
+TXN-10164,2025-03-01,Electronics,Smart Watch,6,334.98,2009.88,4.0,False
+TXN-10165,2025-03-02,Books,Data Science Handbook,6,18.55,111.3,,False
+TXN-10166,2025-03-02,Electronics,Smart Watch,2,246.11,492.22,4.0,False
+TXN-10167,2025-03-02,Electronics,Wireless Earbuds,7,37.95,265.65,3.0,False
+TXN-10168,2025-03-03,Electronics,USB-C Cable,12,319.63,3835.56,5.0,True
+TXN-10169,2025-03-03,Apparel,Running Shoes,2,167.91,335.82,5.0,False
+TXN-10170,2025-03-03,Apparel,Running Shoes,6,56.76,340.56,5.0,False
+TXN-10171,2025-03-04,Electronics,USB-C Cable,1,125.88,125.88,,True
+TXN-10172,2025-03-04,Home & Kitchen,Toaster,3,66.04,198.12,5.0,False
+TXN-10173,2025-03-05,Electronics,Bluetooth Speaker,2,68.0,136.0,5.0,False
+TXN-10174,2025-03-05,Apparel,Cotton T-Shirt,7,332.36,2326.52,5.0,False
+TXN-10175,2025-03-05,Electronics,USB-C Cable,14,161.38,2259.32,5.0,False
+TXN-10176,2025-03-06,Apparel,Denim Jeans,4,278.19,1112.76,4.0,False
+TXN-10177,2025-03-06,Home & Kitchen,Blender,8,227.47,1819.76,5.0,False
+TXN-10178,2025-03-06,Beauty,Face Wash,6,239.98,1439.88,3.0,False
+TXN-10179,2025-03-07,Electronics,Wireless Earbuds,12,54.78,657.36,5.0,False
+TXN-10180,2025-03-07,Electronics,Smart Watch,10,89.62,896.2,5.0,False
+TXN-10181,2025-03-07,Electronics,Smart Watch,4,277.5,1110.0,5.0,False
+TXN-10182,2025-03-08,Beauty,Face Wash,5,340.06,1700.3,5.0,False
+TXN-10183,2025-03-08,Books,AI Engineering Guide,13,99.31,1291.03,5.0,False
+TXN-10184,2025-03-09,Electronics,Wireless Earbuds,13,102.33,1330.29,4.0,False
+TXN-10185,2025-03-09,Apparel,Denim Jeans,9,170.79,1537.11,5.0,False
+TXN-10186,2025-03-09,Books,Data Science Handbook,7,344.51,2411.57,3.0,False
+TXN-10187,2025-03-10,Apparel,Cotton T-Shirt,10,101.45,1014.5,3.0,False
+TXN-10188,2025-03-10,Home & Kitchen,Coffee Maker,14,148.37,2077.18,4.0,False
+TXN-10189,2025-03-10,Electronics,USB-C Cable,14,313.1,4383.4,4.0,False
+TXN-10190,2025-03-11,Electronics,Bluetooth Speaker,9,10.99,98.91,4.0,False
+TXN-10191,2025-03-11,Books,AI Engineering Guide,7,23.52,164.64,5.0,False
+TXN-10192,2025-03-11,Beauty,Moisturizer,12,215.38,2584.56,4.0,False
+TXN-10193,2025-03-12,Apparel,Cotton T-Shirt,1,318.51,318.51,4.0,False
+TXN-10194,2025-03-12,Electronics,Smart Watch,12,91.21,1094.52,1.0,False
+TXN-10195,2025-03-13,Electronics,USB-C Cable,8,169.68,1357.44,4.0,False
+TXN-10196,2025-03-13,Apparel,Hoodie,4,163.16,652.64,5.0,False
+TXN-10197,2025-03-13,Books,Data Science Handbook,3,170.81,512.43,1.0,False
+TXN-10198,2025-03-14,Books,Data Science Handbook,14,221.66,3103.24,4.0,False
+TXN-10199,2025-03-14,Books,Python Cookbook,13,169.71,2206.23,3.0,False
+TXN-10200,2025-03-14,Apparel,Running Shoes,7,162.14,1134.98,1.0,False
+TXN-10201,2025-03-15,Electronics,Smart Watch,12,171.26,2055.12,4.0,False
+TXN-10202,2025-03-15,Electronics,Wireless Earbuds,3,210.89,632.67,3.0,False
+TXN-10203,2025-03-15,Books,Data Science Handbook,8,192.58,1540.64,5.0,False
+TXN-10204,2025-03-16,Apparel,Hoodie,6,300.41,1802.46,5.0,False
+TXN-10205,2025-03-16,Electronics,Smart Watch,5,26.83,134.15,4.0,False
+TXN-10206,2025-03-17,Electronics,USB-C Cable,4,293.33,1173.32,,False
+TXN-10207,2025-03-17,Apparel,Denim Jeans,8,296.93,2375.44,4.0,False
+TXN-10208,2025-03-17,Electronics,Smart Watch,8,106.87,854.96,4.0,False
+TXN-10209,2025-03-18,Electronics,Smart Watch,12,167.37,2008.44,,False
+TXN-10210,2025-03-18,Home & Kitchen,Blender,1,159.1,159.1,3.0,False
+TXN-10211,2025-03-18,Apparel,Running Shoes,9,84.29,758.61,5.0,False
+TXN-10212,2025-03-19,Apparel,Hoodie,14,144.91,2028.74,1.0,False
+TXN-10213,2025-03-19,Electronics,Bluetooth Speaker,5,25.09,125.45,4.0,False
+TXN-10214,2025-03-19,Apparel,Hoodie,4,104.46,417.84,2.0,False
+TXN-10215,2025-03-20,Electronics,Smart Watch,6,287.67,1726.02,5.0,False
+TXN-10216,2025-03-20,Electronics,Wireless Earbuds,6,106.75,640.5,5.0,False
+TXN-10217,2025-03-21,Apparel,Running Shoes,2,288.19,576.38,5.0,False
+TXN-10218,2025-03-21,Apparel,Cotton T-Shirt,8,190.74,1525.92,4.0,False
+TXN-10219,2025-03-21,Books,Python Cookbook,7,309.15,2164.05,4.0,False
+TXN-10220,2025-03-22,Apparel,Cotton T-Shirt,1,205.43,205.43,1.0,False
+TXN-10221,2025-03-22,Apparel,Cotton T-Shirt,5,20.09,100.45,4.0,False
+TXN-10222,2025-03-22,Electronics,Bluetooth Speaker,12,239.64,2875.68,5.0,False
+TXN-10223,2025-03-23,Home & Kitchen,Coffee Maker,6,25.25,151.5,4.0,True
+TXN-10224,2025-03-23,Electronics,Wireless Earbuds,4,163.2,652.8,5.0,False
+TXN-10225,2025-03-23,Electronics,Smart Watch,2,326.01,652.02,5.0,False
+TXN-10226,2025-03-24,Beauty,Face Wash,13,66.17,860.21,4.0,False
+TXN-10227,2025-03-24,Home & Kitchen,Blender,14,142.56,1995.84,5.0,False
+TXN-10228,2025-03-25,Books,Python Cookbook,4,258.15,1032.6,2.0,False
+TXN-10229,2025-03-25,Apparel,Hoodie,1,309.97,309.97,3.0,False
+TXN-10230,2025-03-25,Books,Data Science Handbook,7,238.12,1666.84,1.0,True
+TXN-10231,2025-03-26,Home & Kitchen,Blender,2,97.78,195.56,4.0,False
+TXN-10232,2025-03-26,Apparel,Hoodie,13,239.37,3111.81,4.0,False
+TXN-10233,2025-03-26,Home & Kitchen,Blender,2,110.89,221.78,4.0,False
+TXN-10234,2025-03-27,Electronics,Smart Watch,9,254.27,2288.43,4.0,False
+TXN-10235,2025-03-27,Apparel,Running Shoes,5,334.37,1671.85,4.0,False
+TXN-10236,2025-03-27,Electronics,Smart Watch,2,255.27,510.54,5.0,False
+TXN-10237,2025-03-28,Electronics,Wireless Earbuds,11,303.38,3337.18,5.0,False
+TXN-10238,2025-03-28,Apparel,Hoodie,9,10.72,96.48,1.0,False
+TXN-10239,2025-03-29,Electronics,Bluetooth Speaker,9,253.97,2285.73,3.0,False
+TXN-10240,2025-03-29,Beauty,Moisturizer,1,292.06,292.06,5.0,False
+TXN-10241,2025-03-29,Beauty,Moisturizer,11,23.79,261.69,4.0,False
+TXN-10242,2025-03-30,Beauty,Face Wash,3,306.34,919.02,5.0,False
+TXN-10243,2025-03-30,Home & Kitchen,Air Fryer,4,97.28,389.12,4.0,False
+TXN-10244,2025-03-30,Electronics,Smart Watch,14,236.2,3306.8,4.0,False
+TXN-10245,2025-03-31,Beauty,Lip Balm,7,282.12,1974.84,3.0,False
+TXN-10246,2025-03-31,Home & Kitchen,Toaster,10,235.31,2353.1,4.0,False
+TXN-10247,2025-03-31,Beauty,Face Wash,4,41.38,165.52,5.0,False
+TXN-10248,2025-04-01,Beauty,Sunscreen,2,212.75,425.5,4.0,False
+TXN-10249,2025-04-01,Books,Python Cookbook,7,196.86,1378.02,5.0,False
+TXN-10250,2025-04-02,Electronics,Wireless Earbuds,6,316.11,1896.66,5.0,False
+TXN-10251,2025-04-02,Home & Kitchen,Toaster,3,147.44,442.32,4.0,False
+TXN-10252,2025-04-02,Books,AI Engineering Guide,6,119.17,715.02,5.0,False
+TXN-10253,2025-04-03,Electronics,Smart Watch,11,264.95,2914.45,4.0,False
+TXN-10254,2025-04-03,Electronics,Smart Watch,6,150.31,901.86,4.0,False
+TXN-10255,2025-04-03,Apparel,Cotton T-Shirt,12,229.67,2756.04,5.0,False
+TXN-10256,2025-04-04,Beauty,Lip Balm,5,229.79,1148.95,4.0,False
+TXN-10257,2025-04-04,Apparel,Running Shoes,4,311.93,1247.72,4.0,False
+TXN-10258,2025-04-05,Apparel,Cotton T-Shirt,10,213.56,2135.6,3.0,True
+TXN-10259,2025-04-05,Electronics,Bluetooth Speaker,12,180.73,2168.76,4.0,False
+TXN-10260,2025-04-05,Apparel,Cotton T-Shirt,1,57.22,57.22,5.0,False
+TXN-10261,2025-04-06,Beauty,Moisturizer,10,49.35,493.5,5.0,False
+TXN-10262,2025-04-06,Electronics,Wireless Earbuds,6,62.47,374.82,5.0,False
+TXN-10263,2025-04-06,Home & Kitchen,Coffee Maker,2,68.43,136.86,5.0,False
+TXN-10264,2025-04-07,Books,Data Science Handbook,13,226.88,2949.44,4.0,False
+TXN-10265,2025-04-07,Apparel,Running Shoes,3,261.93,785.79,4.0,False
+TXN-10266,2025-04-07,Apparel,Denim Jeans,14,190.2,2662.8,3.0,False
+TXN-10267,2025-04-08,Apparel,Cotton T-Shirt,8,291.87,2334.96,4.0,False
+TXN-10268,2025-04-08,Home & Kitchen,Air Fryer,10,347.03,3470.3,4.0,False
+TXN-10269,2025-04-09,Electronics,Smart Watch,14,288.8,4043.2,,False
+TXN-10270,2025-04-09,Books,Python Cookbook,14,246.26,3447.64,4.0,False
+TXN-10271,2025-04-09,Books,AI Engineering Guide,6,191.05,1146.3,4.0,False
+TXN-10272,2025-04-10,Books,Python Cookbook,3,162.61,487.83,4.0,False
+TXN-10273,2025-04-10,Beauty,Moisturizer,7,38.69,270.83,5.0,False
+TXN-10274,2025-04-10,Home & Kitchen,Blender,4,145.79,583.16,5.0,False
+TXN-10275,2025-04-11,Home & Kitchen,Blender,14,319.45,4472.3,3.0,False
+TXN-10276,2025-04-11,Books,AI Engineering Guide,9,284.73,2562.57,4.0,False
+TXN-10277,2025-04-11,Apparel,Running Shoes,5,83.46,417.3,5.0,False
+TXN-10278,2025-04-12,Apparel,Hoodie,3,168.65,505.95,4.0,False
+TXN-10279,2025-04-12,Books,Data Science Handbook,2,287.69,575.38,4.0,False
+TXN-10280,2025-04-13,Books,Python Cookbook,11,32.91,362.01,5.0,False
+TXN-10281,2025-04-13,Electronics,USB-C Cable,2,141.71,283.42,5.0,False
+TXN-10282,2025-04-13,Home & Kitchen,Toaster,3,299.63,898.89,2.0,False
+TXN-10283,2025-04-14,Electronics,Wireless Earbuds,2,147.33,294.66,5.0,False
+TXN-10284,2025-04-14,Apparel,Cotton T-Shirt,14,36.39,509.46,5.0,True
+TXN-10285,2025-04-14,Electronics,USB-C Cable,4,194.46,777.84,4.0,False
+TXN-10286,2025-04-15,Home & Kitchen,Blender,2,302.99,605.98,,False
+TXN-10287,2025-04-15,Home & Kitchen,Blender,10,210.7,2107.0,5.0,False
+TXN-10288,2025-04-15,Electronics,Wireless Earbuds,9,86.93,782.37,5.0,False
+TXN-10289,2025-04-16,Apparel,Denim Jeans,2,140.64,281.28,5.0,False
+TXN-10290,2025-04-16,Electronics,Bluetooth Speaker,9,163.04,1467.36,3.0,False
+TXN-10291,2025-04-17,Electronics,USB-C Cable,13,206.95,2690.35,3.0,False
+TXN-10292,2025-04-17,Books,Python Cookbook,6,268.18,1609.08,4.0,False
+TXN-10293,2025-04-17,Home & Kitchen,Coffee Maker,1,43.62,43.62,4.0,True
+TXN-10294,2025-04-18,Electronics,Bluetooth Speaker,4,312.48,1249.92,4.0,False
+TXN-10295,2025-04-18,Home & Kitchen,Air Fryer,14,14.19,198.66,5.0,False
+TXN-10296,2025-04-18,Books,Data Science Handbook,1,135.82,135.82,5.0,False
+TXN-10297,2025-04-19,Electronics,USB-C Cable,14,19.32,270.48,5.0,False
+TXN-10298,2025-04-19,Apparel,Cotton T-Shirt,6,143.61,861.66,5.0,False
+TXN-10299,2025-04-19,Electronics,Smart Watch,14,188.78,2642.92,5.0,False
+TXN-10300,2025-04-20,Electronics,Wireless Earbuds,13,183.97,2391.61,4.0,False
+TXN-10301,2025-04-20,Home & Kitchen,Air Fryer,4,66.31,265.24,3.0,False
+TXN-10302,2025-04-21,Home & Kitchen,Air Fryer,3,229.55,688.65,4.0,False
+TXN-10303,2025-04-21,Apparel,Hoodie,3,25.22,75.66,5.0,False
+TXN-10304,2025-04-21,Apparel,Denim Jeans,9,269.05,2421.45,4.0,False
+TXN-10305,2025-04-22,Beauty,Sunscreen,6,331.86,1991.16,5.0,False
+TXN-10306,2025-04-22,Home & Kitchen,Toaster,9,125.52,1129.68,2.0,False
+TXN-10307,2025-04-22,Electronics,USB-C Cable,13,185.86,2416.18,5.0,True
+TXN-10308,2025-04-23,Books,Data Science Handbook,5,138.83,694.15,5.0,True
+TXN-10309,2025-04-23,Electronics,Smart Watch,2,12.28,24.56,5.0,False
+TXN-10310,2025-04-23,Home & Kitchen,Air Fryer,8,141.2,1129.6,,False
+TXN-10311,2025-04-24,Electronics,USB-C Cable,5,279.18,1395.9,5.0,False
+TXN-10312,2025-04-24,Electronics,Smart Watch,2,212.64,425.28,5.0,False
+TXN-10313,2025-04-25,Beauty,Lip Balm,4,44.43,177.72,5.0,False
+TXN-10314,2025-04-25,Books,AI Engineering Guide,9,298.03,2682.27,5.0,False
+TXN-10315,2025-04-25,Apparel,Denim Jeans,4,190.57,762.28,5.0,False
+TXN-10316,2025-04-26,Home & Kitchen,Blender,13,296.19,3850.47,1.0,False
+TXN-10317,2025-04-26,Electronics,Wireless Earbuds,12,207.28,2487.36,4.0,True
+TXN-10318,2025-04-26,Electronics,Bluetooth Speaker,12,200.29,2403.48,4.0,False
+TXN-10319,2025-04-27,Electronics,USB-C Cable,12,45.79,549.48,4.0,False
+TXN-10320,2025-04-27,Home & Kitchen,Coffee Maker,13,66.9,869.7,4.0,False
+TXN-10321,2025-04-27,Apparel,Running Shoes,14,340.49,4766.86,,False
+TXN-10322,2025-04-28,Apparel,Cotton T-Shirt,4,87.69,350.76,5.0,False
+TXN-10323,2025-04-28,Electronics,Smart Watch,2,342.33,684.66,5.0,False
+TXN-10324,2025-04-29,Beauty,Face Wash,13,190.85,2481.05,4.0,False
+TXN-10325,2025-04-29,Apparel,Cotton T-Shirt,12,56.17,674.04,1.0,False
+TXN-10326,2025-04-29,Apparel,Cotton T-Shirt,6,43.76,262.56,2.0,False
+TXN-10327,2025-04-30,Apparel,Cotton T-Shirt,13,81.01,1053.13,4.0,False
+TXN-10328,2025-04-30,Home & Kitchen,Toaster,11,324.72,3571.92,1.0,False
+TXN-10329,2025-04-30,Electronics,USB-C Cable,14,150.81,2111.34,1.0,True
+TXN-10330,2025-05-01,Home & Kitchen,Coffee Maker,2,144.45,288.9,5.0,False
+TXN-10331,2025-05-01,Books,Data Science Handbook,12,116.49,1397.88,5.0,True
+TXN-10332,2025-05-01,Electronics,USB-C Cable,7,60.0,420.0,4.0,False
+TXN-10333,2025-05-02,Electronics,Bluetooth Speaker,3,175.87,527.61,3.0,True
+TXN-10334,2025-05-02,Electronics,Smart Watch,3,54.22,162.66,4.0,False
+TXN-10335,2025-05-03,Electronics,USB-C Cable,5,294.06,1470.3,1.0,False
+TXN-10336,2025-05-03,Books,AI Engineering Guide,3,135.93,407.79,5.0,False
+TXN-10337,2025-05-03,Apparel,Hoodie,2,137.43,274.86,4.0,False
+TXN-10338,2025-05-04,Home & Kitchen,Coffee Maker,10,171.16,1711.6,4.0,False
+TXN-10339,2025-05-04,Electronics,Wireless Earbuds,9,161.0,1449.0,4.0,False
+TXN-10340,2025-05-04,Home & Kitchen,Toaster,2,348.25,696.5,2.0,False
+TXN-10341,2025-05-05,Home & Kitchen,Coffee Maker,14,195.43,2736.02,5.0,False
+TXN-10342,2025-05-05,Electronics,USB-C Cable,11,39.99,439.89,5.0,False
+TXN-10343,2025-05-05,Home & Kitchen,Toaster,2,216.34,432.68,5.0,False
+TXN-10344,2025-05-06,Home & Kitchen,Toaster,13,61.54,800.02,3.0,False
+TXN-10345,2025-05-06,Apparel,Hoodie,8,20.52,164.16,4.0,False
+TXN-10346,2025-05-07,Apparel,Denim Jeans,9,340.05,3060.45,4.0,False
+TXN-10347,2025-05-07,Electronics,Wireless Earbuds,7,273.0,1911.0,5.0,False
+TXN-10348,2025-05-07,Home & Kitchen,Blender,3,343.24,1029.72,4.0,False
+TXN-10349,2025-05-08,Apparel,Denim Jeans,9,172.48,1552.32,4.0,False
+TXN-10350,2025-05-08,Home & Kitchen,Toaster,3,190.97,572.91,5.0,True
+TXN-10351,2025-05-08,Books,AI Engineering Guide,5,67.23,336.15,5.0,False
+TXN-10352,2025-05-09,Apparel,Running Shoes,9,93.95,845.55,4.0,False
+TXN-10353,2025-05-09,Electronics,USB-C Cable,12,295.11,3541.32,4.0,False
+TXN-10354,2025-05-09,Electronics,Bluetooth Speaker,14,131.1,1835.4,4.0,False
+TXN-10355,2025-05-10,Apparel,Cotton T-Shirt,14,291.12,4075.68,5.0,False
+TXN-10356,2025-05-10,Electronics,Bluetooth Speaker,3,251.06,753.18,4.0,False
+TXN-10357,2025-05-11,Apparel,Denim Jeans,7,70.24,491.68,5.0,False
+TXN-10358,2025-05-11,Beauty,Moisturizer,12,182.53,2190.36,4.0,False
+TXN-10359,2025-05-11,Apparel,Denim Jeans,1,240.31,240.31,5.0,False
+TXN-10360,2025-05-12,Home & Kitchen,Coffee Maker,4,89.91,359.64,5.0,False
+TXN-10361,2025-05-12,Apparel,Cotton T-Shirt,4,292.43,1169.72,4.0,False
+TXN-10362,2025-05-12,Home & Kitchen,Coffee Maker,7,195.24,1366.68,5.0,False
+TXN-10363,2025-05-13,Home & Kitchen,Coffee Maker,8,66.18,529.44,3.0,False
+TXN-10364,2025-05-13,Beauty,Lip Balm,1,208.21,208.21,5.0,False
+TXN-10365,2025-05-13,Home & Kitchen,Air Fryer,5,349.9,1749.5,5.0,True
+TXN-10366,2025-05-14,Beauty,Sunscreen,7,61.18,428.26,2.0,False
+TXN-10367,2025-05-14,Beauty,Sunscreen,12,287.7,3452.4,5.0,False
+TXN-10368,2025-05-15,Electronics,Smart Watch,4,80.49,321.96,,False
+TXN-10369,2025-05-15,Electronics,Bluetooth Speaker,13,276.01,3588.13,2.0,False
+TXN-10370,2025-05-15,Electronics,USB-C Cable,4,259.76,1039.04,4.0,False
+TXN-10371,2025-05-16,Electronics,Wireless Earbuds,4,112.17,448.68,5.0,False
+TXN-10372,2025-05-16,Electronics,Bluetooth Speaker,12,120.78,1449.36,5.0,False
+TXN-10373,2025-05-16,Apparel,Running Shoes,6,279.46,1676.76,4.0,False
+TXN-10374,2025-05-17,Electronics,USB-C Cable,7,166.89,1168.23,3.0,False
+TXN-10375,2025-05-17,Electronics,USB-C Cable,2,258.48,516.96,1.0,True
+TXN-10376,2025-05-18,Books,Data Science Handbook,5,60.31,301.55,4.0,False
+TXN-10377,2025-05-18,Electronics,Bluetooth Speaker,4,299.87,1199.48,4.0,False
+TXN-10378,2025-05-18,Books,Python Cookbook,14,251.7,3523.8,5.0,False
+TXN-10379,2025-05-19,Electronics,Wireless Earbuds,13,318.36,4138.68,2.0,False
+TXN-10380,2025-05-19,Electronics,USB-C Cable,3,55.01,165.03,5.0,False
+TXN-10381,2025-05-19,Apparel,Cotton T-Shirt,7,211.62,1481.34,1.0,False
+TXN-10382,2025-05-20,Apparel,Denim Jeans,11,213.7,2350.7,3.0,False
+TXN-10383,2025-05-20,Books,Python Cookbook,12,130.18,1562.16,4.0,False
+TXN-10384,2025-05-20,Apparel,Hoodie,6,165.88,995.28,4.0,False
+TXN-10385,2025-05-21,Books,Python Cookbook,14,22.91,320.74,5.0,False
+TXN-10386,2025-05-21,Electronics,USB-C Cable,7,263.59,1845.13,5.0,False
+TXN-10387,2025-05-22,Electronics,Smart Watch,5,196.77,983.85,5.0,True
+TXN-10388,2025-05-22,Books,Python Cookbook,13,29.63,385.19,,False
+TXN-10389,2025-05-22,Books,AI Engineering Guide,6,241.46,1448.76,5.0,False
+TXN-10390,2025-05-23,Beauty,Sunscreen,5,168.71,843.55,4.0,False
+TXN-10391,2025-05-23,Home & Kitchen,Coffee Maker,14,21.72,304.08,5.0,False
+TXN-10392,2025-05-23,Home & Kitchen,Coffee Maker,7,339.67,2377.69,5.0,False
+TXN-10393,2025-05-24,Books,Data Science Handbook,2,332.7,665.4,2.0,False
+TXN-10394,2025-05-24,Electronics,Bluetooth Speaker,14,184.39,2581.46,5.0,False
+TXN-10395,2025-05-24,Beauty,Moisturizer,11,41.85,460.35,2.0,False
+TXN-10396,2025-05-25,Books,Python Cookbook,5,266.57,1332.85,4.0,False
+TXN-10397,2025-05-25,Home & Kitchen,Blender,6,177.26,1063.56,5.0,False
+TXN-10398,2025-05-26,Books,Data Science Handbook,6,112.83,676.98,2.0,False
+TXN-10399,2025-05-26,Books,Python Cookbook,5,177.08,885.4,3.0,False
+TXN-10400,2025-05-26,Electronics,USB-C Cable,10,187.63,1876.3,5.0,False
+TXN-10401,2025-05-27,Beauty,Face Wash,7,201.32,1409.24,5.0,False
+TXN-10402,2025-05-27,Home & Kitchen,Blender,10,160.02,1600.2,3.0,False
+TXN-10403,2025-05-27,Books,Data Science Handbook,8,215.96,1727.68,5.0,False
+TXN-10404,2025-05-28,Electronics,USB-C Cable,7,322.37,2256.59,4.0,False
+TXN-10405,2025-05-28,Books,AI Engineering Guide,5,133.17,665.85,4.0,False
+TXN-10406,2025-05-28,Home & Kitchen,Air Fryer,1,256.74,256.74,,False
+TXN-10407,2025-05-29,Electronics,Smart Watch,13,314.11,4083.43,5.0,False
+TXN-10408,2025-05-29,Beauty,Lip Balm,5,165.03,825.15,4.0,False
+TXN-10409,2025-05-30,Electronics,Smart Watch,10,160.77,1607.7,5.0,False
+TXN-10410,2025-05-30,Electronics,USB-C Cable,2,214.72,429.44,5.0,False
+TXN-10411,2025-05-30,Beauty,Face Wash,13,211.08,2744.04,3.0,False
+TXN-10412,2025-05-31,Beauty,Face Wash,5,284.24,1421.2,3.0,False
+TXN-10413,2025-05-31,Apparel,Cotton T-Shirt,5,172.0,860.0,3.0,False
+TXN-10414,2025-05-31,Apparel,Denim Jeans,2,348.68,697.36,5.0,False
+TXN-10415,2025-06-01,Home & Kitchen,Toaster,5,30.22,151.1,5.0,False
+TXN-10416,2025-06-01,Electronics,Bluetooth Speaker,13,11.08,144.04,5.0,False
+TXN-10417,2025-06-01,Electronics,Bluetooth Speaker,4,227.67,910.68,5.0,False
+TXN-10418,2025-06-02,Apparel,Cotton T-Shirt,1,111.47,111.47,5.0,False
+TXN-10419,2025-06-02,Books,Data Science Handbook,3,91.73,275.19,3.0,False
+TXN-10420,2025-06-03,Books,Python Cookbook,1,116.05,116.05,4.0,False
+TXN-10421,2025-06-03,Books,Data Science Handbook,12,97.06,1164.72,4.0,False
+TXN-10422,2025-06-03,Electronics,USB-C Cable,11,20.47,225.17,4.0,False
+TXN-10423,2025-06-04,Home & Kitchen,Toaster,5,340.32,1701.6,5.0,False
+TXN-10424,2025-06-04,Electronics,Smart Watch,4,85.05,340.2,5.0,False
+TXN-10425,2025-06-04,Home & Kitchen,Air Fryer,7,259.57,1816.99,4.0,False
+TXN-10426,2025-06-05,Home & Kitchen,Blender,5,269.28,1346.4,4.0,False
+TXN-10427,2025-06-05,Books,Data Science Handbook,10,325.95,3259.5,5.0,False
+TXN-10428,2025-06-05,Home & Kitchen,Air Fryer,14,20.39,285.46,4.0,False
+TXN-10429,2025-06-06,Electronics,USB-C Cable,4,306.5,1226.0,3.0,False
+TXN-10430,2025-06-06,Electronics,Wireless Earbuds,2,189.26,378.52,4.0,False
+TXN-10431,2025-06-07,Books,AI Engineering Guide,4,225.06,900.24,2.0,False
+TXN-10432,2025-06-07,Apparel,Running Shoes,12,229.12,2749.44,5.0,False
+TXN-10433,2025-06-07,Electronics,Smart Watch,2,288.73,577.46,2.0,False
+TXN-10434,2025-06-08,Electronics,USB-C Cable,8,123.36,986.88,4.0,False
+TXN-10435,2025-06-08,Apparel,Denim Jeans,3,259.24,777.72,4.0,False
+TXN-10436,2025-06-08,Electronics,Wireless Earbuds,9,189.72,1707.48,,False
+TXN-10437,2025-06-09,Books,Python Cookbook,13,279.75,3636.75,3.0,False
+TXN-10438,2025-06-09,Apparel,Running Shoes,4,346.79,1387.16,3.0,False
+TXN-10439,2025-06-09,Electronics,Wireless Earbuds,13,78.22,1016.86,1.0,False
+TXN-10440,2025-06-10,Electronics,Wireless Earbuds,6,348.18,2089.08,3.0,False
+TXN-10441,2025-06-10,Beauty,Lip Balm,10,40.54,405.4,3.0,False
+TXN-10442,2025-06-11,Home & Kitchen,Toaster,5,10.79,53.95,5.0,False
+TXN-10443,2025-06-11,Home & Kitchen,Coffee Maker,10,25.02,250.2,3.0,False
+TXN-10444,2025-06-11,Books,Python Cookbook,13,126.21,1640.73,1.0,False
+TXN-10445,2025-06-12,Beauty,Lip Balm,1,225.19,225.19,5.0,False
+TXN-10446,2025-06-12,Beauty,Lip Balm,9,33.47,301.23,4.0,False
+TXN-10447,2025-06-12,Books,Python Cookbook,1,11.93,11.93,4.0,False
+TXN-10448,2025-06-13,Home & Kitchen,Toaster,8,328.61,2628.88,4.0,False
+TXN-10449,2025-06-13,Electronics,Bluetooth Speaker,9,289.46,2605.14,,False
+TXN-10450,2025-06-13,Books,AI Engineering Guide,9,285.12,2566.08,3.0,False
+TXN-10451,2025-06-14,Apparel,Cotton T-Shirt,1,310.7,310.7,5.0,False
+TXN-10452,2025-06-14,Home & Kitchen,Blender,2,248.01,496.02,5.0,False
+TXN-10453,2025-06-15,Beauty,Moisturizer,12,45.5,546.0,2.0,False
+TXN-10454,2025-06-15,Electronics,Wireless Earbuds,13,145.69,1893.97,,False
+TXN-10455,2025-06-15,Home & Kitchen,Toaster,1,255.87,255.87,4.0,False
+TXN-10456,2025-06-16,Electronics,USB-C Cable,10,105.31,1053.1,2.0,False
+TXN-10457,2025-06-16,Home & Kitchen,Air Fryer,2,243.72,487.44,5.0,False
+TXN-10458,2025-06-16,Electronics,Smart Watch,10,18.33,183.3,5.0,False
+TXN-10459,2025-06-17,Electronics,Smart Watch,12,114.09,1369.08,5.0,False
+TXN-10460,2025-06-17,Electronics,Bluetooth Speaker,8,196.7,1573.6,3.0,False
+TXN-10461,2025-06-17,Apparel,Hoodie,5,224.91,1124.55,4.0,False
+TXN-10462,2025-06-18,Apparel,Hoodie,12,206.19,2474.28,5.0,False
+TXN-10463,2025-06-18,Apparel,Cotton T-Shirt,11,247.24,2719.64,4.0,False
+TXN-10464,2025-06-19,Beauty,Lip Balm,7,12.07,84.49,4.0,False
+TXN-10465,2025-06-19,Home & Kitchen,Toaster,2,44.32,88.64,1.0,False
+TXN-10466,2025-06-19,Electronics,Wireless Earbuds,8,305.44,2443.52,3.0,False
+TXN-10467,2025-06-20,Books,AI Engineering Guide,11,241.79,2659.69,5.0,False
+TXN-10468,2025-06-20,Electronics,USB-C Cable,6,48.4,290.4,4.0,False
+TXN-10469,2025-06-20,Beauty,Lip Balm,8,296.31,2370.48,,False
+TXN-10470,2025-06-21,Electronics,Smart Watch,1,92.36,92.36,4.0,False
+TXN-10471,2025-06-21,Beauty,Face Wash,1,172.61,172.61,5.0,False
+TXN-10472,2025-06-21,Electronics,Wireless Earbuds,12,59.37,712.44,4.0,False
+TXN-10473,2025-06-22,Books,AI Engineering Guide,7,251.44,1760.08,4.0,False
+TXN-10474,2025-06-22,Home & Kitchen,Coffee Maker,8,236.73,1893.84,3.0,False
+TXN-10475,2025-06-23,Beauty,Face Wash,13,81.78,1063.14,4.0,False
+TXN-10476,2025-06-23,Electronics,Wireless Earbuds,3,303.56,910.68,4.0,False
+TXN-10477,2025-06-23,Apparel,Denim Jeans,5,146.44,732.2,,False
+TXN-10478,2025-06-24,Beauty,Lip Balm,12,109.46,1313.52,5.0,False
+TXN-10479,2025-06-24,Home & Kitchen,Toaster,1,61.79,61.79,3.0,False
+TXN-10480,2025-06-24,Apparel,Running Shoes,7,100.5,703.5,1.0,False
+TXN-10481,2025-06-25,Apparel,Cotton T-Shirt,5,17.49,87.45,3.0,False
+TXN-10482,2025-06-25,Home & Kitchen,Coffee Maker,8,208.31,1666.48,4.0,False
+TXN-10483,2025-06-25,Apparel,Running Shoes,13,296.36,3852.68,5.0,False
+TXN-10484,2025-06-26,Apparel,Cotton T-Shirt,8,196.65,1573.2,5.0,False
+TXN-10485,2025-06-26,Beauty,Lip Balm,9,84.55,760.95,1.0,False
+TXN-10486,2025-06-27,Electronics,USB-C Cable,7,21.45,150.15,4.0,True
+TXN-10487,2025-06-27,Electronics,Smart Watch,11,82.97,912.67,4.0,False
+TXN-10488,2025-06-27,Beauty,Sunscreen,1,151.48,151.48,5.0,False
+TXN-10489,2025-06-28,Books,Data Science Handbook,13,268.27,3487.51,4.0,False
+TXN-10490,2025-06-28,Home & Kitchen,Blender,3,73.87,221.61,5.0,False
+TXN-10491,2025-06-28,Apparel,Denim Jeans,8,254.73,2037.84,5.0,False
+TXN-10492,2025-06-29,Electronics,Bluetooth Speaker,3,304.76,914.28,3.0,False
+TXN-10493,2025-06-29,Electronics,Bluetooth Speaker,8,164.34,1314.72,5.0,False
+TXN-10494,2025-06-29,Home & Kitchen,Air Fryer,1,289.29,289.29,3.0,False
+TXN-10495,2025-06-30,Home & Kitchen,Toaster,5,198.58,992.9,5.0,False
+TXN-10496,2025-06-30,Apparel,Cotton T-Shirt,4,226.61,906.44,4.0,False
+TXN-10497,2025-07-01,Electronics,Wireless Earbuds,5,188.93,944.65,4.0,False
+TXN-10498,2025-07-01,Beauty,Lip Balm,8,167.48,1339.84,5.0,True
+TXN-10499,2025-07-01,Beauty,Moisturizer,10,89.78,897.8,5.0,False
+TXN-10500,2025-07-02,Apparel,Denim Jeans,14,113.09,1583.26,5.0,False
+TXN-10501,2025-07-02,Home & Kitchen,Coffee Maker,4,108.59,434.36,4.0,False
+TXN-10502,2025-07-02,Electronics,Bluetooth Speaker,11,201.52,2216.72,5.0,False
+TXN-10503,2025-07-03,Books,AI Engineering Guide,4,50.78,203.12,4.0,False
+TXN-10504,2025-07-03,Apparel,Denim Jeans,3,321.71,965.13,5.0,False
+TXN-10505,2025-07-04,Electronics,USB-C Cable,7,255.02,1785.14,4.0,False
+TXN-10506,2025-07-04,Beauty,Face Wash,3,146.49,439.47,,False
+TXN-10507,2025-07-04,Books,AI Engineering Guide,12,63.93,767.16,5.0,False
+TXN-10508,2025-07-05,Beauty,Lip Balm,3,309.88,929.64,5.0,False
+TXN-10509,2025-07-05,Apparel,Hoodie,11,290.08,3190.88,4.0,False
+TXN-10510,2025-07-05,Apparel,Cotton T-Shirt,10,255.39,2553.9,3.0,True
+TXN-10511,2025-07-06,Home & Kitchen,Blender,5,102.33,511.65,5.0,False
+TXN-10512,2025-07-06,Beauty,Moisturizer,5,146.83,734.15,3.0,False
+TXN-10513,2025-07-06,Books,AI Engineering Guide,14,44.93,629.02,5.0,False
+TXN-10514,2025-07-07,Electronics,Wireless Earbuds,6,74.27,445.62,4.0,False
+TXN-10515,2025-07-07,Electronics,Bluetooth Speaker,8,276.23,2209.84,4.0,False
+TXN-10516,2025-07-08,Home & Kitchen,Air Fryer,10,253.11,2531.1,5.0,False
+TXN-10517,2025-07-08,Books,AI Engineering Guide,6,211.79,1270.74,5.0,False
+TXN-10518,2025-07-08,Beauty,Face Wash,12,314.55,3774.6,4.0,False
+TXN-10519,2025-07-09,Electronics,Bluetooth Speaker,1,208.31,208.31,4.0,False
+TXN-10520,2025-07-09,Apparel,Cotton T-Shirt,8,168.77,1350.16,4.0,False
+TXN-10521,2025-07-09,Home & Kitchen,Blender,8,125.73,1005.84,5.0,False
+TXN-10522,2025-07-10,Beauty,Lip Balm,9,329.75,2967.75,4.0,False
+TXN-10523,2025-07-10,Books,Data Science Handbook,9,38.12,343.08,5.0,False
+TXN-10524,2025-07-10,Books,AI Engineering Guide,2,326.5,653.0,5.0,False
+TXN-10525,2025-07-11,Home & Kitchen,Toaster,2,291.08,582.16,4.0,False
+TXN-10526,2025-07-11,Home & Kitchen,Air Fryer,3,54.18,162.54,5.0,False
+TXN-10527,2025-07-12,Electronics,Bluetooth Speaker,1,202.09,202.09,4.0,False
+TXN-10528,2025-07-12,Electronics,Smart Watch,4,304.63,1218.52,4.0,True
+TXN-10529,2025-07-12,Books,AI Engineering Guide,14,204.42,2861.88,,False
+TXN-10530,2025-07-13,Books,Data Science Handbook,4,318.45,1273.8,1.0,False
+TXN-10531,2025-07-13,Beauty,Sunscreen,14,330.61,4628.54,4.0,False
+TXN-10532,2025-07-13,Beauty,Lip Balm,9,153.61,1382.49,4.0,False
+TXN-10533,2025-07-14,Apparel,Running Shoes,9,138.29,1244.61,4.0,False
+TXN-10534,2025-07-14,Books,AI Engineering Guide,9,328.35,2955.15,4.0,False
+TXN-10535,2025-07-14,Beauty,Lip Balm,10,239.55,2395.5,5.0,False
+TXN-10536,2025-07-15,Books,Data Science Handbook,7,49.45,346.15,5.0,False
+TXN-10537,2025-07-15,Electronics,Smart Watch,14,24.38,341.32,5.0,False
+TXN-10538,2025-07-16,Home & Kitchen,Blender,2,201.97,403.94,2.0,False
+TXN-10539,2025-07-16,Electronics,Wireless Earbuds,10,326.26,3262.6,4.0,False
+TXN-10540,2025-07-16,Beauty,Moisturizer,5,297.04,1485.2,3.0,False
+TXN-10541,2025-07-17,Apparel,Cotton T-Shirt,4,239.79,959.16,4.0,False
+TXN-10542,2025-07-17,Electronics,Smart Watch,12,57.3,687.6,4.0,False
+TXN-10543,2025-07-17,Apparel,Cotton T-Shirt,11,96.44,1060.84,3.0,False
+TXN-10544,2025-07-18,Apparel,Cotton T-Shirt,8,307.67,2461.36,4.0,False
+TXN-10545,2025-07-18,Home & Kitchen,Toaster,2,72.15,144.3,3.0,False
+TXN-10546,2025-07-18,Electronics,Smart Watch,6,104.67,628.02,5.0,False
+TXN-10547,2025-07-19,Apparel,Denim Jeans,13,54.06,702.78,5.0,False
+TXN-10548,2025-07-19,Home & Kitchen,Air Fryer,5,239.88,1199.4,5.0,True
+TXN-10549,2025-07-20,Books,AI Engineering Guide,12,330.95,3971.4,5.0,False
+TXN-10550,2025-07-20,Home & Kitchen,Coffee Maker,2,101.45,202.9,5.0,False
+TXN-10551,2025-07-20,Books,Python Cookbook,11,171.64,1888.04,4.0,False
+TXN-10552,2025-07-21,Apparel,Denim Jeans,10,225.68,2256.8,1.0,False
+TXN-10553,2025-07-21,Apparel,Denim Jeans,1,349.82,349.82,5.0,True
+TXN-10554,2025-07-21,Books,AI Engineering Guide,8,45.63,365.04,5.0,False
+TXN-10555,2025-07-22,Home & Kitchen,Coffee Maker,2,179.51,359.02,5.0,False
+TXN-10556,2025-07-22,Electronics,USB-C Cable,7,140.94,986.58,5.0,False
+TXN-10557,2025-07-22,Electronics,Smart Watch,9,304.38,2739.42,4.0,False
+TXN-10558,2025-07-23,Books,AI Engineering Guide,9,171.83,1546.47,5.0,False
+TXN-10559,2025-07-23,Apparel,Hoodie,8,47.73,381.84,5.0,False
+TXN-10560,2025-07-24,Apparel,Running Shoes,11,225.7,2482.7,4.0,False
+TXN-10561,2025-07-24,Electronics,Wireless Earbuds,14,272.07,3808.98,5.0,True
+TXN-10562,2025-07-24,Electronics,Bluetooth Speaker,12,10.98,131.76,4.0,False
+TXN-10563,2025-07-25,Electronics,USB-C Cable,10,302.05,3020.5,5.0,False
+TXN-10564,2025-07-25,Home & Kitchen,Blender,9,73.25,659.25,5.0,False
+TXN-10565,2025-07-25,Apparel,Hoodie,2,197.7,395.4,1.0,False
+TXN-10566,2025-07-26,Home & Kitchen,Air Fryer,6,151.37,908.22,5.0,False
+TXN-10567,2025-07-26,Home & Kitchen,Coffee Maker,4,254.68,1018.72,3.0,False
+TXN-10568,2025-07-26,Beauty,Moisturizer,14,136.19,1906.66,5.0,False
+TXN-10569,2025-07-27,Electronics,Smart Watch,4,305.72,1222.88,4.0,False
+TXN-10570,2025-07-27,Home & Kitchen,Blender,5,258.37,1291.85,5.0,False
+TXN-10571,2025-07-28,Books,Python Cookbook,12,230.22,2762.64,3.0,False
+TXN-10572,2025-07-28,Home & Kitchen,Air Fryer,3,280.72,842.16,5.0,False
+TXN-10573,2025-07-28,Apparel,Running Shoes,14,266.37,3729.18,4.0,True
+TXN-10574,2025-07-29,Books,Data Science Handbook,1,22.22,22.22,5.0,True
+TXN-10575,2025-07-29,Beauty,Sunscreen,8,144.21,1153.68,5.0,True
+TXN-10576,2025-07-29,Electronics,Bluetooth Speaker,5,326.47,1632.35,,False
+TXN-10577,2025-07-30,Beauty,Lip Balm,3,52.75,158.25,5.0,False
+TXN-10578,2025-07-30,Home & Kitchen,Toaster,10,260.61,2606.1,5.0,False
+TXN-10579,2025-07-30,Electronics,Smart Watch,14,341.36,4779.04,3.0,True
+TXN-10580,2025-07-31,Home & Kitchen,Toaster,7,27.75,194.25,4.0,False
+TXN-10581,2025-07-31,Beauty,Sunscreen,7,241.95,1693.65,4.0,False
+TXN-10582,2025-08-01,Home & Kitchen,Toaster,1,169.17,169.17,5.0,False
+TXN-10583,2025-08-01,Electronics,Smart Watch,12,206.92,2483.04,5.0,False
+TXN-10584,2025-08-01,Apparel,Hoodie,9,39.02,351.18,3.0,False
+TXN-10585,2025-08-02,Electronics,USB-C Cable,2,24.62,49.24,5.0,False
+TXN-10586,2025-08-02,Electronics,USB-C Cable,5,236.73,1183.65,5.0,False
+TXN-10587,2025-08-02,Electronics,USB-C Cable,13,289.93,3769.09,5.0,False
+TXN-10588,2025-08-03,Electronics,USB-C Cable,14,275.89,3862.46,3.0,False
+TXN-10589,2025-08-03,Electronics,Bluetooth Speaker,5,194.89,974.45,2.0,False
+TXN-10590,2025-08-03,Electronics,Bluetooth Speaker,14,43.95,615.3,4.0,False
+TXN-10591,2025-08-04,Apparel,Running Shoes,8,243.94,1951.52,5.0,False
+TXN-10592,2025-08-04,Electronics,Smart Watch,14,92.24,1291.36,3.0,False
+TXN-10593,2025-08-05,Electronics,Smart Watch,8,319.76,2558.08,4.0,False
+TXN-10594,2025-08-05,Books,AI Engineering Guide,14,295.01,4130.14,5.0,True
+TXN-10595,2025-08-05,Home & Kitchen,Coffee Maker,7,251.19,1758.33,5.0,False
+TXN-10596,2025-08-06,Apparel,Hoodie,7,332.61,2328.27,5.0,True
+TXN-10597,2025-08-06,Electronics,USB-C Cable,12,20.68,248.16,4.0,False
+TXN-10598,2025-08-06,Electronics,USB-C Cable,11,260.31,2863.41,4.0,False
+TXN-10599,2025-08-07,Electronics,Wireless Earbuds,6,122.28,733.68,5.0,False
+TXN-10600,2025-08-07,Electronics,Bluetooth Speaker,6,318.06,1908.36,4.0,False
+TXN-10601,2025-08-07,Electronics,Smart Watch,11,100.67,1107.37,2.0,False
+TXN-10602,2025-08-08,Electronics,Smart Watch,9,256.45,2308.05,4.0,False
+TXN-10603,2025-08-08,Electronics,USB-C Cable,6,308.4,1850.4,4.0,False
+TXN-10604,2025-08-09,Electronics,Smart Watch,12,24.16,289.92,4.0,False
+TXN-10605,2025-08-09,Home & Kitchen,Coffee Maker,13,145.2,1887.6,4.0,False
+TXN-10606,2025-08-09,Electronics,Bluetooth Speaker,13,269.19,3499.47,4.0,False
+TXN-10607,2025-08-10,Home & Kitchen,Air Fryer,2,164.67,329.34,1.0,False
+TXN-10608,2025-08-10,Home & Kitchen,Toaster,2,100.87,201.74,5.0,False
+TXN-10609,2025-08-10,Apparel,Cotton T-Shirt,13,84.73,1101.49,4.0,False
+TXN-10610,2025-08-11,Electronics,Wireless Earbuds,5,54.72,273.6,5.0,False
+TXN-10611,2025-08-11,Books,Data Science Handbook,4,301.42,1205.68,3.0,False
+TXN-10612,2025-08-11,Apparel,Hoodie,11,205.62,2261.82,4.0,False
+TXN-10613,2025-08-12,Electronics,Smart Watch,2,35.97,71.94,5.0,False
+TXN-10614,2025-08-12,Books,Python Cookbook,3,140.08,420.24,4.0,False
+TXN-10615,2025-08-13,Beauty,Face Wash,7,135.03,945.21,4.0,False
+TXN-10616,2025-08-13,Electronics,Smart Watch,8,71.79,574.32,4.0,False
+TXN-10617,2025-08-13,Electronics,Bluetooth Speaker,12,158.07,1896.84,5.0,False
+TXN-10618,2025-08-14,Books,Data Science Handbook,13,122.91,1597.83,4.0,False
+TXN-10619,2025-08-14,Apparel,Running Shoes,6,126.21,757.26,4.0,False
+TXN-10620,2025-08-14,Electronics,Wireless Earbuds,11,261.27,2873.97,5.0,False
+TXN-10621,2025-08-15,Electronics,USB-C Cable,5,85.91,429.55,4.0,False
+TXN-10622,2025-08-15,Home & Kitchen,Blender,13,228.23,2966.99,4.0,False
+TXN-10623,2025-08-15,Home & Kitchen,Air Fryer,1,204.02,204.02,4.0,True
+TXN-10624,2025-08-16,Apparel,Running Shoes,8,203.15,1625.2,5.0,False
+TXN-10625,2025-08-16,Home & Kitchen,Air Fryer,3,235.42,706.26,4.0,False
+TXN-10626,2025-08-17,Home & Kitchen,Toaster,6,196.45,1178.7,3.0,False
+TXN-10627,2025-08-17,Apparel,Denim Jeans,3,308.95,926.85,4.0,False
+TXN-10628,2025-08-17,Electronics,Smart Watch,7,239.7,1677.9,5.0,False
+TXN-10629,2025-08-18,Electronics,Smart Watch,13,195.97,2547.61,2.0,False
+TXN-10630,2025-08-18,Apparel,Hoodie,14,292.12,4089.68,,False
+TXN-10631,2025-08-18,Books,AI Engineering Guide,7,216.09,1512.63,4.0,False
+TXN-10632,2025-08-19,Home & Kitchen,Blender,12,108.99,1307.88,,False
+TXN-10633,2025-08-19,Home & Kitchen,Toaster,9,80.41,723.69,5.0,False
+TXN-10634,2025-08-20,Electronics,Bluetooth Speaker,5,61.79,308.95,4.0,False
+TXN-10635,2025-08-20,Home & Kitchen,Blender,8,315.81,2526.48,3.0,False
+TXN-10636,2025-08-20,Home & Kitchen,Air Fryer,10,251.45,2514.5,3.0,False
+TXN-10637,2025-08-21,Electronics,USB-C Cable,10,328.71,3287.1,3.0,False
+TXN-10638,2025-08-21,Electronics,Bluetooth Speaker,8,215.12,1720.96,5.0,False
+TXN-10639,2025-08-21,Home & Kitchen,Coffee Maker,1,170.96,170.96,4.0,False
+TXN-10640,2025-08-22,Electronics,USB-C Cable,12,30.3,363.6,4.0,False
+TXN-10641,2025-08-22,Electronics,USB-C Cable,5,238.36,1191.8,4.0,False
+TXN-10642,2025-08-22,Electronics,Wireless Earbuds,3,207.95,623.85,5.0,False
+TXN-10643,2025-08-23,Electronics,Wireless Earbuds,1,346.67,346.67,3.0,False
+TXN-10644,2025-08-23,Electronics,Smart Watch,4,91.31,365.24,1.0,False
+TXN-10645,2025-08-24,Books,Python Cookbook,8,190.45,1523.6,2.0,False
+TXN-10646,2025-08-24,Apparel,Hoodie,3,231.33,693.99,5.0,False
+TXN-10647,2025-08-24,Apparel,Cotton T-Shirt,10,229.16,2291.6,5.0,False
+TXN-10648,2025-08-25,Books,Python Cookbook,2,200.84,401.68,4.0,False
+TXN-10649,2025-08-25,Home & Kitchen,Toaster,11,274.16,3015.76,3.0,False
+TXN-10650,2025-08-25,Electronics,Wireless Earbuds,9,79.69,717.21,4.0,False
+TXN-10651,2025-08-26,Home & Kitchen,Coffee Maker,10,256.71,2567.1,3.0,False
+TXN-10652,2025-08-26,Apparel,Cotton T-Shirt,5,220.71,1103.55,5.0,False
+TXN-10653,2025-08-26,Apparel,Hoodie,14,314.67,4405.38,5.0,False
+TXN-10654,2025-08-27,Home & Kitchen,Coffee Maker,7,298.05,2086.35,4.0,False
+TXN-10655,2025-08-27,Electronics,Wireless Earbuds,11,117.15,1288.65,5.0,False
+TXN-10656,2025-08-28,Electronics,Bluetooth Speaker,11,103.92,1143.12,3.0,False
+TXN-10657,2025-08-28,Home & Kitchen,Toaster,2,343.76,687.52,5.0,False
+TXN-10658,2025-08-28,Apparel,Cotton T-Shirt,9,189.27,1703.43,5.0,False
+TXN-10659,2025-08-29,Apparel,Running Shoes,13,318.18,4136.34,4.0,False
+TXN-10660,2025-08-29,Home & Kitchen,Toaster,9,65.72,591.48,5.0,False
+TXN-10661,2025-08-29,Beauty,Lip Balm,4,228.56,914.24,4.0,False
+TXN-10662,2025-08-30,Apparel,Denim Jeans,4,285.35,1141.4,4.0,False
+TXN-10663,2025-08-30,Electronics,Bluetooth Speaker,6,332.11,1992.66,3.0,False
+TXN-10664,2025-08-30,Electronics,Bluetooth Speaker,10,124.7,1247.0,4.0,False
+TXN-10665,2025-08-31,Electronics,Bluetooth Speaker,10,256.49,2564.9,5.0,False
+TXN-10666,2025-08-31,Electronics,Smart Watch,10,193.2,1932.0,5.0,False
+TXN-10667,2025-09-01,Electronics,Wireless Earbuds,6,30.61,183.66,5.0,False
+TXN-10668,2025-09-01,Electronics,USB-C Cable,12,244.6,2935.2,5.0,False
+TXN-10669,2025-09-01,Electronics,Bluetooth Speaker,1,244.63,244.63,5.0,False
+TXN-10670,2025-09-02,Electronics,Wireless Earbuds,14,326.41,4569.74,3.0,False
+TXN-10671,2025-09-02,Books,AI Engineering Guide,14,179.09,2507.26,4.0,False
+TXN-10672,2025-09-02,Electronics,Wireless Earbuds,9,88.29,794.61,3.0,False
+TXN-10673,2025-09-03,Home & Kitchen,Coffee Maker,2,25.15,50.3,5.0,False
+TXN-10674,2025-09-03,Home & Kitchen,Toaster,5,151.32,756.6,5.0,False
+TXN-10675,2025-09-03,Beauty,Lip Balm,9,112.65,1013.85,3.0,False
+TXN-10676,2025-09-04,Electronics,Smart Watch,4,268.77,1075.08,5.0,False
+TXN-10677,2025-09-04,Home & Kitchen,Air Fryer,11,130.45,1434.95,5.0,False
+TXN-10678,2025-09-05,Beauty,Sunscreen,3,332.68,998.04,4.0,False
+TXN-10679,2025-09-05,Books,AI Engineering Guide,7,337.19,2360.33,4.0,False
+TXN-10680,2025-09-05,Books,Python Cookbook,6,221.11,1326.66,4.0,False
+TXN-10681,2025-09-06,Electronics,Smart Watch,8,325.74,2605.92,1.0,True
+TXN-10682,2025-09-06,Electronics,USB-C Cable,3,268.69,806.07,3.0,False
+TXN-10683,2025-09-06,Apparel,Hoodie,5,195.93,979.65,1.0,False
+TXN-10684,2025-09-07,Beauty,Sunscreen,10,71.3,713.0,4.0,False
+TXN-10685,2025-09-07,Apparel,Denim Jeans,4,165.92,663.68,3.0,False
+TXN-10686,2025-09-07,Apparel,Cotton T-Shirt,13,200.7,2609.1,5.0,True
+TXN-10687,2025-09-08,Electronics,Bluetooth Speaker,4,303.75,1215.0,4.0,True
+TXN-10688,2025-09-08,Books,Python Cookbook,4,173.65,694.6,5.0,False
+TXN-10689,2025-09-09,Electronics,Wireless Earbuds,10,315.21,3152.1,4.0,False
+TXN-10690,2025-09-09,Electronics,Smart Watch,8,239.28,1914.24,4.0,False
+TXN-10691,2025-09-09,Home & Kitchen,Toaster,6,56.58,339.48,5.0,False
+TXN-10692,2025-09-10,Home & Kitchen,Blender,3,348.29,1044.87,2.0,False
+TXN-10693,2025-09-10,Electronics,USB-C Cable,10,189.26,1892.6,4.0,False
+TXN-10694,2025-09-10,Electronics,Wireless Earbuds,5,143.23,716.15,5.0,False
+TXN-10695,2025-09-11,Apparel,Hoodie,6,234.1,1404.6,2.0,False
+TXN-10696,2025-09-11,Electronics,Smart Watch,5,47.02,235.1,2.0,True
+TXN-10697,2025-09-11,Apparel,Running Shoes,6,226.42,1358.52,4.0,False
+TXN-10698,2025-09-12,Electronics,Bluetooth Speaker,8,179.4,1435.2,2.0,False
+TXN-10699,2025-09-12,Home & Kitchen,Toaster,7,148.27,1037.89,4.0,False
+TXN-10700,2025-09-13,Home & Kitchen,Coffee Maker,5,334.03,1670.15,3.0,False
+TXN-10701,2025-09-13,Electronics,USB-C Cable,10,187.66,1876.6,5.0,False
+TXN-10702,2025-09-13,Electronics,Smart Watch,6,84.5,507.0,5.0,False
+TXN-10703,2025-09-14,Electronics,Bluetooth Speaker,14,166.05,2324.7,5.0,True
+TXN-10704,2025-09-14,Electronics,Smart Watch,4,322.59,1290.36,5.0,False
+TXN-10705,2025-09-14,Beauty,Sunscreen,12,69.87,838.44,5.0,False
+TXN-10706,2025-09-15,Electronics,Smart Watch,9,82.75,744.75,3.0,False
+TXN-10707,2025-09-15,Books,Python Cookbook,13,14.43,187.59,5.0,False
+TXN-10708,2025-09-15,Electronics,Wireless Earbuds,4,14.82,59.28,5.0,False
+TXN-10709,2025-09-16,Apparel,Cotton T-Shirt,1,291.99,291.99,5.0,False
+TXN-10710,2025-09-16,Books,AI Engineering Guide,7,258.92,1812.44,4.0,False
+TXN-10711,2025-09-17,Apparel,Cotton T-Shirt,7,130.71,914.97,3.0,False
+TXN-10712,2025-09-17,Home & Kitchen,Blender,4,247.43,989.72,4.0,False
+TXN-10713,2025-09-17,Home & Kitchen,Coffee Maker,13,144.37,1876.81,5.0,False
+TXN-10714,2025-09-18,Electronics,Smart Watch,14,333.98,4675.72,1.0,False
+TXN-10715,2025-09-18,Beauty,Lip Balm,3,338.8,1016.4,5.0,False
+TXN-10716,2025-09-18,Books,Data Science Handbook,8,143.55,1148.4,3.0,False
+TXN-10717,2025-09-19,Beauty,Face Wash,5,300.44,1502.2,3.0,False
+TXN-10718,2025-09-19,Electronics,Smart Watch,10,272.85,2728.5,3.0,False
+TXN-10719,2025-09-19,Apparel,Running Shoes,7,115.4,807.8,1.0,False
+TXN-10720,2025-09-20,Beauty,Face Wash,4,88.89,355.56,4.0,False
+TXN-10721,2025-09-20,Electronics,Wireless Earbuds,4,165.8,663.2,3.0,False
+TXN-10722,2025-09-21,Electronics,Bluetooth Speaker,8,275.66,2205.28,,False
+TXN-10723,2025-09-21,Apparel,Denim Jeans,14,336.46,4710.44,4.0,False
+TXN-10724,2025-09-21,Apparel,Hoodie,8,269.62,2156.96,3.0,False
+TXN-10725,2025-09-22,Books,AI Engineering Guide,2,300.77,601.54,5.0,False
+TXN-10726,2025-09-22,Electronics,Wireless Earbuds,14,215.04,3010.56,5.0,False
+TXN-10727,2025-09-22,Books,Python Cookbook,2,294.04,588.08,5.0,False
+TXN-10728,2025-09-23,Electronics,Wireless Earbuds,3,276.7,830.1,2.0,True
+TXN-10729,2025-09-23,Electronics,Wireless Earbuds,12,138.18,1658.16,5.0,False
+TXN-10730,2025-09-23,Electronics,Bluetooth Speaker,12,197.68,2372.16,5.0,False
+TXN-10731,2025-09-24,Books,AI Engineering Guide,3,283.62,850.86,3.0,False
+TXN-10732,2025-09-24,Apparel,Hoodie,1,25.66,25.66,2.0,True
+TXN-10733,2025-09-25,Home & Kitchen,Blender,14,284.75,3986.5,4.0,False
+TXN-10734,2025-09-25,Home & Kitchen,Blender,3,70.48,211.44,3.0,False
+TXN-10735,2025-09-25,Books,Python Cookbook,6,184.99,1109.94,5.0,False
+TXN-10736,2025-09-26,Home & Kitchen,Blender,8,284.81,2278.48,4.0,False
+TXN-10737,2025-09-26,Books,Data Science Handbook,13,96.3,1251.9,5.0,False
+TXN-10738,2025-09-26,Home & Kitchen,Air Fryer,12,93.57,1122.84,4.0,False
+TXN-10739,2025-09-27,Home & Kitchen,Air Fryer,14,146.94,2057.16,3.0,False
+TXN-10740,2025-09-27,Home & Kitchen,Air Fryer,10,314.18,3141.8,3.0,False
+TXN-10741,2025-09-27,Electronics,USB-C Cable,6,10.15,60.9,4.0,False
+TXN-10742,2025-09-28,Apparel,Denim Jeans,5,316.47,1582.35,5.0,False
+TXN-10743,2025-09-28,Home & Kitchen,Air Fryer,4,62.29,249.16,5.0,False
+TXN-10744,2025-09-29,Electronics,Smart Watch,3,346.63,1039.89,4.0,False
+TXN-10745,2025-09-29,Books,AI Engineering Guide,13,334.65,4350.45,3.0,False
+TXN-10746,2025-09-29,Home & Kitchen,Toaster,4,178.19,712.76,1.0,False
+TXN-10747,2025-09-30,Home & Kitchen,Coffee Maker,14,184.32,2580.48,5.0,False
+TXN-10748,2025-09-30,Beauty,Moisturizer,7,173.73,1216.11,2.0,True
+TXN-10749,2025-09-30,Apparel,Denim Jeans,1,226.05,226.05,4.0,False
+TXN-10750,2025-10-01,Electronics,Bluetooth Speaker,7,40.85,285.95,5.0,False
+TXN-10751,2025-10-01,Beauty,Sunscreen,1,21.09,21.09,5.0,True
+TXN-10752,2025-10-02,Apparel,Cotton T-Shirt,2,29.62,59.24,4.0,False
+TXN-10753,2025-10-02,Electronics,Wireless Earbuds,4,161.08,644.32,3.0,False
+TXN-10754,2025-10-02,Electronics,Wireless Earbuds,1,103.69,103.69,5.0,False
+TXN-10755,2025-10-03,Books,Python Cookbook,11,221.49,2436.39,5.0,False
+TXN-10756,2025-10-03,Apparel,Running Shoes,12,347.43,4169.16,4.0,False
+TXN-10757,2025-10-03,Home & Kitchen,Blender,11,141.35,1554.85,5.0,False
+TXN-10758,2025-10-04,Books,Data Science Handbook,11,205.11,2256.21,5.0,False
+TXN-10759,2025-10-04,Books,AI Engineering Guide,9,151.31,1361.79,3.0,False
+TXN-10760,2025-10-04,Electronics,Bluetooth Speaker,12,298.07,3576.84,3.0,False
+TXN-10761,2025-10-05,Electronics,Bluetooth Speaker,6,316.76,1900.56,4.0,False
+TXN-10762,2025-10-05,Electronics,Wireless Earbuds,13,308.3,4007.9,5.0,False
+TXN-10763,2025-10-06,Apparel,Hoodie,1,341.29,341.29,1.0,False
+TXN-10764,2025-10-06,Electronics,Wireless Earbuds,1,19.36,19.36,5.0,False
+TXN-10765,2025-10-06,Apparel,Hoodie,6,295.54,1773.24,5.0,False
+TXN-10766,2025-10-07,Books,Data Science Handbook,4,265.6,1062.4,3.0,False
+TXN-10767,2025-10-07,Books,Data Science Handbook,4,87.76,351.04,5.0,False
+TXN-10768,2025-10-07,Electronics,Wireless Earbuds,11,335.15,3686.65,5.0,False
+TXN-10769,2025-10-08,Books,Data Science Handbook,6,60.38,362.28,1.0,False
+TXN-10770,2025-10-08,Electronics,Bluetooth Speaker,14,241.05,3374.7,4.0,False
+TXN-10771,2025-10-08,Books,Python Cookbook,12,86.46,1037.52,4.0,True
+TXN-10772,2025-10-09,Electronics,USB-C Cable,11,156.67,1723.37,5.0,False
+TXN-10773,2025-10-09,Home & Kitchen,Coffee Maker,7,254.51,1781.57,,False
+TXN-10774,2025-10-10,Books,Python Cookbook,9,201.53,1813.77,4.0,False
+TXN-10775,2025-10-10,Electronics,Wireless Earbuds,10,155.35,1553.5,5.0,True
+TXN-10776,2025-10-10,Electronics,Bluetooth Speaker,5,120.96,604.8,4.0,False
+TXN-10777,2025-10-11,Apparel,Denim Jeans,9,295.48,2659.32,4.0,False
+TXN-10778,2025-10-11,Apparel,Denim Jeans,4,58.9,235.6,4.0,False
+TXN-10779,2025-10-11,Apparel,Denim Jeans,13,156.23,2030.99,3.0,False
+TXN-10780,2025-10-12,Apparel,Cotton T-Shirt,10,317.28,3172.8,4.0,False
+TXN-10781,2025-10-12,Home & Kitchen,Air Fryer,2,297.59,595.18,4.0,False
+TXN-10782,2025-10-12,Electronics,Wireless Earbuds,3,146.32,438.96,1.0,True
+TXN-10783,2025-10-13,Electronics,Bluetooth Speaker,13,269.46,3502.98,5.0,False
+TXN-10784,2025-10-13,Electronics,Smart Watch,11,289.87,3188.57,3.0,False
+TXN-10785,2025-10-14,Beauty,Moisturizer,1,312.22,312.22,3.0,True
+TXN-10786,2025-10-14,Apparel,Cotton T-Shirt,14,195.13,2731.82,4.0,False
+TXN-10787,2025-10-14,Home & Kitchen,Air Fryer,14,79.52,1113.28,5.0,False
+TXN-10788,2025-10-15,Home & Kitchen,Air Fryer,6,96.81,580.86,2.0,False
+TXN-10789,2025-10-15,Beauty,Sunscreen,13,110.54,1437.02,4.0,False
+TXN-10790,2025-10-15,Electronics,Wireless Earbuds,6,211.89,1271.34,,False
+TXN-10791,2025-10-16,Apparel,Cotton T-Shirt,1,21.16,21.16,4.0,False
+TXN-10792,2025-10-16,Home & Kitchen,Air Fryer,11,226.25,2488.75,4.0,False
+TXN-10793,2025-10-16,Apparel,Cotton T-Shirt,13,133.88,1740.44,5.0,False
+TXN-10794,2025-10-17,Electronics,Wireless Earbuds,3,110.38,331.14,2.0,False
+TXN-10795,2025-10-17,Books,Data Science Handbook,5,309.03,1545.15,4.0,False
+TXN-10796,2025-10-18,Beauty,Face Wash,3,166.4,499.2,4.0,False
+TXN-10797,2025-10-18,Apparel,Denim Jeans,10,42.32,423.2,4.0,False
+TXN-10798,2025-10-18,Apparel,Running Shoes,3,291.09,873.27,4.0,False
+TXN-10799,2025-10-19,Beauty,Sunscreen,14,26.2,366.8,2.0,False
+TXN-10800,2025-10-19,Apparel,Running Shoes,10,257.09,2570.9,4.0,False
+TXN-10801,2025-10-19,Electronics,Wireless Earbuds,3,273.13,819.39,1.0,False
+TXN-10802,2025-10-20,Apparel,Denim Jeans,5,129.88,649.4,5.0,False
+TXN-10803,2025-10-20,Apparel,Running Shoes,13,290.43,3775.59,4.0,False
+TXN-10804,2025-10-20,Home & Kitchen,Air Fryer,5,185.32,926.6,4.0,False
+TXN-10805,2025-10-21,Apparel,Hoodie,4,167.52,670.08,5.0,False
+TXN-10806,2025-10-21,Beauty,Sunscreen,1,25.44,25.44,5.0,False
+TXN-10807,2025-10-22,Beauty,Sunscreen,5,108.61,543.05,1.0,False
+TXN-10808,2025-10-22,Home & Kitchen,Blender,10,326.54,3265.4,5.0,False
+TXN-10809,2025-10-22,Electronics,Smart Watch,5,143.22,716.1,3.0,False
+TXN-10810,2025-10-23,Beauty,Moisturizer,4,195.88,783.52,3.0,False
+TXN-10811,2025-10-23,Books,Data Science Handbook,6,190.89,1145.34,5.0,False
+TXN-10812,2025-10-23,Electronics,USB-C Cable,10,210.75,2107.5,4.0,False
+TXN-10813,2025-10-24,Beauty,Face Wash,4,30.85,123.4,4.0,False
+TXN-10814,2025-10-24,Books,Python Cookbook,14,133.14,1863.96,3.0,False
+TXN-10815,2025-10-24,Home & Kitchen,Air Fryer,7,255.86,1791.02,4.0,False
+TXN-10816,2025-10-25,Apparel,Denim Jeans,7,78.19,547.33,4.0,False
+TXN-10817,2025-10-25,Home & Kitchen,Air Fryer,2,79.22,158.44,5.0,False
+TXN-10818,2025-10-26,Electronics,Bluetooth Speaker,3,13.43,40.29,3.0,False
+TXN-10819,2025-10-26,Electronics,Smart Watch,1,158.74,158.74,5.0,False
+TXN-10820,2025-10-26,Books,Python Cookbook,8,310.13,2481.04,4.0,False
+TXN-10821,2025-10-27,Electronics,Bluetooth Speaker,9,27.65,248.85,5.0,False
+TXN-10822,2025-10-27,Electronics,Smart Watch,4,74.98,299.92,5.0,False
+TXN-10823,2025-10-27,Home & Kitchen,Blender,6,115.43,692.58,5.0,False
+TXN-10824,2025-10-28,Home & Kitchen,Toaster,9,258.79,2329.11,4.0,False
+TXN-10825,2025-10-28,Beauty,Lip Balm,6,227.82,1366.92,3.0,False
+TXN-10826,2025-10-28,Electronics,Smart Watch,14,151.42,2119.88,3.0,False
+TXN-10827,2025-10-29,Electronics,Smart Watch,12,268.08,3216.96,5.0,False
+TXN-10828,2025-10-29,Apparel,Running Shoes,12,217.27,2607.24,5.0,False
+TXN-10829,2025-10-30,Home & Kitchen,Air Fryer,12,314.65,3775.8,4.0,False
+TXN-10830,2025-10-30,Electronics,Bluetooth Speaker,9,288.13,2593.17,3.0,False
+TXN-10831,2025-10-30,Home & Kitchen,Coffee Maker,4,95.96,383.84,4.0,False
+TXN-10832,2025-10-31,Electronics,Wireless Earbuds,8,102.29,818.32,5.0,False
+TXN-10833,2025-10-31,Electronics,Wireless Earbuds,9,52.62,473.58,4.0,False
+TXN-10834,2025-10-31,Home & Kitchen,Air Fryer,4,124.57,498.28,5.0,False
+TXN-10835,2025-11-01,Home & Kitchen,Toaster,5,349.84,1749.2,,False
+TXN-10836,2025-11-01,Beauty,Moisturizer,14,147.96,2071.44,3.0,False
+TXN-10837,2025-11-01,Home & Kitchen,Toaster,8,84.97,679.76,4.0,False
+TXN-10838,2025-11-02,Apparel,Denim Jeans,12,269.24,3230.88,4.0,False
+TXN-10839,2025-11-02,Apparel,Cotton T-Shirt,10,194.44,1944.4,4.0,False
+TXN-10840,2025-11-03,Electronics,USB-C Cable,14,60.86,852.04,3.0,False
+TXN-10841,2025-11-03,Apparel,Denim Jeans,6,139.43,836.58,2.0,False
+TXN-10842,2025-11-03,Electronics,USB-C Cable,12,150.92,1811.04,5.0,False
+TXN-10843,2025-11-04,Beauty,Sunscreen,7,266.3,1864.1,4.0,False
+TXN-10844,2025-11-04,Electronics,Wireless Earbuds,3,17.03,51.09,4.0,False
+TXN-10845,2025-11-04,Home & Kitchen,Air Fryer,7,101.47,710.29,5.0,False
+TXN-10846,2025-11-05,Electronics,USB-C Cable,12,185.98,2231.76,5.0,False
+TXN-10847,2025-11-05,Beauty,Sunscreen,14,101.41,1419.74,3.0,False
+TXN-10848,2025-11-05,Home & Kitchen,Air Fryer,8,223.67,1789.36,4.0,False
+TXN-10849,2025-11-06,Apparel,Denim Jeans,10,173.83,1738.3,4.0,False
+TXN-10850,2025-11-06,Electronics,Smart Watch,6,132.98,797.88,5.0,False
+TXN-10851,2025-11-07,Apparel,Denim Jeans,10,332.73,3327.3,5.0,False
+TXN-10852,2025-11-07,Electronics,Smart Watch,9,224.93,2024.37,5.0,False
+TXN-10853,2025-11-07,Books,Data Science Handbook,13,54.18,704.34,4.0,True
+TXN-10854,2025-11-08,Electronics,Smart Watch,6,200.43,1202.58,5.0,False
+TXN-10855,2025-11-08,Electronics,Bluetooth Speaker,12,275.45,3305.4,2.0,False
+TXN-10856,2025-11-08,Electronics,USB-C Cable,9,250.89,2258.01,3.0,False
+TXN-10857,2025-11-09,Home & Kitchen,Toaster,13,68.51,890.63,4.0,False
+TXN-10858,2025-11-09,Apparel,Cotton T-Shirt,4,340.62,1362.48,2.0,False
+TXN-10859,2025-11-09,Electronics,Bluetooth Speaker,8,162.6,1300.8,3.0,False
+TXN-10860,2025-11-10,Books,Python Cookbook,11,64.07,704.77,5.0,False
+TXN-10861,2025-11-10,Home & Kitchen,Toaster,4,71.27,285.08,5.0,False
+TXN-10862,2025-11-11,Home & Kitchen,Blender,2,43.4,86.8,4.0,False
+TXN-10863,2025-11-11,Home & Kitchen,Coffee Maker,10,283.2,2832.0,4.0,False
+TXN-10864,2025-11-11,Home & Kitchen,Toaster,11,51.49,566.39,4.0,False
+TXN-10865,2025-11-12,Apparel,Cotton T-Shirt,9,52.54,472.86,4.0,False
+TXN-10866,2025-11-12,Electronics,Wireless Earbuds,5,299.16,1495.8,1.0,False
+TXN-10867,2025-11-12,Electronics,USB-C Cable,4,127.17,508.68,5.0,False
+TXN-10868,2025-11-13,Books,Python Cookbook,2,20.49,40.98,3.0,False
+TXN-10869,2025-11-13,Beauty,Lip Balm,1,27.64,27.64,4.0,False
+TXN-10870,2025-11-13,Home & Kitchen,Coffee Maker,11,58.34,641.74,1.0,False
+TXN-10871,2025-11-14,Electronics,Wireless Earbuds,7,82.55,577.85,5.0,False
+TXN-10872,2025-11-14,Apparel,Running Shoes,6,236.15,1416.9,5.0,False
+TXN-10873,2025-11-15,Home & Kitchen,Blender,2,63.49,126.98,5.0,False
+TXN-10874,2025-11-15,Electronics,Wireless Earbuds,8,50.42,403.36,5.0,False
+TXN-10875,2025-11-15,Electronics,Smart Watch,11,270.0,2970.0,4.0,False
+TXN-10876,2025-11-16,Apparel,Denim Jeans,4,238.16,952.64,3.0,False
+TXN-10877,2025-11-16,Apparel,Running Shoes,8,158.01,1264.08,5.0,False
+TXN-10878,2025-11-16,Electronics,Smart Watch,7,196.77,1377.39,4.0,False
+TXN-10879,2025-11-17,Electronics,Smart Watch,5,116.07,580.35,4.0,False
+TXN-10880,2025-11-17,Electronics,Bluetooth Speaker,10,174.05,1740.5,1.0,False
+TXN-10881,2025-11-18,Apparel,Denim Jeans,10,182.27,1822.7,2.0,True
+TXN-10882,2025-11-18,Electronics,USB-C Cable,12,141.66,1699.92,4.0,False
+TXN-10883,2025-11-18,Electronics,Wireless Earbuds,8,318.23,2545.84,4.0,False
+TXN-10884,2025-11-19,Books,Data Science Handbook,14,15.46,216.44,5.0,False
+TXN-10885,2025-11-19,Electronics,Wireless Earbuds,9,275.94,2483.46,3.0,False
+TXN-10886,2025-11-19,Apparel,Cotton T-Shirt,5,52.29,261.45,4.0,False
+TXN-10887,2025-11-20,Electronics,Bluetooth Speaker,10,281.17,2811.7,3.0,False
+TXN-10888,2025-11-20,Electronics,Wireless Earbuds,5,219.41,1097.05,2.0,False
+TXN-10889,2025-11-20,Electronics,Wireless Earbuds,2,296.71,593.42,4.0,False
+TXN-10890,2025-11-21,Apparel,Cotton T-Shirt,5,43.15,215.75,3.0,False
+TXN-10891,2025-11-21,Books,Data Science Handbook,3,200.05,600.15,3.0,False
+TXN-10892,2025-11-22,Books,Python Cookbook,7,180.37,1262.59,4.0,False
+TXN-10893,2025-11-22,Home & Kitchen,Blender,10,250.11,2501.1,4.0,False
+TXN-10894,2025-11-22,Apparel,Hoodie,5,191.66,958.3,2.0,False
+TXN-10895,2025-11-23,Electronics,Bluetooth Speaker,8,193.85,1550.8,2.0,False
+TXN-10896,2025-11-23,Electronics,Smart Watch,1,156.06,156.06,3.0,True
+TXN-10897,2025-11-23,Books,Data Science Handbook,3,115.0,345.0,2.0,False
+TXN-10898,2025-11-24,Electronics,Smart Watch,3,173.97,521.91,5.0,False
+TXN-10899,2025-11-24,Electronics,Smart Watch,9,50.29,452.61,4.0,False
+TXN-10900,2025-11-24,Electronics,Bluetooth Speaker,5,336.91,1684.55,4.0,False
+TXN-10901,2025-11-25,Electronics,Smart Watch,12,252.9,3034.8,4.0,False
+TXN-10902,2025-11-25,Electronics,USB-C Cable,9,333.84,3004.56,5.0,True
+TXN-10903,2025-11-26,Apparel,Denim Jeans,13,87.09,1132.17,5.0,False
+TXN-10904,2025-11-26,Home & Kitchen,Coffee Maker,9,308.98,2780.82,5.0,False
+TXN-10905,2025-11-26,Books,AI Engineering Guide,1,284.99,284.99,5.0,False
+TXN-10906,2025-11-27,Books,Data Science Handbook,2,240.23,480.46,4.0,False
+TXN-10907,2025-11-27,Electronics,Wireless Earbuds,5,222.51,1112.55,5.0,False
+TXN-10908,2025-11-27,Electronics,USB-C Cable,4,117.63,470.52,4.0,False
+TXN-10909,2025-11-28,Home & Kitchen,Air Fryer,10,287.58,2875.8,3.0,False
+TXN-10910,2025-11-28,Apparel,Cotton T-Shirt,9,180.52,1624.68,3.0,False
+TXN-10911,2025-11-28,Electronics,USB-C Cable,7,34.1,238.7,4.0,False
+TXN-10912,2025-11-29,Apparel,Cotton T-Shirt,6,116.37,698.22,5.0,False
+TXN-10913,2025-11-29,Home & Kitchen,Toaster,7,328.0,2296.0,4.0,False
+TXN-10914,2025-11-30,Apparel,Denim Jeans,1,299.23,299.23,5.0,False
+TXN-10915,2025-11-30,Home & Kitchen,Coffee Maker,1,343.85,343.85,4.0,False
+TXN-10916,2025-11-30,Electronics,USB-C Cable,8,223.52,1788.16,4.0,False
+TXN-10917,2025-12-01,Beauty,Moisturizer,13,94.15,1223.95,3.0,False
+TXN-10918,2025-12-01,Books,Data Science Handbook,13,65.36,849.68,3.0,False
+TXN-10919,2025-12-01,Electronics,USB-C Cable,2,73.55,147.1,5.0,False
+TXN-10920,2025-12-02,Books,Data Science Handbook,12,16.73,200.76,4.0,False
+TXN-10921,2025-12-02,Home & Kitchen,Toaster,10,142.83,1428.3,4.0,False
+TXN-10922,2025-12-02,Books,AI Engineering Guide,11,75.09,825.99,5.0,False
+TXN-10923,2025-12-03,Books,Python Cookbook,9,149.96,1349.64,3.0,False
+TXN-10924,2025-12-03,Home & Kitchen,Air Fryer,7,327.9,2295.3,,False
+TXN-10925,2025-12-04,Electronics,Wireless Earbuds,6,156.38,938.28,4.0,False
+TXN-10926,2025-12-04,Electronics,USB-C Cable,1,308.51,308.51,4.0,False
+TXN-10927,2025-12-04,Home & Kitchen,Toaster,1,215.87,215.87,4.0,False
+TXN-10928,2025-12-05,Apparel,Cotton T-Shirt,2,94.02,188.04,3.0,False
+TXN-10929,2025-12-05,Electronics,Wireless Earbuds,6,130.99,785.94,3.0,True
+TXN-10930,2025-12-05,Electronics,Wireless Earbuds,14,38.53,539.42,5.0,False
+TXN-10931,2025-12-06,Books,Data Science Handbook,6,123.38,740.28,5.0,False
+TXN-10932,2025-12-06,Beauty,Lip Balm,2,240.36,480.72,5.0,False
+TXN-10933,2025-12-06,Home & Kitchen,Blender,1,34.52,34.52,3.0,False
+TXN-10934,2025-12-07,Electronics,USB-C Cable,10,79.84,798.4,4.0,False
+TXN-10935,2025-12-07,Electronics,Bluetooth Speaker,5,139.69,698.45,3.0,False
+TXN-10936,2025-12-08,Electronics,Smart Watch,5,343.9,1719.5,1.0,False
+TXN-10937,2025-12-08,Beauty,Sunscreen,2,276.85,553.7,5.0,False
+TXN-10938,2025-12-08,Electronics,USB-C Cable,6,259.39,1556.34,4.0,False
+TXN-10939,2025-12-09,Apparel,Hoodie,9,49.5,445.5,2.0,False
+TXN-10940,2025-12-09,Electronics,Bluetooth Speaker,2,275.54,551.08,1.0,False
+TXN-10941,2025-12-09,Apparel,Denim Jeans,10,276.99,2769.9,,False
+TXN-10942,2025-12-10,Apparel,Denim Jeans,2,214.37,428.74,1.0,False
+TXN-10943,2025-12-10,Books,AI Engineering Guide,3,346.72,1040.16,4.0,False
+TXN-10944,2025-12-10,Electronics,Smart Watch,13,120.59,1567.67,4.0,False
+TXN-10945,2025-12-11,Electronics,Smart Watch,7,330.03,2310.21,3.0,False
+TXN-10946,2025-12-11,Electronics,Wireless Earbuds,6,321.01,1926.06,3.0,False
+TXN-10947,2025-12-12,Beauty,Face Wash,12,13.9,166.8,4.0,False
+TXN-10948,2025-12-12,Books,Data Science Handbook,8,163.04,1304.32,5.0,False
+TXN-10949,2025-12-12,Apparel,Denim Jeans,8,342.22,2737.76,4.0,False
+TXN-10950,2025-12-13,Apparel,Running Shoes,6,45.06,270.36,5.0,False
+TXN-10951,2025-12-13,Apparel,Running Shoes,12,196.25,2355.0,,False
+TXN-10952,2025-12-13,Electronics,Smart Watch,11,342.85,3771.35,5.0,False
+TXN-10953,2025-12-14,Beauty,Sunscreen,10,198.87,1988.7,4.0,False
+TXN-10954,2025-12-14,Home & Kitchen,Toaster,3,74.54,223.62,4.0,False
+TXN-10955,2025-12-14,Home & Kitchen,Blender,3,207.94,623.82,5.0,False
+TXN-10956,2025-12-15,Home & Kitchen,Blender,1,79.51,79.51,5.0,False
+TXN-10957,2025-12-15,Electronics,Smart Watch,7,186.7,1306.9,4.0,False
+TXN-10958,2025-12-16,Electronics,Wireless Earbuds,5,35.17,175.85,5.0,False
+TXN-10959,2025-12-16,Apparel,Running Shoes,4,215.86,863.44,1.0,False
+TXN-10960,2025-12-16,Electronics,Wireless Earbuds,10,185.71,1857.1,4.0,False
+TXN-10961,2025-12-17,Apparel,Denim Jeans,4,261.65,1046.6,4.0,False
+TXN-10962,2025-12-17,Electronics,Bluetooth Speaker,14,224.44,3142.16,3.0,False
+TXN-10963,2025-12-17,Home & Kitchen,Blender,4,196.87,787.48,2.0,False
+TXN-10964,2025-12-18,Electronics,USB-C Cable,6,244.52,1467.12,5.0,False
+TXN-10965,2025-12-18,Home & Kitchen,Toaster,8,58.94,471.52,4.0,False
+TXN-10966,2025-12-18,Apparel,Running Shoes,8,212.42,1699.36,4.0,False
+TXN-10967,2025-12-19,Electronics,USB-C Cable,5,68.52,342.6,4.0,False
+TXN-10968,2025-12-19,Apparel,Hoodie,6,324.68,1948.08,4.0,False
+TXN-10969,2025-12-20,Home & Kitchen,Toaster,4,33.23,132.92,3.0,False
+TXN-10970,2025-12-20,Apparel,Hoodie,12,156.33,1875.96,5.0,False
+TXN-10971,2025-12-20,Beauty,Sunscreen,14,246.57,3451.98,5.0,False
+TXN-10972,2025-12-21,Apparel,Denim Jeans,11,165.73,1823.03,5.0,False
+TXN-10973,2025-12-21,Electronics,Smart Watch,13,41.31,537.03,5.0,False
+TXN-10974,2025-12-21,Electronics,Bluetooth Speaker,9,198.15,1783.35,4.0,False
+TXN-10975,2025-12-22,Electronics,USB-C Cable,8,228.15,1825.2,2.0,False
+TXN-10976,2025-12-22,Apparel,Hoodie,10,249.29,2492.9,4.0,False
+TXN-10977,2025-12-22,Electronics,Wireless Earbuds,12,136.91,1642.92,2.0,False
+TXN-10978,2025-12-23,Home & Kitchen,Blender,10,201.64,2016.4,,False
+TXN-10979,2025-12-23,Apparel,Hoodie,1,163.23,163.23,3.0,False
+TXN-10980,2025-12-24,Electronics,USB-C Cable,2,238.5,477.0,3.0,False
+TXN-10981,2025-12-24,Books,Python Cookbook,9,208.41,1875.69,5.0,False
+TXN-10982,2025-12-24,Electronics,Bluetooth Speaker,8,188.76,1510.08,5.0,False
+TXN-10983,2025-12-25,Electronics,USB-C Cable,14,94.84,1327.76,5.0,False
+TXN-10984,2025-12-25,Apparel,Cotton T-Shirt,3,10.69,32.07,1.0,False
+TXN-10985,2025-12-25,Home & Kitchen,Toaster,8,69.19,553.52,1.0,False
+TXN-10986,2025-12-26,Apparel,Hoodie,12,49.8,597.6,4.0,False
+TXN-10987,2025-12-26,Home & Kitchen,Blender,1,162.69,162.69,3.0,False
+TXN-10988,2025-12-26,Electronics,Bluetooth Speaker,10,218.17,2181.7,1.0,False
+TXN-10989,2025-12-27,Books,Python Cookbook,4,82.45,329.8,4.0,False
+TXN-10990,2025-12-27,Books,Python Cookbook,3,329.28,987.84,5.0,False
+TXN-10991,2025-12-28,Apparel,Hoodie,6,12.27,73.62,4.0,False
+TXN-10992,2025-12-28,Electronics,Bluetooth Speaker,7,272.58,1908.06,5.0,False
+TXN-10993,2025-12-28,Apparel,Cotton T-Shirt,4,222.57,890.28,5.0,False
+TXN-10994,2025-12-29,Home & Kitchen,Blender,7,137.01,959.07,4.0,False
+TXN-10995,2025-12-29,Electronics,Smart Watch,9,27.17,244.53,5.0,False
+TXN-10996,2025-12-29,Beauty,Face Wash,11,223.35,2456.85,3.0,False
+TXN-10997,2025-12-30,Electronics,Smart Watch,2,141.11,282.22,3.0,True
+TXN-10998,2025-12-30,Beauty,Sunscreen,11,328.33,3611.63,5.0,False
+TXN-10999,2025-12-31,Home & Kitchen,Blender,3,194.28,582.84,3.0,False
+TXN-10521,2025-07-09,Home & Kitchen,Blender,8,125.73,1005.84,5.0,False
+TXN-10737,2025-09-26,Books,Data Science Handbook,13,96.3,1251.9,5.0,False
+TXN-10740,2025-09-27,Home & Kitchen,Air Fryer,10,314.18,3141.8,3.0,False
+TXN-10660,2025-08-29,Home & Kitchen,Toaster,9,65.72,591.48,5.0,False
+TXN-10411,2025-05-30,Beauty,Face Wash,13,211.08,2744.04,3.0,False
+TXN-10678,2025-09-05,Beauty,Sunscreen,3,332.68,998.04,4.0,False
+TXN-10626,2025-08-17,Home & Kitchen,Toaster,6,196.45,1178.7,3.0,False
+TXN-10513,2025-07-06,Books,AI Engineering Guide,14,44.93,629.02,5.0,False
+TXN-10859,2025-11-09,Electronics,Bluetooth Speaker,8,162.6,1300.8,3.0,False
+TXN-10136,2025-02-19,Home & Kitchen,Blender,3,290.34,871.02,3.0,False
+TXN-10811,2025-10-23,Books,Data Science Handbook,6,190.89,1145.34,5.0,False
+TXN-10076,2025-01-28,Books,Data Science Handbook,2,20.58,41.16,3.0,False
+TXN-10636,2025-08-20,Home & Kitchen,Air Fryer,10,251.45,2514.5,3.0,False
+TXN-10973,2025-12-21,Electronics,Smart Watch,13,41.31,537.03,5.0,False
+TXN-10938,2025-12-08,Electronics,USB-C Cable,6,259.39,1556.34,4.0,False
