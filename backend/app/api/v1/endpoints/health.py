@@ -16,7 +16,7 @@ async def health_check():
         status="ok",
         service=settings.PROJECT_NAME,
         version=settings.VERSION,
-        mode="memory-only",
+        mode="cloud-persisted" if supabase_active else "memory-only",
         groq_available=groq_active,
         supabase_connected=supabase_active
     )

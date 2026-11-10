@@ -25,12 +25,11 @@ export async function getOrCreateAnonymousSession(): Promise<string | null> {
 
     const { data, error } = await supabase.auth.signInAnonymously();
     if (error) {
-      console.warn("Supabase anonymous sign-in error:", error.message);
+      // Anonymous sign-in is optional; workspace session persists via secure backend cookies in Supabase
       return null;
     }
     return data.session?.access_token || null;
   } catch (err) {
-    console.warn("Supabase auth error:", err);
     return null;
   }
 }
