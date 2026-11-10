@@ -246,9 +246,21 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
 
       {/* Error Banner */}
       {error && (
-        <div className="px-5 py-2.5 bg-red-50 border-t border-red-200 text-red-900 text-xs flex items-center gap-2 shrink-0">
-          <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
-          <span className="truncate">{error}</span>
+        <div className="px-5 py-2.5 bg-red-50 border-t border-red-200 text-red-900 text-xs flex items-center justify-between gap-2 shrink-0">
+          <div className="flex items-center gap-2 min-w-0">
+            <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
+            <span className="truncate">{error}</span>
+          </div>
+          {messages.length > 0 && messages[messages.length - 1].role === "user" && (
+            <button
+              type="button"
+              onClick={() => handleSend(messages[messages.length - 1].content)}
+              disabled={isLoading}
+              className="text-xs font-semibold text-red-700 hover:text-red-900 underline shrink-0 cursor-pointer"
+            >
+              Retry
+            </button>
+          )}
         </div>
       )}
 
