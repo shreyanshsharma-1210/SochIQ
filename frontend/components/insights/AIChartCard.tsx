@@ -18,7 +18,16 @@ import {
 } from "recharts";
 import { BarChart3 } from "lucide-react";
 
-const PALETTE = ["#111111", "#FFDF00", "#777777", "#4A6B82", "#10B981", "#6366F1"];
+const PALETTE = [
+  "#EAB308", // Golden Yellow (SochIQ Primary Accent)
+  "#64748B", // Slate Grey
+  "#F59E0B", // Warm Amber Yellow
+  "#94A3B8", // Cool Slate Grey
+  "#D97706", // Deep Ochre Yellow
+  "#71717A", // Zinc Grey
+  "#FACC15", // Bright Sunlight Yellow
+  "#A1A1AA", // Soft Zinc Grey
+];
 
 interface AIChartCardProps {
   chart: AIChartItem;
@@ -42,9 +51,9 @@ export default function AIChartCard({ chart }: AIChartCardProps) {
         <ResponsiveContainer width="100%" height="100%">
           {chart.chart_type === "line" ? (
             <LineChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 20 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#EAEAEA" />
-              <XAxis dataKey={xKey} tick={{ fontSize: 11, fill: "#777777" }} />
-              <YAxis tick={{ fontSize: 11, fill: "#777777" }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#F1F5F9" />
+              <XAxis dataKey={xKey} tick={{ fontSize: 11, fill: "#777777" }} axisLine={{ stroke: "#EAEAEA" }} />
+              <YAxis tick={{ fontSize: 11, fill: "#777777" }} axisLine={{ stroke: "#EAEAEA" }} />
               <Tooltip
                 contentStyle={{
                   backgroundColor: "#FFFFFF",
@@ -52,8 +61,17 @@ export default function AIChartCard({ chart }: AIChartCardProps) {
                   borderRadius: "8px",
                   fontSize: "12px",
                 }}
+                itemStyle={{ color: "#374151", fontWeight: 600 }}
+                labelStyle={{ color: "#6B7280", fontWeight: 500 }}
               />
-              <Line type="monotone" dataKey={yKey} stroke="#111111" strokeWidth={2} dot={{ fill: "#FFDF00", stroke: "#111111", r: 4 }} />
+              <Line
+                type="monotone"
+                dataKey={yKey}
+                stroke="#EAB308"
+                strokeWidth={2.5}
+                dot={{ fill: "#FFFFFF", stroke: "#EAB308", strokeWidth: 2, r: 4 }}
+                activeDot={{ fill: "#EAB308", stroke: "#FFFFFF", r: 6 }}
+              />
             </LineChart>
           ) : chart.chart_type === "pie" ? (
             <PieChart>
@@ -64,6 +82,8 @@ export default function AIChartCard({ chart }: AIChartCardProps) {
                   borderRadius: "8px",
                   fontSize: "12px",
                 }}
+                itemStyle={{ color: "#374151", fontWeight: 600 }}
+                labelStyle={{ color: "#6B7280", fontWeight: 500 }}
               />
               <Pie
                 data={data}
@@ -82,9 +102,9 @@ export default function AIChartCard({ chart }: AIChartCardProps) {
             </PieChart>
           ) : (
             <BarChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 20 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#EAEAEA" />
-              <XAxis dataKey={xKey} tick={{ fontSize: 11, fill: "#777777" }} />
-              <YAxis tick={{ fontSize: 11, fill: "#777777" }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#F1F5F9" />
+              <XAxis dataKey={xKey} tick={{ fontSize: 11, fill: "#777777" }} axisLine={{ stroke: "#EAEAEA" }} />
+              <YAxis tick={{ fontSize: 11, fill: "#777777" }} axisLine={{ stroke: "#EAEAEA" }} />
               <Tooltip
                 contentStyle={{
                   backgroundColor: "#FFFFFF",
@@ -92,8 +112,10 @@ export default function AIChartCard({ chart }: AIChartCardProps) {
                   borderRadius: "8px",
                   fontSize: "12px",
                 }}
+                itemStyle={{ color: "#374151", fontWeight: 600 }}
+                labelStyle={{ color: "#6B7280", fontWeight: 500 }}
               />
-              <Bar dataKey={yKey} fill="#111111" radius={[4, 4, 0, 0]}>
+              <Bar dataKey={yKey} fill="#EAB308" radius={[4, 4, 0, 0]}>
                 {data.map((_, index) => (
                   <Cell key={`cell-${index}`} fill={PALETTE[index % PALETTE.length]} />
                 ))}
