@@ -15,7 +15,8 @@ import {
   Plus,
   Layers,
   UploadCloud,
-  X
+  X,
+  Loader2,
 } from "lucide-react";
 import UploadDropzone from "@/components/datasets/UploadDropzone";
 import PreviewGrid from "@/components/datasets/PreviewGrid";
@@ -329,14 +330,19 @@ export default function UploadWorkspacePage() {
           {/* Tab 4: AI Insights */}
           {activeTab === "insights" && (
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-              {/* Left Column: Rule Heuristic Observations (4 cols on desktop) */}
-              <div className="order-2 lg:order-1 lg:col-span-4 flex flex-col gap-6">
-                {insightsData && (
+              {/* Left Column: Rule Heuristic Observations */}
+              <div className="order-2 lg:order-1 lg:col-span-5 flex flex-col">
+                {insightsData ? (
                   <RuleInsightsDeck insights={insightsData.insights} />
+                ) : (
+                  <div className="w-full h-[720px] max-h-[85vh] bg-white border border-grey-border rounded-2xl shadow-card flex flex-col items-center justify-center p-8 text-center text-grey-muted">
+                    <Loader2 className="w-6 h-6 animate-spin text-charcoal mb-2" />
+                    <p className="text-xs">Computing heuristic rules...</p>
+                  </div>
                 )}
               </div>
-              {/* Right Column: Spacious SochIQ AI Assistant (8 cols on desktop) */}
-              <div className="order-1 lg:order-2 lg:col-span-8">
+              {/* Right Column: Spacious SochIQ AI Assistant */}
+              <div className="order-1 lg:order-2 lg:col-span-7 flex flex-col">
                 <GroqChatPanel
                   summaryContext={analyticsData}
                   qualityContext={previewData.quality}

@@ -105,6 +105,15 @@ body {
   color: #FFFFFF;
 }
 
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Backward compatibility aliases mapping old tokens to clean SochIQ styles */
 .diwali-card {
   background: #FFFFFF;

@@ -113,11 +113,11 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
       className={`bg-white border border-grey-border rounded-2xl shadow-card flex flex-col transition-all duration-200 overflow-hidden ${
         isFullscreen
           ? "fixed inset-3 md:inset-8 z-50 shadow-2xl h-[calc(100vh-1.5rem)] md:h-[calc(100vh-4rem)]"
-          : "w-full h-[760px] max-h-[85vh]"
+          : "w-full h-[720px] max-h-[85vh]"
       }`}
     >
       {/* 3.A Assistant Header */}
-      <div className="bg-charcoal text-white rounded-t-2xl px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between shrink-0 shadow-sm border-b border-charcoal-deep">
+      <div className="bg-charcoal text-white rounded-t-2xl px-5 sm:px-6 py-4 flex items-center justify-between shrink-0 shadow-sm border-b border-charcoal-deep">
         <div className="flex items-center gap-3.5 min-w-0">
           <div className="w-10 h-10 rounded-xl bg-charcoal-deep border border-yellow/40 flex items-center justify-center shrink-0 shadow-inner">
             <SochIQIcon size={26} />
@@ -160,17 +160,17 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
         </div>
       </div>
 
-      {/* 3.B Conversation Area */}
-      <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 bg-[#FAFAFA]">
+      {/* 3.B Conversation Area - ONLY this section scrolls vertically */}
+      <div className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 space-y-4 bg-[#FAFAFA]">
         {messages.length === 0 ? (
-          <div className="h-full flex flex-col justify-center items-center text-center p-6 sm:p-8 max-w-xl mx-auto my-auto">
-            <div className="w-14 h-14 rounded-2xl bg-yellow/20 border border-yellow/40 flex items-center justify-center mb-4 shadow-xs">
+          <div className="min-h-full flex flex-col justify-center items-center text-center p-4 max-w-md mx-auto">
+            <div className="w-14 h-14 rounded-2xl bg-yellow/20 border border-yellow/40 flex items-center justify-center mb-3 shadow-xs">
               <Bot className="w-7 h-7 text-charcoal" />
             </div>
-            <h4 className="font-heading text-base sm:text-lg font-bold text-charcoal mb-2">
+            <h4 className="font-heading text-base sm:text-lg font-bold text-charcoal mb-1.5">
               Grounded Intelligence Ready
             </h4>
-            <p className="text-xs sm:text-sm text-grey-muted leading-relaxed mb-6">
+            <p className="text-xs sm:text-sm text-grey-muted leading-relaxed mb-4">
               Ask natural language questions about your dataset. SochIQ interprets summary distributions,
               missing value profiles, key correlations, and quality scores without transmitting raw data records.
             </p>
@@ -201,7 +201,7 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
                   <div className="w-8 h-8 rounded-full bg-charcoal border border-yellow/50 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                     <Bot className="w-4 h-4 text-yellow" />
                   </div>
-                  <div className="flex-1 min-w-0 rounded-2xl rounded-tl-xs bg-white border border-grey-border p-5 sm:p-6 shadow-2xs space-y-3">
+                  <div className="flex-1 min-w-0 rounded-2xl rounded-tl-xs bg-white border border-grey-border p-4 sm:p-5 shadow-2xs space-y-3">
                     {msg.structured ? (
                       <StructuredAIResponseView
                         data={msg.structured}
@@ -214,7 +214,7 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
                         {msg.content}
                       </div>
                     )}
-                    <div className="text-[10px] text-grey-muted pt-2.5 border-t border-grey-border/60 flex items-center justify-between font-mono">
+                    <div className="text-[10px] text-grey-muted pt-2 border-t border-grey-border/60 flex items-center justify-between font-mono">
                       <span>Grounded strictly on dataset aggregate statistics</span>
                       <span>{msg.timestamp}</span>
                     </div>
@@ -252,23 +252,24 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
         </div>
       )}
 
-      {/* 3.E Suggested Inquiries */}
+      {/* 3.E Suggested Inquiries (clean single horizontal scroll, no vertical overflow) */}
       {activeSuggestions && activeSuggestions.length > 0 && (
-        <div className="shrink-0 px-5 sm:px-6 py-3 bg-white border-t border-grey-border">
-          <div className="flex items-center gap-1.5 mb-2">
+        <div className="shrink-0 px-5 sm:px-6 py-2.5 bg-white border-t border-grey-border">
+          <div className="flex items-center gap-1.5 mb-1.5">
             <Sparkles className="w-3.5 h-3.5 text-charcoal fill-yellow" />
             <span className="text-[11px] font-bold text-charcoal uppercase tracking-wider">
               Suggested Inquiries
             </span>
           </div>
-          <div className="flex flex-wrap gap-2 overflow-x-auto pb-1 max-h-24">
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5 whitespace-nowrap">
             {activeSuggestions.map((sug, idx) => (
-              <SuggestionChip
-                key={idx}
-                text={sug}
-                onClick={(val) => handleSend(val)}
-                disabled={isLoading}
-              />
+              <div key={idx} className="shrink-0">
+                <SuggestionChip
+                  text={sug}
+                  onClick={(val) => handleSend(val)}
+                  disabled={isLoading}
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -291,7 +292,7 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
               onChange={(e) => setQuestion(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Ask about revenue, missing values, trends, distributions or get analytical insights..."
-              className="w-full resize-none px-4 py-3 rounded-xl border border-grey-border bg-grey-subtle/30 text-xs sm:text-sm focus:outline-none focus:border-charcoal focus:bg-white transition-colors placeholder:text-grey-muted/60 leading-normal"
+              className="w-full resize-none px-4 py-2.5 rounded-xl border border-grey-border bg-grey-subtle/30 text-xs sm:text-sm focus:outline-none focus:border-charcoal focus:bg-white transition-colors placeholder:text-grey-muted/60 leading-normal"
               disabled={isLoading}
             />
           </div>
@@ -299,7 +300,7 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
           <button
             type="submit"
             disabled={isLoading || !question.trim()}
-            className="px-5 py-3 rounded-xl bg-yellow hover:bg-yellow-hover text-charcoal text-xs sm:text-sm font-bold transition-all shadow-xs flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed shrink-0 h-[50px] cursor-pointer"
+            className="px-5 py-2.5 rounded-xl bg-yellow hover:bg-yellow-hover text-charcoal text-xs sm:text-sm font-bold transition-all shadow-xs flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed shrink-0 h-[46px] cursor-pointer"
           >
             {isLoading ? (
               <>
@@ -316,7 +317,7 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
         </form>
 
         {/* 3.G Privacy Footer */}
-        <div className="mt-3 flex items-center justify-between text-[11px] text-grey-muted gap-2 pt-2 border-t border-grey-border/40">
+        <div className="mt-2.5 flex items-center justify-between text-[11px] text-grey-muted gap-2 pt-2 border-t border-grey-border/40">
           <span className="flex items-center gap-1.5 min-w-0">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
             <span className="truncate sm:whitespace-normal">
