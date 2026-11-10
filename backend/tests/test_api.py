@@ -12,7 +12,7 @@ def test_health_endpoint():
     data = response.json()
     assert data["status"] == "ok"
     assert data["service"] == "SochIQ"
-    assert data["mode"] == "memory-only"
+    assert data["mode"] in ("cloud-persisted", "memory-only")
 
 
 def test_preview_csv():

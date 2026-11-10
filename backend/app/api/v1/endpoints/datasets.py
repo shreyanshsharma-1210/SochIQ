@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from fastapi import APIRouter, Depends, File, UploadFile, HTTPException, status, Response, Request
 from fastapi.responses import Response as FastApiResponse
 from app.core.config import settings
-from app.core.security import get_auth_context, AuthContext
+from app.core.security import get_auth_context, AuthContext, get_cookie_security_params
 from app.core.credentials import create_browser_session, validate_browser_session
 from app.schemas.dataset import (
     DatasetPreviewResponse,
@@ -75,13 +75,14 @@ async def upload_and_process_dataset(
         created = create_browser_session()
         owner_id = created["owner_id"]
         session_id = created["session_id"]
+        cookie_params = get_cookie_security_params(request)
         response.set_cookie(
             key=settings.SESSION_COOKIE_NAME,
             value=created["raw_token"],
             max_age=365 * 24 * 3600,
             httponly=True,
-            samesite="lax",
-            secure=False
+            samesite=cookie_params["samesite"],
+            secure=cookie_params["secure"]
         )
     else:
         owner_id = auth.user_id

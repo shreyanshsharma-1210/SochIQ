@@ -1,7 +1,7 @@
 from typing import List, Optional
 from fastapi import APIRouter, Depends, Response, Request, HTTPException, status
 from app.core.config import settings
-from app.core.security import get_auth_context, AuthContext
+from app.core.security import get_auth_context, AuthContext, get_cookie_security_params
 from app.core.credentials import (
     create_browser_session,
     revoke_browser_session,
@@ -33,14 +33,14 @@ async def init_browser_session(
     """
     session = create_browser_session(owner_id=auth.user_id)
 
-    # Set Secure, HttpOnly, SameSite cookie
+    cookie_params = get_cookie_security_params(request)
     response.set_cookie(
         key=settings.SESSION_COOKIE_NAME,
         value=session["raw_token"],
         max_age=settings.SESSION_INACTIVITY_MINUTES * 60,
         httponly=True,
-        samesite="lax",
-        secure=False  # Set to True automatically on HTTPS in production
+        samesite=cookie_params["samesite"],
+        secure=cookie_params["secure"]
     )
 
     return SessionInitResponse(

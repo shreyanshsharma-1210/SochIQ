@@ -275,10 +275,11 @@ export const api = {
   },
 
   async sendHeartbeat(tabId: string): Promise<any> {
+    const authHeaders = await getAuthHeaders();
     const res = await fetch(`${getApiBase()}/session/heartbeat`, {
       method: "POST",
       credentials: "include",
-      headers: { "Content-Type": "application/json" },
+      headers: { ...authHeaders, "Content-Type": "application/json" },
       body: JSON.stringify({ tab_id: tabId }),
     });
     if (!res.ok) throw new Error("Heartbeat failed");
