@@ -19,6 +19,9 @@ export default function AppDeveloperPage() {
   const [generatedKey, setGeneratedKey] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [copiedGenerated, setCopiedGenerated] = useState(false);
+  const [envMode, setEnvMode] = useState<"live" | "local">("live");
+
+  const baseUrl = envMode === "live" ? "https://sochiq-backend.onrender.com" : "http://localhost:8000";
 
   useEffect(() => {
     const setup = async () => {
@@ -77,44 +80,50 @@ export default function AppDeveloperPage() {
     }
   };
 
-  const sampleKeyDisplay = generatedKey || "dl_live_SAMPLE_TEMPORARY_KEY";
+  const sampleKeyDisplay = generatedKey || "sochiq_live_SAMPLE_TEMPORARY_KEY";
 
   const endpoints = [
     {
       method: "GET",
       path: "/api/v1/health",
       desc: "Returns API service health, active mode, and provider availability.",
-      sample: "curl -X GET http://localhost:8000/api/v1/health",
+      sample: `curl -X GET ${baseUrl}/api/v1/health`,
     },
     {
       method: "POST",
       path: "/api/v1/datasets/preview",
       desc: "Uploads and evaluates CSV/XLSX/JSON in-memory, returning schema & preview.",
-      sample: `curl -X POST http://localhost:8000/api/v1/datasets/preview \\\n  -H "Authorization: Bearer ${sampleKeyDisplay}" \\\n  -F "file=@sample.csv"`,
+      sample: `curl -X POST ${baseUrl}/api/v1/datasets/preview \\\n  -H "Authorization: Bearer ${sampleKeyDisplay}" \\\n  -F "file=@sample.csv"`,
     },
     {
       method: "POST",
       path: "/api/v1/analytics/summary",
       desc: "Calculates descriptive statistics (mean, median, quartiles, IQR) in memory.",
-      sample: `curl -X POST http://localhost:8000/api/v1/analytics/summary \\\n  -H "Authorization: Bearer ${sampleKeyDisplay}" \\\n  -F "file=@sales.xlsx"`,
+      sample: `curl -X POST ${baseUrl}/api/v1/analytics/summary \\\n  -H "Authorization: Bearer ${sampleKeyDisplay}" \\\n  -F "file=@sales.xlsx"`,
     },
     {
       method: "POST",
       path: "/api/v1/insights/rules",
       desc: "Deterministic statistical heuristics (dominant categories, outliers, benchmarks).",
-      sample: `curl -X POST http://localhost:8000/api/v1/insights/rules \\\n  -H "Authorization: Bearer ${sampleKeyDisplay}" \\\n  -F "file=@data.json"`,
+      sample: `curl -X POST ${baseUrl}/api/v1/insights/rules \\\n  -H "Authorization: Bearer ${sampleKeyDisplay}" \\\n  -F "file=@data.json"`,
     },
     {
       method: "POST",
       path: "/api/v1/exports/pdf",
       desc: "Generates and streams an executive PDF report built with ReportLab.",
-      sample: `curl -X POST http://localhost:8000/api/v1/exports/pdf \\\n  -H "Authorization: Bearer ${sampleKeyDisplay}" \\\n  -F "file=@data.csv" --output SochIQ_Report.pdf`,
+      sample: `curl -X POST ${baseUrl}/api/v1/exports/pdf \\\n  -H "Authorization: Bearer ${sampleKeyDisplay}" \\\n  -F "file=@data.csv" --output SochIQ_Report.pdf`,
     },
     {
       method: "GET",
       path: "/api/v1/datasets/saved",
       desc: "Lists saved dataset metadata scoped to caller's anonymous identity.",
-      sample: `curl -X GET http://localhost:8000/api/v1/datasets/saved \\\n  -H "Authorization: Bearer ${sampleKeyDisplay}"`,
+      sample: `curl -X GET ${baseUrl}/api/v1/datasets/saved \\\n  -H "Authorization: Bearer ${sampleKeyDisplay}"`,
+    },
+    {
+      method: "POST",
+      path: "/api/v1/ai/query",
+      desc: "Inquires analytical summaries and trends grounded on computed statistics via Groq.",
+      sample: `curl -X POST ${baseUrl}/api/v1/ai/query \\\n  -H "Authorization: Bearer ${sampleKeyDisplay}" \\\n  -H "Content-Type: application/json" \\\n  -d '{"question": "Summarize key dataset dimensions", "summary_context": {}}'`,
     },
   ];
 
@@ -131,15 +140,44 @@ export default function AppDeveloperPage() {
           </p>
         </div>
 
-        <a
-          href="http://localhost:8000/docs"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-charcoal text-white text-xs font-semibold hover:bg-charcoal-deep transition-all shadow-xs w-max"
-        >
-          <span>Open Swagger UI</span>
-          <ExternalLink className="w-3.5 h-3.5 text-yellow" />
-        </a>
+        {/* Environment Switcher & Swagger Documentation Link */}
+        <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-1 p-1 bg-white rounded-xl border border-grey-border shadow-2xs">
+            <button
+              type="button"
+              onClick={() => setEnvMode("live")}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+                envMode === "live"
+                  ? "bg-charcoal text-white shadow-xs"
+                  : "text-grey-muted hover:text-charcoal"
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Live Cloud</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setEnvMode("local")}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+                envMode === "local"
+                  ? "bg-charcoal text-white shadow-xs"
+                  : "text-grey-muted hover:text-charcoal"
+              }`}
+            >
+              <span>Localhost</span>
+            </button>
+          </div>
+
+          <a
+            href={`${baseUrl}/docs`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-charcoal text-white text-xs font-semibold hover:bg-charcoal-deep transition-all shadow-xs w-max cursor-pointer"
+          >
+            <span>Open Swagger UI</span>
+            <ExternalLink className="w-3.5 h-3.5 text-yellow" />
+          </a>
+        </div>
       </div>
 
       {/* Temporary API Key Management Card */}
