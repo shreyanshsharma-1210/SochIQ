@@ -12,6 +12,8 @@ import {
   Sparkles,
   Maximize2,
   Minimize2,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { SochIQIcon } from "@/components/brand/SochIQLogo";
 import { api } from "@/lib/apiClient";
@@ -40,6 +42,20 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
 
   const chatBottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const suggestionsRef = useRef<HTMLDivElement>(null);
+
+  const scrollSuggestions = (direction: "left" | "right") => {
+    if (suggestionsRef.current) {
+      const scrollAmount = direction === "left" ? -240 : 240;
+      suggestionsRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
+  const handleSuggestionsWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    if (suggestionsRef.current && e.deltaY !== 0) {
+      suggestionsRef.current.scrollLeft += e.deltaY;
+    }
+  };
 
   // Auto-scroll on new message or loading state
   useEffect(() => {
@@ -264,16 +280,45 @@ export default function GroqChatPanel({ summaryContext, qualityContext }: GroqCh
         </div>
       )}
 
-      {/* 3.E Suggested Inquiries (clean single horizontal scroll, no vertical overflow) */}
+      {/* 3.E Suggested Inquiries with smooth horizontal scrolling */}
       {activeSuggestions && activeSuggestions.length > 0 && (
         <div className="shrink-0 px-5 sm:px-6 py-2.5 bg-white border-t border-grey-border">
-          <div className="flex items-center gap-1.5 mb-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-charcoal fill-yellow" />
-            <span className="text-[11px] font-bold text-charcoal uppercase tracking-wider">
-              Suggested Inquiries
-            </span>
+          <div className="flex items-center justify-between gap-2 mb-1.5">
+            <div className="flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-charcoal fill-yellow" />
+              <span className="text-[11px] font-bold text-charcoal uppercase tracking-wider">
+                Suggested Inquiries
+              </span>
+            </div>
+            {/* Scroll navigation arrows */}
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={() => scrollSuggestions("left")}
+                className="p-1 rounded-md text-grey-muted hover:text-charcoal hover:bg-grey-subtle transition-colors border border-grey-border cursor-pointer shadow-2xs"
+                title="Scroll suggestions left"
+              >
+                <ChevronLeft className="w-3 h-3" />
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollSuggestions("right")}
+                className="p-1 rounded-md text-grey-muted hover:text-charcoal hover:bg-grey-subtle transition-colors border border-grey-border cursor-pointer shadow-2xs"
+                title="Scroll suggestions right"
+              >
+                <ChevronRight className="w-3 h-3" />
+              </button>
+            </div>
           </div>
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5 whitespace-nowrap">
+          <div
+            ref={suggestionsRef}
+            onWheel={handleSuggestionsWheel}
+            className="flex items-center gap-2 overflow-x-auto horizontal-chips-scrollbar pb-1.5 pt-0.5 whitespace-nowrap scroll-smooth"
+            style={{
+              scrollbarWidth: "thin",
+              scrollbarColor: "#D4D4D8 #F4F4F5",
+            }}
+          >
             {activeSuggestions.map((sug, idx) => (
               <div key={idx} className="shrink-0">
                 <SuggestionChip

@@ -114,6 +114,22 @@ body {
   scrollbar-width: none;
 }
 
+/* Custom sleek horizontal scrollbar for chips */
+.horizontal-chips-scrollbar::-webkit-scrollbar {
+  height: 4px;
+}
+.horizontal-chips-scrollbar::-webkit-scrollbar-track {
+  background: #F4F4F5;
+  border-radius: 4px;
+}
+.horizontal-chips-scrollbar::-webkit-scrollbar-thumb {
+  background: #D4D4D8;
+  border-radius: 4px;
+}
+.horizontal-chips-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #A1A1AA;
+}
+
 /* Backward compatibility aliases mapping old tokens to clean SochIQ styles */
 .diwali-card {
   background: #FFFFFF;
