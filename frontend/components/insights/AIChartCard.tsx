@@ -115,11 +115,22 @@ export default function AIChartCard({ chart }: AIChartCardProps) {
                 itemStyle={{ color: "#374151", fontWeight: 600 }}
                 labelStyle={{ color: "#6B7280", fontWeight: 500 }}
               />
-              <Bar dataKey={yKey} fill="#EAB308" radius={[4, 4, 0, 0]}>
-                {data.map((_, index) => (
-                  <Cell key={`cell-${index}`} fill={PALETTE[index % PALETTE.length]} />
-                ))}
-              </Bar>
+              {(() => {
+                const isHisto =
+                  chart.chart_type?.toLowerCase() === "histogram" ||
+                  chart.title?.toLowerCase().includes("histogram");
+                const defaultBarColor = isHisto ? "#64748B" : "#EAB308";
+                return (
+                  <Bar dataKey={yKey} fill={defaultBarColor} radius={[4, 4, 0, 0]}>
+                    {data.map((_, index) => (
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={isHisto ? "#64748B" : PALETTE[index % PALETTE.length]}
+                      />
+                    ))}
+                  </Bar>
+                );
+              })()}
             </BarChart>
           )}
         </ResponsiveContainer>

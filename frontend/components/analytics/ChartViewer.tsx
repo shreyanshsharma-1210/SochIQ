@@ -44,7 +44,10 @@ export default function ChartViewer({ charts }: ChartViewerProps) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {charts.map((chart, idx) => {
-        const isHistogram = chart.chart_type === "histogram";
+        const isHistogram =
+          chart.chart_type?.toLowerCase() === "histogram" ||
+          chart.title?.toLowerCase().includes("histogram");
+        // Histograms strictly use Slate Grey (#64748B), while standard Bar charts use Golden Yellow (#EAB308)
         const primaryColor = isHistogram ? "#64748B" : "#EAB308";
 
         return (
@@ -81,7 +84,11 @@ export default function ChartViewer({ charts }: ChartViewerProps) {
                       itemStyle={{ color: "#374151", fontWeight: 600 }}
                       labelStyle={{ color: "#6B7280", fontWeight: 500 }}
                     />
-                    <Bar dataKey="value" fill={primaryColor} radius={[6, 6, 0, 0]} />
+                    <Bar dataKey="value" fill={primaryColor} radius={[6, 6, 0, 0]}>
+                      {chart.data.map((_, index) => (
+                        <Cell key={`cell-${index}`} fill={primaryColor} />
+                      ))}
+                    </Bar>
                   </BarChart>
                 ) : chart.chart_type === "line" ? (
                   <LineChart data={chart.data} margin={{ top: 10, right: 10, left: -20, bottom: 20 }}>
