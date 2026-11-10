@@ -8,19 +8,25 @@ import {
 } from "@/types";
 
 export function getApiBase(): string {
-  if (process.env.NEXT_PUBLIC_API_BASE_URL) {
-    return process.env.NEXT_PUBLIC_API_BASE_URL;
-  }
+  // If running in browser on ANY remote host (Vercel, custom domain):
   if (typeof window !== "undefined") {
-    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-      return "http://localhost:8000/api/v1";
+    const host = window.location.hostname;
+    const isLocal = host === "localhost" || host === "127.0.0.1";
+    if (!isLocal) {
+      // If NEXT_PUBLIC_API_BASE_URL is explicitly configured to a valid remote URL, use it:
+      const configured = process.env.NEXT_PUBLIC_API_BASE_URL;
+      if (configured && !configured.includes("localhost") && !configured.includes("127.0.0.1")) {
+        return configured;
+      }
+      return "https://sochiq-backend.onrender.com/api/v1";
     }
-    return "https://sochiq-backend.onrender.com/api/v1";
   }
-  return "https://sochiq-backend.onrender.com/api/v1";
+
+  // Local development fallback:
+  return process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000/api/v1";
 }
 
-const API_BASE = getApiBase();
+
 
 async function getAuthHeaders(): Promise<HeadersInit> {
   const token = await getOrCreateAnonymousSession();
@@ -33,7 +39,7 @@ async function getAuthHeaders(): Promise<HeadersInit> {
 
 export const api = {
   async initBrowserSession() {
-    const res = await fetch(`${API_BASE}/auth/session`, {
+    const res = await fetch(`${getApiBase()}/auth/session`, {
       method: "POST",
       credentials: "include", // Ensures HttpOnly cookie is saved by browser
     });
@@ -42,7 +48,7 @@ export const api = {
   },
 
   async logoutBrowserSession() {
-    const res = await fetch(`${API_BASE}/auth/logout`, {
+    const res = await fetch(`${getApiBase()}/auth/logout`, {
       method: "POST",
       credentials: "include",
     });
@@ -50,7 +56,7 @@ export const api = {
   },
 
   async generateDeveloperAPIKey(scopes?: string[]) {
-    const res = await fetch(`${API_BASE}/auth/keys/generate`, {
+    const res = await fetch(`${getApiBase()}/auth/keys/generate`, {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
@@ -61,7 +67,7 @@ export const api = {
   },
 
   async listDeveloperAPIKeys() {
-    const res = await fetch(`${API_BASE}/auth/keys`, {
+    const res = await fetch(`${getApiBase()}/auth/keys`, {
       credentials: "include",
     });
     if (!res.ok) return [];
@@ -69,14 +75,14 @@ export const api = {
   },
 
   async revokeDeveloperAPIKey(keyId: string) {
-    const res = await fetch(`${API_BASE}/auth/keys/${keyId}`, {
+    const res = await fetch(`${getApiBase()}/auth/keys/${keyId}`, {
       method: "DELETE",
       credentials: "include",
     });
     return res.ok;
   },
   async checkHealth() {
-    const res = await fetch(`${API_BASE}/health`);
+    const res = await fetch(`${getApiBase()}/health`);
     if (!res.ok) throw new Error("Backend service unreachable");
     return res.json();
   },
@@ -86,7 +92,7 @@ export const api = {
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await fetch(`${API_BASE}/datasets/preview`, {
+    const res = await fetch(`${getApiBase()}/datasets/preview`, {
       method: "POST",
       headers,
       credentials: "include",
@@ -104,7 +110,7 @@ export const api = {
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await fetch(`${API_BASE}/analytics/summary`, {
+    const res = await fetch(`${getApiBase()}/analytics/summary`, {
       method: "POST",
       headers,
       credentials: "include",
@@ -119,7 +125,7 @@ export const api = {
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await fetch(`${API_BASE}/analytics/chart-data`, {
+    const res = await fetch(`${getApiBase()}/analytics/chart-data`, {
       method: "POST",
       headers,
       credentials: "include",
@@ -134,7 +140,7 @@ export const api = {
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await fetch(`${API_BASE}/insights/rules`, {
+    const res = await fetch(`${getApiBase()}/insights/rules`, {
       method: "POST",
       headers,
       credentials: "include",
@@ -148,7 +154,7 @@ export const api = {
     const headers = await getAuthHeaders();
     (headers as any)["Content-Type"] = "application/json";
 
-    const res = await fetch(`${API_BASE}/ai/query`, {
+    const res = await fetch(`${getApiBase()}/ai/query`, {
       method: "POST",
       headers,
       credentials: "include",
@@ -171,7 +177,7 @@ export const api = {
     if (file) {
       const formData = new FormData();
       formData.append("file", file);
-      const res = await fetch(`${API_BASE}/exports/csv`, {
+      const res = await fetch(`${getApiBase()}/exports/csv`, {
         method: "POST",
         headers,
         credentials: "include",
@@ -180,7 +186,7 @@ export const api = {
       if (!res.ok) throw new Error("Failed to generate clean CSV.");
       return res.blob();
     } else if (datasetId) {
-      const res = await fetch(`${API_BASE}/exports/csv/${datasetId}`, {
+      const res = await fetch(`${getApiBase()}/exports/csv/${datasetId}`, {
         headers,
         credentials: "include",
       });
@@ -195,7 +201,7 @@ export const api = {
     if (file) {
       const formData = new FormData();
       formData.append("file", file);
-      const res = await fetch(`${API_BASE}/exports/pdf`, {
+      const res = await fetch(`${getApiBase()}/exports/pdf`, {
         method: "POST",
         headers,
         credentials: "include",
@@ -204,7 +210,7 @@ export const api = {
       if (!res.ok) throw new Error("Failed to generate PDF report.");
       return res.blob();
     } else if (datasetId) {
-      const res = await fetch(`${API_BASE}/exports/pdf/${datasetId}`, {
+      const res = await fetch(`${getApiBase()}/exports/pdf/${datasetId}`, {
         headers,
         credentials: "include",
       });
@@ -225,7 +231,7 @@ export const api = {
     const headers = await getAuthHeaders();
     (headers as any)["Content-Type"] = "application/json";
 
-    const res = await fetch(`${API_BASE}/datasets/save-metadata`, {
+    const res = await fetch(`${getApiBase()}/datasets/save-metadata`, {
       method: "POST",
       headers,
       credentials: "include",
@@ -237,7 +243,7 @@ export const api = {
 
   async getSavedDatasets(): Promise<DatasetMetadata[]> {
     const headers = await getAuthHeaders();
-    const res = await fetch(`${API_BASE}/datasets/saved`, {
+    const res = await fetch(`${getApiBase()}/datasets/saved`, {
       headers,
       credentials: "include",
     });
@@ -247,7 +253,7 @@ export const api = {
 
   async deleteSavedDataset(id: string): Promise<boolean> {
     const headers = await getAuthHeaders();
-    const res = await fetch(`${API_BASE}/datasets/saved/${id}`, {
+    const res = await fetch(`${getApiBase()}/datasets/saved/${id}`, {
       method: "DELETE",
       headers,
       credentials: "include",
@@ -259,7 +265,7 @@ export const api = {
   // Temporary Cloud Workspace Methods
   // -------------------------------------------------------------
   async initWorkspaceSession(tabId?: string): Promise<import("@/types").SessionStatus> {
-    const url = tabId ? `${API_BASE}/session/initialize?tab_id=${encodeURIComponent(tabId)}` : `${API_BASE}/session/initialize`;
+    const url = tabId ? `${getApiBase()}/session/initialize?tab_id=${encodeURIComponent(tabId)}` : `${getApiBase()}/session/initialize`;
     const res = await fetch(url, {
       method: "POST",
       credentials: "include",
@@ -269,7 +275,7 @@ export const api = {
   },
 
   async sendHeartbeat(tabId: string): Promise<any> {
-    const res = await fetch(`${API_BASE}/session/heartbeat`, {
+    const res = await fetch(`${getApiBase()}/session/heartbeat`, {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
@@ -281,7 +287,7 @@ export const api = {
 
   async sendLeave(tabId: string): Promise<void> {
     try {
-      const url = `${API_BASE}/session/leave`;
+      const url = `${getApiBase()}/session/leave`;
       const payload = JSON.stringify({ tab_id: tabId });
       if (typeof navigator !== "undefined" && navigator.sendBeacon) {
         const blob = new Blob([payload], { type: "application/json" });
@@ -299,7 +305,7 @@ export const api = {
   },
 
   async getSessionStatus(): Promise<import("@/types").SessionStatus> {
-    const res = await fetch(`${API_BASE}/session`, {
+    const res = await fetch(`${getApiBase()}/session`, {
       credentials: "include",
     });
     if (!res.ok) throw new Error("Failed to fetch session status.");
@@ -307,7 +313,7 @@ export const api = {
   },
 
   async recordActivity(): Promise<void> {
-    await fetch(`${API_BASE}/session/activity`, {
+    await fetch(`${getApiBase()}/session/activity`, {
       method: "POST",
       credentials: "include",
     }).catch(() => {});
@@ -317,7 +323,7 @@ export const api = {
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await fetch(`${API_BASE}/datasets/upload`, {
+    const res = await fetch(`${getApiBase()}/datasets/upload`, {
       method: "POST",
       credentials: "include",
       body: formData,
@@ -330,7 +336,7 @@ export const api = {
   },
 
   async listDatasets(): Promise<DatasetMetadata[]> {
-    const res = await fetch(`${API_BASE}/datasets`, {
+    const res = await fetch(`${getApiBase()}/datasets`, {
       credentials: "include",
     });
     if (!res.ok) return [];
@@ -338,7 +344,7 @@ export const api = {
   },
 
   async getDatasetDetails(datasetId: string) {
-    const res = await fetch(`${API_BASE}/datasets/${datasetId}`, {
+    const res = await fetch(`${getApiBase()}/datasets/${datasetId}`, {
       credentials: "include",
     });
     if (!res.ok) throw new Error("Dataset not found or session expired.");
@@ -346,7 +352,7 @@ export const api = {
   },
 
   async downloadDatasetFile(datasetId: string): Promise<Blob> {
-    const res = await fetch(`${API_BASE}/datasets/${datasetId}/file`, {
+    const res = await fetch(`${getApiBase()}/datasets/${datasetId}/file`, {
       credentials: "include",
     });
     if (!res.ok) throw new Error("Failed to download file from cloud storage.");
@@ -354,7 +360,7 @@ export const api = {
   },
 
   async deleteDataset(datasetId: string): Promise<boolean> {
-    const res = await fetch(`${API_BASE}/datasets/${datasetId}`, {
+    const res = await fetch(`${getApiBase()}/datasets/${datasetId}`, {
       method: "DELETE",
       credentials: "include",
     });
@@ -362,7 +368,7 @@ export const api = {
   },
 
   async listAnalyses(datasetId?: string): Promise<import("@/types").AnalysisRun[]> {
-    const url = datasetId ? `${API_BASE}/analyses?dataset_id=${datasetId}` : `${API_BASE}/analyses`;
+    const url = datasetId ? `${getApiBase()}/analyses?dataset_id=${datasetId}` : `${getApiBase()}/analyses`;
     const res = await fetch(url, {
       credentials: "include",
     });
@@ -371,7 +377,7 @@ export const api = {
   },
 
   async getAnalysisDetails(analysisId: string): Promise<import("@/types").AnalysisRun> {
-    const res = await fetch(`${API_BASE}/analyses/${analysisId}`, {
+    const res = await fetch(`${getApiBase()}/analyses/${analysisId}`, {
       credentials: "include",
     });
     if (!res.ok) throw new Error("Analysis run not found.");
