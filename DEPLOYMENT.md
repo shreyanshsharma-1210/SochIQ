@@ -90,3 +90,4 @@ When prompted:
    ```
 2. **Verify Frontend**:
    Open your Vercel URL, upload a CSV or Excel file, test the analytics dashboard, and verify that the 30-minute cloud workspace and AI Assistant interact smoothly with the Render backend.
+
