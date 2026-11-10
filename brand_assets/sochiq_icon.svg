@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Dark titanium luxury background gradient -->
+    <linearGradient id="squircle_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E1E22" />
+      <stop offset="50%" stop-color="#141416" />
+      <stop offset="100%" stop-color="#0A0A0C" />
+    </linearGradient>
+
+    <!-- Subtle luxury rim light border -->
+    <linearGradient id="rim_light" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#404048" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#242428" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#18181A" stop-opacity="0.6" />
+    </linearGradient>
+
+    <!-- Yellow Glow Filter for Nodes -->
+    <filter id="yellow_glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Center Intelligence Radial Pulse -->
+    <radialGradient id="center_glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFDF00" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#FFDF00" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Squircle Base with 25% border-radius -->
+  <rect x="8" y="8" width="496" height="496" rx="124" fill="url(#squircle_grad)" />
+  <rect x="8" y="8" width="496" height="496" rx="124" stroke="url(#rim_light)" stroke-width="4" />
+
+  <!-- Ambient Node Glow behind center nexus -->
+  <circle cx="256" cy="270" r="90" fill="url(#center_glow)" />
+
+  <!-- S-Curve Data Flow Path -->
+  <!-- Scaled from M25 11C25 11 20 10 16 13C12 16 13 20 18 21C23 22 24 25 20 27C16 29 11 27 11 27 -->
+  <path
+    d="M 355.56 156.44
+       C 355.56 156.44 284.44 142.22 227.56 184.89
+       C 170.67 227.56 184.89 284.44 256.00 298.67
+       C 327.11 312.89 341.33 355.56 284.44 384.00
+       C 227.56 412.44 156.44 384.00 156.44 384.00"
+    stroke="#FFFFFF"
+    stroke-width="35.56"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Top Data Node (Yellow Spark) -->
+  <circle cx="355.56" cy="156.44" r="39.11" fill="#FFDF00" filter="url(#yellow_glow)" />
+  <circle cx="355.56" cy="156.44" r="16" fill="#FFFBE6" />
+
+  <!-- Bottom Insight Node (Yellow Spark) -->
+  <circle cx="156.44" cy="384.00" r="39.11" fill="#FFDF00" filter="url(#yellow_glow)" />
+  <circle cx="156.44" cy="384.00" r="16" fill="#FFFBE6" />
+
+  <!-- Center Intelligence Spark Dot -->
+  <circle cx="256.00" cy="270.22" r="21.33" fill="#FFDF00" filter="url(#yellow_glow)" />
+  <circle cx="256.00" cy="270.22" r="9" fill="#FFFBE6" />
+</svg>
