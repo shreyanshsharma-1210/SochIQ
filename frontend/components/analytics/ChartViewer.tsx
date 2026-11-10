@@ -20,7 +20,7 @@ interface ChartViewerProps {
   charts: ChartSeries[];
 }
 
-// Modern, soft Yellow & Slate Grey palette (replaces harsh solid black)
+// Modern, soft Yellow & Slate Grey palette for categorical multi-series & pie charts
 const PALETTE = [
   "#EAB308", // Golden Yellow (SochIQ Primary Accent)
   "#64748B", // Slate Grey
@@ -30,6 +30,20 @@ const PALETTE = [
   "#71717A", // Zinc Grey
   "#FACC15", // Bright Sunlight Yellow
   "#A1A1AA", // Soft Zinc Grey
+];
+
+// Curated shades of black and grey for bar graphs
+const BAR_SHADES = [
+  "#18181B", // Soft Deep Black (Zinc 900)
+  "#3F3F46", // Dark Charcoal Grey (Zinc 700)
+  "#52525B", // Charcoal Grey (Zinc 600)
+  "#64748B", // Slate Grey (Slate 500)
+  "#71717A", // Medium Grey (Zinc 500)
+  "#94A3B8", // Cool Slate Grey (Slate 400)
+  "#A1A1AA", // Soft Muted Grey (Zinc 400)
+  "#CBD5E1", // Light Slate Grey (Slate 300)
+  "#27272A", // Deep Graphite (Zinc 800)
+  "#475569", // Dark Slate (Slate 600)
 ];
 
 export default function ChartViewer({ charts }: ChartViewerProps) {
@@ -47,8 +61,12 @@ export default function ChartViewer({ charts }: ChartViewerProps) {
         const isHistogram =
           chart.chart_type?.toLowerCase() === "histogram" ||
           chart.title?.toLowerCase().includes("histogram");
-        // Histograms strictly use Slate Grey (#64748B), while standard Bar charts use Golden Yellow (#EAB308)
-        const primaryColor = isHistogram ? "#64748B" : "#EAB308";
+
+        // Histograms strictly use Slate Grey (#64748B); Bar graphs use progressive shades of black and grey
+        const getBarColor = (index: number) => {
+          if (isHistogram) return "#64748B";
+          return BAR_SHADES[index % BAR_SHADES.length];
+        };
 
         return (
           <div key={idx} className="sochiq-card p-5 flex flex-col justify-between">
@@ -84,9 +102,13 @@ export default function ChartViewer({ charts }: ChartViewerProps) {
                       itemStyle={{ color: "#374151", fontWeight: 600 }}
                       labelStyle={{ color: "#6B7280", fontWeight: 500 }}
                     />
-                    <Bar dataKey="value" fill={primaryColor} radius={[6, 6, 0, 0]}>
+                    <Bar
+                      dataKey="value"
+                      fill={isHistogram ? "#64748B" : BAR_SHADES[0]}
+                      radius={[6, 6, 0, 0]}
+                    >
                       {chart.data.map((_, index) => (
-                        <Cell key={`cell-${index}`} fill={primaryColor} />
+                        <Cell key={`cell-${index}`} fill={getBarColor(index)} />
                       ))}
                     </Bar>
                   </BarChart>

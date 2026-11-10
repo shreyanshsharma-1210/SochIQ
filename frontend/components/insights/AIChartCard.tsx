@@ -29,6 +29,19 @@ const PALETTE = [
   "#A1A1AA", // Soft Zinc Grey
 ];
 
+const BAR_SHADES = [
+  "#18181B", // Soft Deep Black (Zinc 900)
+  "#3F3F46", // Dark Charcoal Grey (Zinc 700)
+  "#52525B", // Charcoal Grey (Zinc 600)
+  "#64748B", // Slate Grey (Slate 500)
+  "#71717A", // Medium Grey (Zinc 500)
+  "#94A3B8", // Cool Slate Grey (Slate 400)
+  "#A1A1AA", // Soft Muted Grey (Zinc 400)
+  "#CBD5E1", // Light Slate Grey (Slate 300)
+  "#27272A", // Deep Graphite (Zinc 800)
+  "#475569", // Dark Slate (Slate 600)
+];
+
 interface AIChartCardProps {
   chart: AIChartItem;
 }
@@ -119,13 +132,12 @@ export default function AIChartCard({ chart }: AIChartCardProps) {
                 const isHisto =
                   chart.chart_type?.toLowerCase() === "histogram" ||
                   chart.title?.toLowerCase().includes("histogram");
-                const defaultBarColor = isHisto ? "#64748B" : "#EAB308";
                 return (
-                  <Bar dataKey={yKey} fill={defaultBarColor} radius={[4, 4, 0, 0]}>
+                  <Bar dataKey={yKey} fill={isHisto ? "#64748B" : BAR_SHADES[0]} radius={[4, 4, 0, 0]}>
                     {data.map((_, index) => (
                       <Cell
                         key={`cell-${index}`}
-                        fill={isHisto ? "#64748B" : PALETTE[index % PALETTE.length]}
+                        fill={isHisto ? "#64748B" : BAR_SHADES[index % BAR_SHADES.length]}
                       />
                     ))}
                   </Bar>
