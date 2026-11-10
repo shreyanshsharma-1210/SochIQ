@@ -65,7 +65,7 @@ CHAPTERS = [
         "tag": "CHAPTER 04 • DATA QUALITY",
         "title": "Understand Your Data Quality",
         "subtitle": "Automated health score, null checks & duplicate audits",
-        "badge": "● 100 PERCENT HEALTH SCORE",
+        "badge": "● 100% HEALTH SCORE CONFIRMED",
         "card_title": "Automated Data Quality Audit",
         "card_desc": "Instant detection of null values\\, anomalies & type mismatches."
     },
@@ -163,8 +163,9 @@ CHAPTERS = [
 ]
 
 def escape_drawtext(s: str) -> str:
-    s = s.replace("\\,", ",").replace("\\:", ":")
-    s = s.replace("%", "%%")
+    # First unescape any existing manual escapes so we don't double escape
+    s = s.replace("\\,", ",").replace("\\:", ":").replace("\\%", "%")
+    s = s.replace("%", "\\%")
     s = s.replace(":", "\\:")
     s = s.replace(",", "\\,")
     return s
@@ -283,4 +284,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

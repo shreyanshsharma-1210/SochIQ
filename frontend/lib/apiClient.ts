@@ -7,7 +7,20 @@ import {
   DatasetMetadata,
 } from "@/types";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000/api/v1";
+export function getApiBase(): string {
+  if (process.env.NEXT_PUBLIC_API_BASE_URL) {
+    return process.env.NEXT_PUBLIC_API_BASE_URL;
+  }
+  if (typeof window !== "undefined") {
+    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+      return "http://localhost:8000/api/v1";
+    }
+    return "https://sochiq-backend.onrender.com/api/v1";
+  }
+  return "https://sochiq-backend.onrender.com/api/v1";
+}
+
+const API_BASE = getApiBase();
 
 async function getAuthHeaders(): Promise<HeadersInit> {
   const token = await getOrCreateAnonymousSession();
